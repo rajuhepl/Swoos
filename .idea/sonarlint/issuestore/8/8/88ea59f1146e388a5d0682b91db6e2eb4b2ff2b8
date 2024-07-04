@@ -1,15 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(£ß¾Ù
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-E
-java:S1172""/Remove this unused method parameter "response".(®žåô
-K
-java:S1481b"5Remove this unused "mergeResponseDTO" local variable.(•Ðß‚
-V	java:S125t"<This block of commented-out lines of code should be removed.(ïãÑûÿÿÿÿ
-V	java:S125w"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
-Q	java:S125y"<This block of commented-out lines of code should be removed.(àŽ²µ
