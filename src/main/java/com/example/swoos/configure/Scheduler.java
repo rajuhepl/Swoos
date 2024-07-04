@@ -14,7 +14,7 @@ public class Scheduler {
     @Autowired
     private MergeExcelAndCSVServiceImpl mergeExcelAndCSVService;
     @Scheduled(cron = "00 15 11 * * *")
-    @PostConstruct
+//    @PostConstruct
     public void dataLoad() {
         mergeExcelAndCSVService.readDataFromFile();
     }
