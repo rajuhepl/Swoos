@@ -1,0 +1,24 @@
+
+
+java:S1192"MDefine a constant instead of duplicating this literal "out-of-stock" 4 times.(ÌóÌ¾ùÿÿÿÿJ$5ff1fd5c-9355-45a6-b203-6975eae3266e
+_
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8åéµò†2
+_
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8åéµò†2
+_
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8åéµò†2
+_
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8åéµò†2
+_
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8åéµò†2
+`
+java:S6813¹"BRemove this field injection and use constructor injection instead.(êæÄŞ8åéµò†2
+`
+java:S6813„"BRemove this field injection and use constructor injection instead.(êæÄŞ8åéµò†2
+|	java:S125+"<This block of commented-out lines of code should be removed.(âŒ÷˜ùÿÿÿÿJ$939deb25-e0db-4119-8e70-fbc8b8066dde
+g	java:S106›"+Replace this use of System.out by a logger.(£¯îÏJ$a31bc5cb-60e5-4f51-ab8a-c95a8b7433df
+l	java:S106­"+Replace this use of System.out by a logger.(ó‹£‹øÿÿÿÿJ$7f577adf-5ce9-440a-aa78-02ad4b25e8cd
+Z
+java:S1128"=Remove this unused import 'com.example.swoos.dto.HistoryDto'.(–Ûˆ8¯ãß‡2
+T
+java:S1128"2Remove this unused import 'java.net.Inet4Address'.(ê…ÉÃúÿÿÿÿ8¯ãß‡2

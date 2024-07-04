@@ -1,0 +1,22 @@
+
+a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112¯"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112À"FDefine and throw a dedicated exception instead of using a generic one.(õ¼©„ûÿÿÿÿ
+a	java:S112Ã"FDefine and throw a dedicated exception instead of using a generic one.(õ¼©„ûÿÿÿÿ
+o
+java:S2293t"YReplace the type specification in this constructor call with the diamond operator ("<>").(¬úÑ
+u
+java:S2293–"YReplace the type specification in this constructor call with the diamond operator ("<>").(Äò¿ÿøÿÿÿÿ
+>
+java:S5411]"(Use a primitive boolean expression here.(ç«ğÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ü®‰—øÿÿÿÿ
+X
+java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813%"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞ
+m
+java:S3776+"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ÁÎùøÿÿÿÿ
+\
+java:S2153U"FRemove the boxing to "Long"; The argument is already of the same type.(¹Ñ›Ö

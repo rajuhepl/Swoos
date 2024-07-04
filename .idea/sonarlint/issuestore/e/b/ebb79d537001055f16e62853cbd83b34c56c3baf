@@ -1,0 +1,42 @@
+
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•â–ƒJ$01dbce7d-7766-4fe1-bffa-5a729bd31e8f
+	java:S116"SRename this field "Platform" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”íº–J$71af3c2d-9b44-409e-81f7-afbcea19779c
+	java:S116"ORename this field "Asin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‹¤»şÿÿÿÿJ$8a87cdf5-3e22-4823-bdfa-7eab1217370f
+	java:S116"PRename this field "Pname" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àĞÖòüÿÿÿÿJ$8cef6b2b-f8cc-4594-8487-d6bf38d8e080
+–	java:S116"[Rename this field "InternalDivision" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ï°óJ$0b98017a-18cf-41b1-bef9-48ef306cbdba
+“	java:S116"SRename this field "Category" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó¹ˆşÿÿÿÿJ$202f7568-3771-4153-9e65-c7f0885e9f92
+–	java:S116"VRename this field "SubCategory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é”¤¼üÿÿÿÿJ$469c5b89-abb2-4d1b-b869-072dc2224a06
+	java:S116"TRename this field "Ahmedabad" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øŞ¢£J$43db00b4-b396-4d71-87ca-e62bbfb45c16
+	java:S116"TRename this field "Bangalore" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ÆÄJ$362daacf-6a71-4697-8570-19c8b46efa34
+’	java:S116"RRename this field "Chennai" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¦ÉËşÿÿÿÿJ$93065bdf-4860-47bc-aab7-8b76a65686ba
+‹	java:S116"PRename this field "Delhi" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í¡’àJ$876000c4-f1f8-4ee6-b76b-7480e10f98ac
+	java:S116"TRename this field "Hyderabad" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«‘ÄJ$dd6db850-1530-4004-bc08-251d842db5ab
+‘	java:S116"QRename this field "Indore" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÈ£ùıÿÿÿÿJ$c75e1032-36bd-4377-b258-3800e519c7c4
+“	java:S116"SRename this field "Calcutta" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹‹¸ÙüÿÿÿÿJ$5259a52d-81a0-4fb6-9bce-4fe614aeb23d
+‘	java:S116"QRename this field "Mumbai" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…è¤¶øÿÿÿÿJ$767b09ef-128c-440a-a481-a5ad94bec635
+Œ	java:S116 "QRename this field "Nagpur" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂƒÑçJ$1e8fb094-0158-4f46-9659-3b5175b4250f
+Š	java:S116!"PRename this field "Patna" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ÀıjJ$18930051-c7c8-482f-9fb6-5c7b7e98a9d0
+	java:S116""ORename this field "Pune" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š›ìÿÿÿÿÿJ$581c2442-dcac-4e0a-bdf8-7bb00e997c8a
+™	java:S116#"^Rename this field "AhmedabadPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë‡¬…J$19323090-04d3-4953-9f6b-10989ee1fa65
+	java:S116$"^Rename this field "BangalorePercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ“ê·ûÿÿÿÿJ$90161266-0016-4c16-83be-89a5ef39b7cc
+—	java:S116%"\Rename this field "ChennaiPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´ôÕ J$0c1e06de-b6d0-4709-8740-70e0f09081c4
+š	java:S116&"ZRename this field "DelhiPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ƒñùÿÿÿÿJ$78b30da2-1333-48f7-a445-3923fa625193
+	java:S116'"^Rename this field "HyderabadPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª€ãÂøÿÿÿÿJ$76347289-073c-4be1-a43c-c5638b62df79
+–	java:S116("[Rename this field "IndorePercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—áÑ¿J$fbaa099f-42fd-4c83-98b2-19ac460ccaf3
+—	java:S116)"]Rename this field "CalcuttaPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßãŠ
+J$d788ef4e-9ebd-4d0b-8318-20b23352a778
+›	java:S116*"[Rename this field "MumbaiPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°÷ËäûÿÿÿÿJ$55b948ef-e408-4a66-b366-2921624429ec
+›	java:S116+"[Rename this field "NagpurPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø×¹ñşÿÿÿÿJ$e5574559-cb2a-46a7-91a5-abcb3f842f7e
+š	java:S116,"ZRename this field "PatnaPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ó›ßşÿÿÿÿJ$29c3be7e-ff88-47b0-b239-9525660f1953
+”	java:S116-"YRename this field "PunePercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÿÂJ$565ba220-7f6e-4ae6-946b-0afb45cc2d55
+ˆ	java:S116."MRename this field "NA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊĞ‡¶J$2e264b73-fdc2-482b-b4ad-0228abf6e539
+Œ	java:S116/"RRename this field "Revenue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏÉùJ$afeb8d9b-4344-4bcd-8cd8-8ab414db2f8e
+š	java:S1162"ZRename this field "SwoosPercentage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ˜ÈŸøÿÿÿÿJ$eef6a88c-adb1-43eb-b4c2-eba1d6412811
+	java:S1163"TRename this field "ValueLoss" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ½¸·J$1cf8c961-d226-45b9-9028-5e3307fb3f75
+—	java:S1164"\Rename this field "SWOOSContribution" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢·€ËJ$e4d491c0-97fd-4afa-894e-03ae4bf6d0a9
+
+java:S1128"HRemove this unused import 'org.hibernate.annotations.CreationTimestamp'.(¡œøÀúÿÿÿÿ8‚Áğå€2J$f44d9be9-9789-411a-9664-f9924a4f6414
+
+java:S1128"FRemove this unused import 'org.hibernate.annotations.UpdateTimestamp'.(Ñµ¬Ûúÿÿÿÿ8„Áğå€2J$a630d914-4240-4055-acf7-c4542d4abec5
+q
+java:S1128"/Remove this unused import 'java.sql.Timestamp'.(èò½+8…Áğå€2J$378006e2-3777-4d25-b419-03be5c16677f
