@@ -1,42 +1,42 @@
 
 “
-java:S1192İ"JDefine a constant instead of duplicating this literal "Ahmedabad" 3 times.(ß§êşÿÿÿÿ8ıêä‡2J$034a20bb-d99a-460c-a734-0b56c0162eb4
+java:S1192İ"JDefine a constant instead of duplicating this literal "Ahmedabad" 3 times.(ß§êşÿÿÿÿ8¹¡öå‡2J$ef637bdb-8555-4aa9-8764-26bef029230d
 
-java:S1192à"FDefine a constant instead of duplicating this literal "Delhi" 3 times.(Œù–àûÿÿÿÿ8ıêä‡2J$42726915-0f4d-4455-8aee-ce6e416cb058
+java:S1192à"FDefine a constant instead of duplicating this literal "Delhi" 3 times.(Œù–àûÿÿÿÿ8º¡öå‡2J$ca5c58d4-309a-4725-8db4-d39e41e02a72
 ‹
-java:S1192â"GDefine a constant instead of duplicating this literal "Indore" 3 times.(ûÍ8ıêä‡2J$f2d9a666-678e-4372-bba3-ed2df6100ffa
+java:S1192â"GDefine a constant instead of duplicating this literal "Indore" 3 times.(ûÍ8º¡öå‡2J$88ed8fc2-7c80-4174-9f04-3e164cda2ad1
 ‹
-java:S1192ä"GDefine a constant instead of duplicating this literal "Mumbai" 3 times.(éİ‹8ıêä‡2J$55c44bcf-684a-42da-805a-a7911b129efe
+java:S1192ä"GDefine a constant instead of duplicating this literal "Mumbai" 3 times.(éİ‹8»¡öå‡2J$2dcefac1-bd3c-4be7-8745-14f481bf41bd
 
-java:S1192Ş"JDefine a constant instead of duplicating this literal "Bangalore" 3 times.(Ø§ÌÆ8ıêä‡2J$c9e19656-1ebf-4a9c-a22c-fa9bd53fa350
+java:S1192Ş"JDefine a constant instead of duplicating this literal "Bangalore" 3 times.(Ø§ÌÆ8»¡öå‡2J$9b7d355c-0201-4cde-b2a4-1748d0f4657d
 ‘
-java:S1192ß"HDefine a constant instead of duplicating this literal "Chennai" 3 times.(å´¯òüÿÿÿÿ8ıêä‡2J$f42345f7-47d3-48c5-a08c-f95e24e64da3
+java:S1192ß"HDefine a constant instead of duplicating this literal "Chennai" 3 times.(å´¯òüÿÿÿÿ8»¡öå‡2J$15775f7f-715b-4574-b153-0418171b80c0
 ’
-java:S1192ã"IDefine a constant instead of duplicating this literal "Calcutta" 3 times.(¡×Æ×şÿÿÿÿ8ıêä‡2J$4382523c-743a-4dcc-b7e4-57b23b11166d
+java:S1192ã"IDefine a constant instead of duplicating this literal "Calcutta" 3 times.(¡×Æ×şÿÿÿÿ8»¡öå‡2J$cd10a1ad-a31c-4155-b8b4-e7d6b33c8125
 –
-java:S1192›"MDefine a constant instead of duplicating this literal "Out-of-Stock" 3 times.(±†ÑÏüÿÿÿÿ8ıêä‡2J$e2f1cd5c-99a8-4ff9-9616-1162dc61d317
+java:S1192›"MDefine a constant instead of duplicating this literal "Out-of-Stock" 3 times.(±†ÑÏüÿÿÿÿ8»¡öå‡2J$b529c70c-b8c3-4428-883d-a6ac34438fe1
 
-java:S1192á"JDefine a constant instead of duplicating this literal "Hyderabad" 3 times.(ğº”‹8ıêä‡2J$0d9d138c-151b-4d90-92c2-b41b6e69bed7
+java:S1192á"JDefine a constant instead of duplicating this literal "Hyderabad" 3 times.(ğº”‹8¼¡öå‡2J$53c90e52-10dd-4bd2-a6e4-0fa2951a3660
 –
-java:S1192»"MDefine a constant instead of duplicating this literal "out-of-stock" 4 times.(ÌóÌ¾ùÿÿÿÿ8ıêä‡2J$d7d649f0-a5e1-4197-9079-8c2793f2407b
+java:S1192»"MDefine a constant instead of duplicating this literal "out-of-stock" 4 times.(ÌóÌ¾ùÿÿÿÿ8¼¡öå‡2J$eb37dba5-4794-4a6a-aa50-cb2f03d91b57
 Š
-java:S1192å"GDefine a constant instead of duplicating this literal "Nagpur" 3 times.(¨ƒÀz8ıêä‡2J$74fe988a-4266-4f44-8621-9ceec2391f4e
+java:S1192å"GDefine a constant instead of duplicating this literal "Nagpur" 3 times.(¨ƒÀz8¼¡öå‡2J$ace81596-138c-4da1-9067-d0703420883e
 …
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ÿ‚ëä‡2J$4bdbdd19-9b04-4117-91af-3c502c8974fe
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8§¤öå‡2J$acc7557e-724e-4f23-8f27-a8a6d6232bed
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ÿ‚ëä‡2J$ad0e8cae-7509-484d-ae17-39132b108af2
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$d1bd0a52-0fb8-4e12-bdaa-49f365ff944a
 …
-java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8 ‚ëä‡2J$25c19713-2cde-484d-99a4-e78cf7d741e8
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$e162367a-173f-442e-a61a-32ef6f7e3155
 …
-java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8 ‚ëä‡2J$8f64eb40-809c-45d9-93c3-7fba0bf905e4
+java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$09412978-f640-4c4d-8229-25a6b8a325e2
 …
-java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8 ‚ëä‡2J$5b506d98-8567-4b99-841d-637d1cc84357
+java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$baa2ddde-7781-4495-a6c7-813b350b41e1
 †
-java:S6813ó"BRemove this field injection and use constructor injection instead.(êæÄŞ8 ‚ëä‡2J$9cf53a07-68f0-41e4-a854-52ee51bb6343
+java:S6813ó"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$1e7025e4-a2d0-4269-92fc-0797ae6cde4d
 †
-java:S6813¾"BRemove this field injection and use constructor injection instead.(êæÄŞ8 ‚ëä‡2J$90b868e2-db00-4944-80af-79a090c0d8d8
-ƒ	java:S125/"<This block of commented-out lines of code should be removed.(âŒ÷˜ùÿÿÿÿ8¦‚ëä‡2J$0107df06-2b42-40e4-b321-4782e8a91252
-n	java:S106 "+Replace this use of System.out by a logger.(£¯îÏ8ª‚ëä‡2J$34742230-c796-45ff-8a8c-d399f6b4753d
+java:S6813½"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$6cbd972a-5872-4aee-9653-22a36171859a
+ƒ	java:S125/"<This block of commented-out lines of code should be removed.(âŒ÷˜ùÿÿÿÿ8¸¤öå‡2J$869b9710-bdff-4886-b884-d3503269fd93
+n	java:S106 "+Replace this use of System.out by a logger.(£¯îÏ8Æ¤öå‡2J$473a8207-2624-4340-8314-2394ccf823c2
 –
-java:S3776´"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Øâ·š8³‚ëä‡2J$cf79efd6-055b-4805-87f3-50b98cdf92a8
-s	java:S106ç"+Replace this use of System.out by a logger.(ó‹£‹øÿÿÿÿ8¾‚ëä‡2J$e2b32db6-2c38-445b-9a7a-adb49cf56db5
+java:S3776´"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Øâ·š8Ò¤öå‡2J$7801faa2-1b4e-4216-9d7b-d1da7e9cfd4f
+s	java:S106ç"+Replace this use of System.out by a logger.(ó‹£‹øÿÿÿÿ8í¤öå‡2J$c4b21872-550c-4f3a-83d6-fdce63a82f1f

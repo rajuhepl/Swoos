@@ -629,11 +629,10 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
 
     public SuccessResponse<Object> readHistoryTrue(HttpServletResponse response) {
         SuccessResponse<Object> successResponse = new SuccessResponse<>();
-        LocalDate todayDate = LocalDate.now();
-        LocalDateTime fromDateTime = LocalDateTime.of(todayDate, LocalTime.MIN);
-        LocalDateTime toDateTime = LocalDateTime.of(todayDate, LocalTime.MAX);
-        Timestamp fromDate = Timestamp.valueOf(fromDateTime);
-        Timestamp toDate = Timestamp.valueOf(toDateTime);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime twentyFourHoursAgo = now.minusHours(24);
+        Timestamp fromDate = Timestamp.valueOf(twentyFourHoursAgo);
+        Timestamp toDate = Timestamp.valueOf(now);
         List<MergedModel> mergedModels = mergedRepository.getAllHistoryTrue(fromDate,toDate);
         List<MergedModelDto> mergedModelDtos = mergedModels.stream()
                 .map(this::convertToDto)
