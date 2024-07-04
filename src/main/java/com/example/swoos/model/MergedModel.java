@@ -58,11 +58,7 @@ public class MergedModel {
     @Digits(integer = 10,fraction = 2)
     private BigDecimal totalValueLoss;
     private String other;
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private DropDownModel dropDownModel;
-    //@OneToOne(cascade = CascadeType.ALL)
     private String remarks;
-    //@OneToOne(cascade = CascadeType.ALL)
     private String reason;
     private LocalDateTime day;
     private String lastDayReason;

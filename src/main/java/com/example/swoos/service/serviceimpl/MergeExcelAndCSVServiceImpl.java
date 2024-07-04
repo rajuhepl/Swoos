@@ -16,6 +16,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -26,6 +29,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 @Service
 public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
@@ -119,10 +123,11 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     }
     private void mergeCSVAndExcelData(List<CSVModel> csvData, Map<String, List<ExcelModel>> excelDataMap) {
         List<MergedModel> mergedList = new ArrayList<>();
+        List<MergedModel> discontinued = mergedRepository.findAllDiscontinuedOrLocationNotAlign();
         for (CSVModel csvModel : csvData) {
             List<ExcelModel> excelModels = excelDataMap.get(csvModel.getMainSKUCode());
             if (excelModels!= null) {
-                MergedModel mergedModel = createMergedModel(csvModel, excelModels);
+                MergedModel mergedModel = createMergedModel(csvModel, excelModels,discontinued);
                 if (!mergedModel.getValueLoss().equals("0.00")) {
                     mergedList.add(mergedModel);
                 }
@@ -300,7 +305,9 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     }
 
 
-    private MergedModel createMergedModel(CSVModel csvModel, List<ExcelModel> excelModels) {
+    private MergedModel createMergedModel(CSVModel csvModel,
+                                          List<ExcelModel> excelModels,
+                                          List<MergedModel> discontinued) {
         MergedModel mergedModel = new MergedModel();
         ExcelModel firstExcelModel = excelModels.get(0);
 
@@ -359,7 +366,58 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         }
         // Calculating value loss
         calculateValueLoss(mergedModel, count, countOfZeros);
+        Map<String, MergedModel> latestDiscontinuedMap = discontinued.stream()
+                .collect(Collectors.toMap(
+                        MergedModel::getAsin,
+                        Function.identity(),
+                        (existing, replacement) -> existing.getUpdatedAt().after(replacement.getUpdatedAt()) ? existing : replacement
+                ));
+
+        latestDiscontinuedMap.values().stream()
+                .filter(disCont -> mergedModel.getAsin().equalsIgnoreCase(disCont.getAsin()))
+                .findFirst()
+                .ifPresent(disCont -> {
+                    if (disCont.getReason().equalsIgnoreCase("Discontinued")) {
+                        mergedModel.setHistoryFlag(true);
+                        mergedModel.setReason("Last Day Reason");
+                        mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                    } else {
+                        if(locationNotAlign(disCont,mergedModel)){
+                          mergedModel.setHistoryFlag(true);
+                          mergedModel.setReason("Last Day Reason");
+                          mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                        }
+                    }
+                });
+
         return mergedModel;
+    }
+
+    private boolean locationNotAlign(MergedModel oldAsin, MergedModel newAsin) {
+        // Define an array of cities to check
+        String[] citiesToCheck = {"Bangalore", "Ahmedabad", "Chennai", "Delhi", "Pune", "Nagpur", "Mumbai", "Calcutta", "Indore", "Hyderabad"};
+
+        // Iterate through the cities and check the condition
+        for (String city : citiesToCheck) {
+            // Get the getter method name dynamically
+            String getterMethodName = "get" + city;
+            try {
+                // Use reflection to invoke the getter method
+                Method getterMethod = MergedModel.class.getMethod(getterMethodName);
+                String oldValue = (String) getterMethod.invoke(oldAsin);
+                String newValue = (String) getterMethod.invoke(newAsin);
+
+                // Check if the city is "Out-of-Stock" in both old and new Asin
+                if (oldValue.equalsIgnoreCase("Out-of-Stock") && oldValue.equalsIgnoreCase(newValue)) {
+                    return true; // If condition matches, return true
+                }
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                // Handle exceptions if necessary
+                e.printStackTrace();
+            }
+        }
+
+        return false; // Return false if no condition matches
     }
 
     private void setCityPercentage(MergedModel mergedModel, Map<String, String> cityStatusMap, int count) {

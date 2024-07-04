@@ -60,12 +60,7 @@ public class MergeController {
     @GetMapping("getById/{id}")
     public ResponseEntity<MergedModel> getById(@PathVariable Long id) {
         Optional<MergedModel> mergedModel = mergedRepository.findById(id);
-
-        if (mergedModel.isPresent()) {
-            return ResponseEntity.ok(mergedModel.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return mergedModel.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 @GetMapping("/location")
