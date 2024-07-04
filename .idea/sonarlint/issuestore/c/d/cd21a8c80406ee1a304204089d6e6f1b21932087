@@ -1,42 +1,46 @@
 
 “
-java:S1192İ"JDefine a constant instead of duplicating this literal "Ahmedabad" 3 times.(ß§êşÿÿÿÿ8¹¡öå‡2J$ef637bdb-8555-4aa9-8764-26bef029230d
+java:S1192İ"JDefine a constant instead of duplicating this literal "Ahmedabad" 3 times.(ß§êşÿÿÿÿ8Â³ê‡2J$a174d987-0474-4bbe-87ec-185803eef753
 
-java:S1192à"FDefine a constant instead of duplicating this literal "Delhi" 3 times.(Œù–àûÿÿÿÿ8º¡öå‡2J$ca5c58d4-309a-4725-8db4-d39e41e02a72
+java:S1192à"FDefine a constant instead of duplicating this literal "Delhi" 3 times.(Œù–àûÿÿÿÿ8Ã³ê‡2J$94442d33-bd00-44ec-80c5-961304e836b5
 ‹
-java:S1192â"GDefine a constant instead of duplicating this literal "Indore" 3 times.(ûÍ8º¡öå‡2J$88ed8fc2-7c80-4174-9f04-3e164cda2ad1
+java:S1192â"GDefine a constant instead of duplicating this literal "Indore" 3 times.(ûÍ8Ã³ê‡2J$6531472e-dee2-447f-829b-b6b5456a6159
 ‹
-java:S1192ä"GDefine a constant instead of duplicating this literal "Mumbai" 3 times.(éİ‹8»¡öå‡2J$2dcefac1-bd3c-4be7-8745-14f481bf41bd
+java:S1192ä"GDefine a constant instead of duplicating this literal "Mumbai" 3 times.(éİ‹8Ã³ê‡2J$ddeb1556-1d97-401a-8abe-5c58df2607c2
 
-java:S1192Ş"JDefine a constant instead of duplicating this literal "Bangalore" 3 times.(Ø§ÌÆ8»¡öå‡2J$9b7d355c-0201-4cde-b2a4-1748d0f4657d
+java:S1192Ş"JDefine a constant instead of duplicating this literal "Bangalore" 3 times.(Ø§ÌÆ8Ã³ê‡2J$ce1b3276-55c3-44db-bb13-397ca2db9080
 ‘
-java:S1192ß"HDefine a constant instead of duplicating this literal "Chennai" 3 times.(å´¯òüÿÿÿÿ8»¡öå‡2J$15775f7f-715b-4574-b153-0418171b80c0
+java:S1192ß"HDefine a constant instead of duplicating this literal "Chennai" 3 times.(å´¯òüÿÿÿÿ8Ã³ê‡2J$a73a2cc2-7ee2-418e-9e9e-3c21b751f24d
 ’
-java:S1192ã"IDefine a constant instead of duplicating this literal "Calcutta" 3 times.(¡×Æ×şÿÿÿÿ8»¡öå‡2J$cd10a1ad-a31c-4155-b8b4-e7d6b33c8125
+java:S1192ã"IDefine a constant instead of duplicating this literal "Calcutta" 3 times.(¡×Æ×şÿÿÿÿ8Ã³ê‡2J$0aa29108-4bc8-4129-8c43-9df726ef0b3a
 –
-java:S1192›"MDefine a constant instead of duplicating this literal "Out-of-Stock" 3 times.(±†ÑÏüÿÿÿÿ8»¡öå‡2J$b529c70c-b8c3-4428-883d-a6ac34438fe1
+java:S1192›"MDefine a constant instead of duplicating this literal "Out-of-Stock" 3 times.(±†ÑÏüÿÿÿÿ8Ã³ê‡2J$e6c5f444-66bc-43d3-9475-20fcc6543ef8
 
-java:S1192á"JDefine a constant instead of duplicating this literal "Hyderabad" 3 times.(ğº”‹8¼¡öå‡2J$53c90e52-10dd-4bd2-a6e4-0fa2951a3660
+java:S1192á"JDefine a constant instead of duplicating this literal "Hyderabad" 3 times.(ğº”‹8Ã³ê‡2J$ee6dd2ea-7796-451e-b961-f2e1e332c5d7
 –
-java:S1192»"MDefine a constant instead of duplicating this literal "out-of-stock" 4 times.(ÌóÌ¾ùÿÿÿÿ8¼¡öå‡2J$eb37dba5-4794-4a6a-aa50-cb2f03d91b57
+java:S1192»"MDefine a constant instead of duplicating this literal "out-of-stock" 4 times.(ÌóÌ¾ùÿÿÿÿ8Ã³ê‡2J$1485fa9c-e79d-42c5-aa51-c1814c36f657
 Š
-java:S1192å"GDefine a constant instead of duplicating this literal "Nagpur" 3 times.(¨ƒÀz8¼¡öå‡2J$ace81596-138c-4da1-9067-d0703420883e
+java:S1192å"GDefine a constant instead of duplicating this literal "Nagpur" 3 times.(¨ƒÀz8Ã³ê‡2J$5a1e4f9b-b213-458f-af89-e04e22b42b4e
 …
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8§¤öå‡2J$acc7557e-724e-4f23-8f27-a8a6d6232bed
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8°¬³ê‡2J$97616976-35a6-4975-be6b-53dbe47b4119
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$d1bd0a52-0fb8-4e12-bdaa-49f365ff944a
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8²¬³ê‡2J$56525122-fa49-4d0c-b660-e260ec2987b7
 …
-java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$e162367a-173f-442e-a61a-32ef6f7e3155
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8²¬³ê‡2J$2f875099-06af-4932-926e-39c46b95886e
 …
-java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$09412978-f640-4c4d-8229-25a6b8a325e2
+java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8²¬³ê‡2J$44f0fc15-c08a-4e43-9619-cedd20ee53ae
 …
-java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$baa2ddde-7781-4495-a6c7-813b350b41e1
+java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8²¬³ê‡2J$caa135e7-f5ac-4e6a-9234-f5b8abb03998
 †
-java:S6813ó"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$1e7025e4-a2d0-4269-92fc-0797ae6cde4d
+java:S6813ó"BRemove this field injection and use constructor injection instead.(êæÄŞ8²¬³ê‡2J$c1df539a-a4fb-4a18-b4f5-2c1e907e895f
 †
-java:S6813½"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨¤öå‡2J$6cbd972a-5872-4aee-9653-22a36171859a
-ƒ	java:S125/"<This block of commented-out lines of code should be removed.(âŒ÷˜ùÿÿÿÿ8¸¤öå‡2J$869b9710-bdff-4886-b884-d3503269fd93
-n	java:S106 "+Replace this use of System.out by a logger.(£¯îÏ8Æ¤öå‡2J$473a8207-2624-4340-8314-2394ccf823c2
+java:S6813½"BRemove this field injection and use constructor injection instead.(êæÄŞ8³¬³ê‡2J$5b0b8c2e-3796-4d9d-b197-44e0e48cd460
+ƒ	java:S125/"<This block of commented-out lines of code should be removed.(âŒ÷˜ùÿÿÿÿ8Ô¬³ê‡2J$841ee1fe-cb7e-4295-923b-22cc874e0de1
+n	java:S106 "+Replace this use of System.out by a logger.(£¯îÏ8ô¬³ê‡2J$5bae7f48-f075-4b49-adf1-df7397b13885
 –
-java:S3776´"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Øâ·š8Ò¤öå‡2J$7801faa2-1b4e-4216-9d7b-d1da7e9cfd4f
-s	java:S106ç"+Replace this use of System.out by a logger.(ó‹£‹øÿÿÿÿ8í¤öå‡2J$c4b21872-550c-4f3a-83d6-fdce63a82f1f
+java:S3776´"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Øâ·š8Ÿ­³ê‡2J$ccb94b49-e497-44f4-97ea-a710b36c5805
+s	java:S106ç"+Replace this use of System.out by a logger.(ó‹£‹øÿÿÿÿ8Ğ­³ê‡2J$0379ccab-ccdc-4b92-940e-aa4ca10fa9ea
+€
+java:S1128"=Remove this unused import 'com.example.swoos.dto.HistoryDto'.(–Ûˆ8ˆùÒì‡2J$5856e6d5-4c75-49e6-b82d-619b3b25b5c0
+z
+java:S1128"2Remove this unused import 'java.net.Inet4Address'.(ê…ÉÃúÿÿÿÿ8ˆùÒì‡2J$01aaac24-98fb-4f48-a1f5-26fc6be9d56f

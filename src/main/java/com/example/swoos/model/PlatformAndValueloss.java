@@ -1,6 +1,7 @@
 package com.example.swoos.model;
 import jakarta.persistence.*;
 import lombok.Data;
+import jakarta.persistence.Column;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 

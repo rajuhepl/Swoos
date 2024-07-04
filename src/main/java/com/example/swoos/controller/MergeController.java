@@ -1,6 +1,7 @@
 package com.example.swoos.controller;
 
 import com.example.swoos.dto.MergeRequestDTO;
+import com.example.swoos.dto.MergedModelDto;
 import com.example.swoos.service.MergeExcelAndCSVService;
 import com.example.swoos.service.MergeFileService;
 import com.example.swoos.service.SalesLossService;
@@ -11,6 +12,7 @@ import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -63,15 +65,21 @@ public class MergeController {
         return mergedModel.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-@GetMapping("/location")
+    @GetMapping("/location")
     public Map<String,Map<String,String>> getLocations(@RequestParam long id){
         return mergeExcelAndCSVService.locations(id);
-}
+    }
 
     @GetMapping("/platform")
     public PlatformAndValueloss getPlatform(){
         return mergeExcelAndCSVService.platformAndValueloss();
     }
 
-
+    @GetMapping("/swoosfilter")
+    public PageResponse<Object> getSwoosFilter(@RequestParam String value ,
+                                               @RequestParam boolean greaterThan,
+                                               @RequestParam int pageNo,
+                                               @RequestParam int pageSize){
+        return mergeExcelAndCSVService.swoosFilter(value,greaterThan,pageNo,pageSize);
+    }
 }

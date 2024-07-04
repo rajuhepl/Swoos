@@ -1,10 +1,12 @@
 package com.example.swoos.controller;
 
+import com.example.swoos.dto.ColumnDto;
 import com.example.swoos.dto.PasswordUpdateDTO;
 import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.response.UserSignUpRequest;
 import com.example.swoos.service.UserService;
+import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @PostMapping("/userSignup")
     public SuccessResponse<Object> userSignup(@RequestBody UserSignUpRequest userSignUpRequest) throws Exception {
@@ -34,4 +36,13 @@ public class UserController {
         return userService.updatePassword(pass);
     }
 
+    @PostMapping("/column")
+    public String addColumn(@RequestBody ColumnDto columnDto){
+    return userService.addColumn(columnDto);
+    }
+
+    @GetMapping("/columns")
+    public ColumnDto getAllColumns(){
+        return userService.getAllColumns();
+    }
 }

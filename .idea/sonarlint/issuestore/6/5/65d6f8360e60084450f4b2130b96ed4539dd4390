@@ -1,10 +1,10 @@
 
-h	java:S116"SRename this field "Business" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã•Ë‘
-h	java:S116"SRename this field "Platform" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”íº–
-p	java:S116"VRename this field "MainSKUCode" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áœ¼ûÿÿÿÿ
-p	java:S116"[Rename this field "InternalDivision" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ï°ó
-j	java:S116"PRename this field "Brand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ş‡Éûÿÿÿÿ
-m	java:S116""SRename this field "Category" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó¹ˆşÿÿÿÿ
-p	java:S116%"VRename this field "SubCategory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é”¤¼üÿÿÿÿ
-f	java:S116("RRename this field "Revenue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏÉù
-V	java:S125-"<This block of commented-out lines of code should be removed.(ÊÏÌ“úÿÿÿÿ
+	java:S116"SRename this field "Business" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã•Ë‘J$fd877044-51f8-4669-81ae-17aab39818c8
+	java:S116"SRename this field "Platform" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”íº–J$ba3be32f-8e81-45e7-9a20-a2c882e2e2d2
+–	java:S116"VRename this field "MainSKUCode" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áœ¼ûÿÿÿÿJ$e0c78bad-8e4b-4d0b-9f0c-0a91ae8a8e6d
+–	java:S116"[Rename this field "InternalDivision" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ï°óJ$5f28f821-e278-4d31-826e-01734ddd8b12
+	java:S116"PRename this field "Brand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ş‡ÉûÿÿÿÿJ$5d1f7a3c-cb43-4325-af5f-7d25c5c8a8f8
+“	java:S116""SRename this field "Category" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó¹ˆşÿÿÿÿJ$e6787b0b-eb9e-4834-87b9-e09df8ccc3aa
+–	java:S116%"VRename this field "SubCategory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é”¤¼üÿÿÿÿJ$6a7b3bb0-38d8-4637-be97-130fa4096823
+Œ	java:S116("RRename this field "Revenue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏÉùJ$30381ed0-7898-4380-9766-6cc9fe023097
+|	java:S125-"<This block of commented-out lines of code should be removed.(ÊÏÌ“úÿÿÿÿJ$fcc15f99-ab28-4553-a6b3-45cee8da57f3

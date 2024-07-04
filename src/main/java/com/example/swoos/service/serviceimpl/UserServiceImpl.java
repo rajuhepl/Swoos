@@ -1,11 +1,11 @@
 package com.example.swoos.service.serviceimpl;
 
-import com.example.swoos.dto.MasterRoleDTO;
-import com.example.swoos.dto.PasswordUpdateDTO;
-import com.example.swoos.dto.UserDTO;
-import com.example.swoos.dto.UserResponseDTO;
+import com.example.swoos.configure.UserContextHolder;
+import com.example.swoos.dto.*;
 import com.example.swoos.model.MasterRole;
 import com.example.swoos.model.User;
+import com.example.swoos.model.UserProfile;
+import com.example.swoos.repository.ColumnRepository;
 import com.example.swoos.repository.MasterRoleRepository;
 import com.example.swoos.repository.UserRepository;
 import com.example.swoos.response.PageResponse;
@@ -13,6 +13,7 @@ import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.response.UserSignUpRequest;
 import com.example.swoos.service.UserService;
 import com.example.swoos.util.Constant;
+import jakarta.persistence.Column;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+
+import java.util.*;
 
 @Slf4j
 @Service
@@ -41,6 +40,7 @@ public class UserServiceImpl implements UserService {
     public SuccessResponse<Object> userSignup(UserSignUpRequest userSignUpRequest) throws RuntimeException {
         SuccessResponse<Object> successResponse = null;
             successResponse = new SuccessResponse();
+             User user = new User();
             if (Objects.nonNull(userSignUpRequest)) {
                 User users = null;
                 Optional<User> savedUser = this.userRepository.findByEmail(userSignUpRequest.getEmail());
@@ -57,7 +57,6 @@ public class UserServiceImpl implements UserService {
                 }
 
                 if (Objects.isNull(userSignUpRequest.getId())) {
-                    User user = new User();
                     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
                     user.setUsername(userSignUpRequest.getUsername());
                     user.setApplicationRole(role);
@@ -92,10 +91,38 @@ public class UserServiceImpl implements UserService {
                     successResponse.setData(Constant.USER_CREATED_SUCCESSFULLY);
                 }
             }
-
-            return successResponse;
+        UserProfile userProfile = new UserProfile();
+        userProfile.setAsin(true);
+        userProfile.setBrand(true);
+        userProfile.setCategory(true);
+        userProfile.setBangalore(true);
+        userProfile.setDate(true);
+        userProfile.setChannel(true);
+        userProfile.setSapDescription(true);
+        userProfile.setRevenue(true);
+        userProfile.setDaySales(true);
+        userProfile.setDivision(true);
+        userProfile.setSubCategory(true);
+        userProfile.setIndore(true);
+        userProfile.setDelhi(true);
+        userProfile.setMumbai(true);
+        userProfile.setNagpur(true);
+        userProfile.setPatna(true);
+        userProfile.setPune(true);
+        userProfile.setAhmedabad(true);
+        userProfile.setChennai(true);
+        userProfile.setHyderabad(true);
+        userProfile.setCalcutta(true);
+        userProfile.setReason(true);
+        userProfile.setRemarks(true);
+        userProfile.setDownload(true);
+        userProfile.setUser(user);
+        columnRepository.save(userProfile);
+        return successResponse;
 
     }
+    @Autowired
+    private ColumnRepository columnRepository;
 
     private void setRole(UserSignUpRequest userSignUpRequest, User user) {
         if (userSignUpRequest.getApplicationRole().getId()>0) {
@@ -108,7 +135,7 @@ public class UserServiceImpl implements UserService {
                 MasterRole masterRole1 = new MasterRole();
                 masterRole1.setId(userSignUpRequest.getApplicationRole().getId());
                 masterRole1.setRoleName(userSignUpRequest.getApplicationRole().getRoleName());
-                masterRole1.setIsActive(true);
+                masterRole1.setActive(true);
                 masterRole1.setDeletedFlag(false);
                 masterRoleRepository.save(masterRole1);
                 user.setApplicationRole(masterRole1);
@@ -136,7 +163,7 @@ public class UserServiceImpl implements UserService {
                         MasterRoleDTO masterRoleDTO = new MasterRoleDTO();
                         masterRoleDTO.setId(masterRole.get().getId());
                         masterRoleDTO.setRoleName(masterRole.get().getRoleName());
-                        masterRoleDTO.setIsActive(masterRole.get().getIsActive());
+                        masterRoleDTO.setIsActive(masterRole.get().isActive());
                         userDTO.setApplicationRole(masterRoleDTO);
                     }
 
@@ -200,10 +227,87 @@ public class UserServiceImpl implements UserService {
                 userRepository.save(user);
                 return "The Password Updated";
             }else {
-                throw new Exception(Constant.INVALID_CREDENTIALS);
+                throw new RuntimeException(Constant.INVALID_CREDENTIALS);
             }
         }
-        throw new Exception(Constant.INVALID_CREDENTIALS);
+        throw new RuntimeException(Constant.INVALID_CREDENTIALS);
+    }
+
+    @Override
+    public String addColumn(ColumnDto columnDto) {
+        UserDTO userDTO =  UserContextHolder.getUserDto();
+        User user = userRepository.findById(userDTO.getId())
+                .orElseThrow(()->new NoSuchElementException("User not found"));
+        UserProfile userProfile = columnRepository.findByUser(user)
+                .orElseThrow(()->new NoSuchElementException("User not found"));
+        userProfile.setUser(user);
+        userProfile.setAsin(columnDto.isAsin());
+        userProfile.setBrand(columnDto.isBrand());
+        userProfile.setCategory(columnDto.isCategory());
+        userProfile.setBangalore(columnDto.isBangalore());
+        userProfile.setDate(columnDto.isDate());
+        userProfile.setChannel(columnDto.isChannel());
+        userProfile.setSapDescription(columnDto.isSapDescription());
+        userProfile.setRevenue(columnDto.isRevenue());
+        userProfile.setDaySales(columnDto.isDaySales());
+        userProfile.setDivision(columnDto.isDivision());
+        userProfile.setSubCategory(columnDto.isSubCategory());
+        userProfile.setIndore(columnDto.isIndore());
+        userProfile.setDelhi(columnDto.isDelhi());
+        userProfile.setMumbai(columnDto.isMumbai());
+        userProfile.setNagpur(columnDto.isNagpur());
+        userProfile.setPatna(columnDto.isPatna());
+        userProfile.setPune(columnDto.isPune());
+        userProfile.setAhmedabad(columnDto.isAhmedabad());
+        userProfile.setChennai(columnDto.isChennai());
+        userProfile.setHyderabad(columnDto.isHyderabad());
+        userProfile.setCalcutta(columnDto.isCalcutta());
+        userProfile.setReason(columnDto.isReason());
+        userProfile.setRemarks(columnDto.isRemarks());
+        userProfile.setDownload(columnDto.isDownload());
+
+        columnRepository.save(userProfile);
+
+        return "Column added successfully";
+    }
+
+    @Override
+
+    public ColumnDto getAllColumns() {
+        User userEntity = userRepository.findById(UserContextHolder.getUserDto().getId())
+                .orElseThrow(() -> new NoSuchElementException("User not found"));
+
+        UserProfile userProfile = columnRepository.findByUser(userEntity)
+                .orElseThrow(() -> new NoSuchElementException("UserProfile not found for the given user"));
+
+        ColumnDto columnDto = new ColumnDto();
+        columnDto.setSNo(userProfile.isSNo());
+        columnDto.setDate(userProfile.isDate());
+        columnDto.setChannel(userProfile.isChannel());
+        columnDto.setSapDescription(userProfile.isSapDescription());
+        columnDto.setAsin(userProfile.isAsin());
+        columnDto.setRevenue(userProfile.isRevenue());
+        columnDto.setDaySales(userProfile.isDaySales());
+        columnDto.setDivision(userProfile.isDivision());
+        columnDto.setBrand(userProfile.isBrand());
+        columnDto.setCategory(userProfile.isCategory());
+        columnDto.setSubCategory(userProfile.isSubCategory());
+        columnDto.setIndore(userProfile.isIndore());
+        columnDto.setDelhi(userProfile.isDelhi());
+        columnDto.setMumbai(userProfile.isMumbai());
+        columnDto.setNagpur(userProfile.isNagpur());
+        columnDto.setPatna(userProfile.isPatna());
+        columnDto.setPune(userProfile.isPune());
+        columnDto.setAhmedabad(userProfile.isAhmedabad());
+        columnDto.setBangalore(userProfile.isBangalore());
+        columnDto.setChennai(userProfile.isChennai());
+        columnDto.setHyderabad(userProfile.isHyderabad());
+        columnDto.setCalcutta(userProfile.isCalcutta());
+        columnDto.setReason(userProfile.isReason());
+        columnDto.setRemarks(userProfile.isRemarks());
+        columnDto.setDownload(userProfile.isDownload());
+
+        return columnDto;
     }
 
 }

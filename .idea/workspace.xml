@@ -4,25 +4,78 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="added excel dump download">
+    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="History to show only last 24 Hours">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/0460003801259b75504eb387a9b8f01a2aeb534b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/36cb98fa54c03c7e288f180382a8371aec4c06f6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89ad4146e8fe03fb87f2e8b1eb3771d30817caec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8ba3bb8a73b87fb56485c2f47215acbdbf06b73c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8e48e671d7b619079c937e676d10923aacd06c89" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98be67880a6b99479b5352df585f223c9dae01aa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4e05df95d708c25433a05c38401fb3add0feba0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d951c78267926404c056ee6e1ca85b2e11926ec3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/5/e53a494762bf7b2597b7c9ac9e826c4d67bdf5f0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e735fd68d628a8491d8649cede94ddc8e6c7344e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/4/0460003801259b75504eb387a9b8f01a2aeb534b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/6/36cb98fa54c03c7e288f180382a8371aec4c06f6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/9/89ad4146e8fe03fb87f2e8b1eb3771d30817caec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/b/8ba3bb8a73b87fb56485c2f47215acbdbf06b73c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/e/8e48e671d7b619079c937e676d10923aacd06c89" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/8/98be67880a6b99479b5352df585f223c9dae01aa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/4/a4e05df95d708c25433a05c38401fb3add0feba0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/9/d951c78267926404c056ee6e1ca85b2e11926ec3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/5/e53a494762bf7b2597b7c9ac9e826c4d67bdf5f0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/7/e735fd68d628a8491d8649cede94ddc8e6c7344e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/ColumnDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/UserProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/ColumnRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2f3db88dd7e22d4d5ef1cec5560b3933dd3f2a9e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2f3db88dd7e22d4d5ef1cec5560b3933dd3f2a9e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3feb0c8fcaae324b4cd8473e8b9c2ec6cd1c99dc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3feb0c8fcaae324b4cd8473e8b9c2ec6cd1c99dc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/6455e3ea811cfa7235a8e0415b01c9081b2827bd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/6455e3ea811cfa7235a8e0415b01c9081b2827bd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65d6f8360e60084450f4b2130b96ed4539dd4390" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65d6f8360e60084450f4b2130b96ed4539dd4390" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8da396aad4932403a6f385782cc2d2f24983bf19" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8da396aad4932403a6f385782cc2d2f24983bf19" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc0741dbc84682b52fd11b641b8cfb49a50251" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc0741dbc84682b52fd11b641b8cfb49a50251" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bbe7c4c0553603ddf112263fdb56befffcee8259" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bbe7c4c0553603ddf112263fdb56befffcee8259" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd21a8c80406ee1a304204089d6e6f1b21932087" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd21a8c80406ee1a304204089d6e6f1b21932087" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/configure/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/configure/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/LoginController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/MergeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/MergeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/PlatformLocationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/CSVModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/CSVModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/DropDownModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/DropDownModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/ExcelModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/ExcelModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/LocationWithStatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/LocationWithStatusCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/MasterRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/MasterRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/MergedModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/MergedModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/PlatformAndValueloss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/PlatformAndValueloss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/Reason.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/Reason.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/Remarks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/Remarks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/MergedRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/MergedRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/MergeExcelAndCSVService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/MergeExcelAndCSVService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/configure/Scheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/configure/Scheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/repository/MergedRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/repository/MergedRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -39,18 +92,22 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2hoLmChwczfdIWdgzhoabodiiqz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.ProjectManagementToolApplication.executor": "Debug",
+    "Application.ProjectManagementToolApplication.executor": "Run",
     "Maven.swoos [clean].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "Discontinue",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/SWOOS_AZURE_LOCAL_CODE/azure_main-cicd/backend",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -124,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719837725300</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="History to show only last 24 Hours">
+      <option name="closed" value="true" />
+      <created>1720079765746</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720079765746</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,7 +206,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added city in others" />
     <MESSAGE value="added excel dump download" />
-    <option name="LAST_COMMIT_MESSAGE" value="added excel dump download" />
+    <MESSAGE value="History to show only last 24 Hours" />
+    <option name="LAST_COMMIT_MESSAGE" value="History to show only last 24 Hours" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -175,6 +241,15 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
           <line>381</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
+          <line>738</line>
+          <properties class="com.example.swoos.service.serviceimpl.MergeExcelAndCSVServiceImpl" method="swoosFilter">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

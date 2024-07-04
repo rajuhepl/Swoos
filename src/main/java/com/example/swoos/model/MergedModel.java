@@ -71,7 +71,7 @@ public class MergedModel {
     private Timestamp updatedAt;
     private String location;
     private LocalDateTime date;
-//    @Column(name = "history_flag")
+//    @UserProfile(name = "history_flag")
     private boolean historyFlag;
 }
 

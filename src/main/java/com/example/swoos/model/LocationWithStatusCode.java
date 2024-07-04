@@ -1,5 +1,6 @@
 package com.example.swoos.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.*;
 import lombok.Data;
 

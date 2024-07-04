@@ -2,7 +2,7 @@ package com.example.swoos.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Column;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 

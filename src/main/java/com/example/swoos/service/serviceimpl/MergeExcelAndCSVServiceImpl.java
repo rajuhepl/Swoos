@@ -734,4 +734,27 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         response1.setData(mergedModels);
         return response1;
     }
+
+    @Override
+    public PageResponse<Object> swoosFilter(String value, boolean greaterThan,int pageNo,int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        PageResponse<Object> response = new PageResponse<>();
+        List<DataListProjection> dataList = excelRepository.findByTriggeredOnTodayProjection();
+        Page<MergedModel> mergedModelList;
+        if(greaterThan){
+        mergedModelList = mergedRepository.findAllBySWOOSContributionGreaterThanAndCreatedAtToday(value,pageable);
+        }else{
+        mergedModelList = mergedRepository.findAllBySWOOSContributionLesserThanAndCreatedAtToday(value,pageable);
+        }
+        List<MergedModelDto> mergedModels = mergedModelList.getContent().stream()
+                .map(mergedModel -> modelMapper.map(mergedModel, MergedModelDto.class))
+                .toList();
+        mergedModels.forEach(mergedModelDto ->
+                mergedModelDto.setStockStatus(locations(mergedModelDto,dataList)));
+        response.setData(mergedModels);
+        response.setHasPrevious(mergedModelList.hasPrevious());
+        response.setTotalRecordCount(mergedModelList.getTotalElements());
+        response.setHasNext(mergedModelList.hasNext());
+        return response;
+    }
 }

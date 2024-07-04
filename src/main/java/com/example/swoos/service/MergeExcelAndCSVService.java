@@ -1,11 +1,14 @@
 package com.example.swoos.service;
 
+import com.example.swoos.model.MergedModel;
 import com.example.swoos.model.PlatformAndValueloss;
 import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 public interface MergeExcelAndCSVService {
@@ -19,4 +22,6 @@ public interface MergeExcelAndCSVService {
     PlatformAndValueloss platformAndValueloss();
 
     SuccessResponse<Object> MergedModel();
+
+    PageResponse<Object> swoosFilter(String value, boolean greaterThan,int pageNo,int pageSize);
 }

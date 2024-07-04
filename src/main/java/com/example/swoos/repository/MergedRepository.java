@@ -13,8 +13,12 @@ import java.util.List;
 //@Repository
 public interface MergedRepository extends JpaRepository<MergedModel,Long> {
 
-//    @Query("SELECT m FROM MergedModel m ORDER BY CAST(m.ValueLoss AS double) DESC where history=false")
-//    List<MergedModel> findAllOrderByValueLossDesc();
+    @Query(value = "SELECT * FROM merged_model m WHERE CAST(REPLACE(m.swooscontribution, ' %', '') AS DECIMAL(10, 2)) > :value " +
+            "AND DATE(m.create_at) = CURDATE()", nativeQuery = true)
+    Page<MergedModel> findAllBySWOOSContributionGreaterThanAndCreatedAtToday(@Param("value") String value, Pageable pageable);
+    @Query(value = "SELECT * FROM merged_model m WHERE CAST(REPLACE(m.swooscontribution, ' %', '') AS DECIMAL(10, 2)) < :value " +
+            "AND DATE(m.create_at) = CURDATE()", nativeQuery = true)
+    Page<MergedModel> findAllBySWOOSContributionLesserThanAndCreatedAtToday(@Param("value") String value, Pageable pageable);
 
     @Query("SELECT m FROM MergedModel m WHERE m.historyFlag = false ORDER BY CAST(m.ValueLoss AS double) DESC")
     List<MergedModel> findAllOrderByValueLossDesc();
@@ -34,10 +38,6 @@ public interface MergedRepository extends JpaRepository<MergedModel,Long> {
 List<Object[]> findLocationWiseSalesLoss();
 
 
-//    @Query(value = "SELECT SWOOSContribution,totalValueLoss,ValueLoss,Revenue FROM merged_model WHERE platform IN (:platforms)", nativeQuery = true)
-//    List<MergedModel> findAllByPlatformsNative(@Param("platforms") List<String> platforms);
-//    @Query(value = "SELECT SWOOSContribution,totalValueLoss,ValueLoss,Revenue FROM merged_model WHERE platform = :platform", nativeQuery = true)
-//    List<MergedModel> findAllByPlatform(@Param("platform") String platform);
 
     // If Date is not present
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +

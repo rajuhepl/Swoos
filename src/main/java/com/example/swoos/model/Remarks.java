@@ -14,10 +14,10 @@ public class Remarks {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   // @Column(name = "id")
+   // @UserProfile(name = "id")
     private Long remarkID;
 
-   // @Column(name = "Business")
+   // @UserProfile(name = "Business")
     private String remarks;
     private Boolean isSubmited;
     private boolean deletedFlag;

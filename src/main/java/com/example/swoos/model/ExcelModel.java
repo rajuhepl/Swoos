@@ -1,6 +1,7 @@
 package com.example.swoos.model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.time.LocalDateTime;

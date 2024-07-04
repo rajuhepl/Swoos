@@ -1,6 +1,7 @@
 package com.example.swoos.service;
 
 
+import com.example.swoos.dto.ColumnDto;
 import com.example.swoos.dto.PasswordUpdateDTO;
 import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
@@ -15,5 +16,9 @@ public interface UserService {
     PageResponse<Object> getAllUser(Integer pageNo);
 
     String updatePassword(PasswordUpdateDTO pass) throws Exception;
+
+    String addColumn(ColumnDto columnDto);
+
+   ColumnDto getAllColumns();
 }
 

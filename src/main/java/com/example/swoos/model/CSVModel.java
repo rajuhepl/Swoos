@@ -2,7 +2,7 @@ package com.example.swoos.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
+import jakarta.persistence.Column;
 import java.time.LocalDateTime;
 
 @Data
@@ -41,7 +41,7 @@ public class CSVModel {
 
     @Column(name = "triggeredon")
     private LocalDateTime triggeredOn;
-//    @Column(name ="contribution")
+//    @UserProfile(name ="contribution")
 //    private String Contribution;
 
 }

@@ -1,7 +1,7 @@
 
-h	java:S116"SRename this field "Platform" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”íº–
-i	java:S116"ORename this field "Asin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‹¤»şÿÿÿÿ
-j	java:S116"PRename this field "Pname" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àĞÖòüÿÿÿÿ
-j	java:S116"PRename this field "Brand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ş‡Éûÿÿÿÿ
-h	java:S116"SRename this field "Location" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù‰ŠÄ
-d	java:S116""ORename this field "City" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑùÛ
+	java:S116"SRename this field "Platform" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”íº–J$ecb9cb27-c287-4c97-a38e-5d05b324eb43
+	java:S116"ORename this field "Asin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á‹¤»şÿÿÿÿJ$10018567-3e08-4140-ba44-f24f4a1cb06f
+	java:S116"PRename this field "Pname" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àĞÖòüÿÿÿÿJ$33ba65da-ce6d-43e4-adfc-6fc6ad97d0d3
+	java:S116"PRename this field "Brand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ş‡ÉûÿÿÿÿJ$31980887-b8c1-4ccb-97b3-55771a70c6e9
+	java:S116 "SRename this field "Location" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù‰ŠÄJ$3c778a3d-1464-4c8a-b105-e9a2adc3e861
+Š	java:S116#"ORename this field "City" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑùÛJ$2ca2b716-5865-429f-83dd-841599a1b934
