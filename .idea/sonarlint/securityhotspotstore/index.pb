@@ -213,8 +213,6 @@ n
 >src/main/java/com/example/swoos/dto/MergedModelProjection.java,f\5\f55f1539a6a3f86449d51d14ff6c7f05203b8479
 k
 ;src/main/java/com/example/swoos/dto/DataListProjection.java,4\7\47a162a0ce333cfb2beb198a1a2a57085eb1e875
-z
-Jsrc/main/java/com/example/swoos/controller/PlatformLocationController.java,d\2\d23516da1ee350da4a4dd1e7b96d265aa429d115
 w
 G.idea/sonarlint/issuestore/a/3/a3228d32f11131bd1cca520064a2374ad5563d18,f\8\f8b15faae08b6223749c1da9b6898809dfbfd935
 j
@@ -225,8 +223,6 @@ c
 3src/main/java/com/example/swoos/dto/ProductDto.java,a\c\ac70daf65a3e4a06f0ddb91dc3b85ce3afa2f054
 Å
 Q.idea/sonarlint/securityhotspotstore/0/9/093b7b797c3b72150de42a086be2a7e441937fbd,d\a\da151bcbc1c2f055a0807e889e70832411416366
-o
-?src/main/java/com/example/swoos/controller/LoginController.java,2\7\2700225af217511e94ef549b66b796f8e9515e00
 Å
 Q.idea/sonarlint/securityhotspotstore/9/a/9a3731c37a95b1900ec15b40cc70aabc32a1aeb5,f\3\f3cfaf0c59a724bb3c0546b00518a73e612e1e44
 Å
@@ -253,8 +249,6 @@ c
 3src/main/java/com/example/swoos/dto/HistoryDto.java,3\e\3e13b8bac23b9beba6e9ae14aa317f3847e8f815
 b
 2src/main/java/com/example/swoos/dto/ColumnDto.java,a\4\a4e05df95d708c25433a05c38401fb3add0feba0
-a
-1src/main/java/com/example/swoos/model/Column.java,0\4\0460003801259b75504eb387a9b8f01a2aeb534b
 p
 @src/main/java/com/example/swoos/repository/ColumnRepository.java,8\9\89ad4146e8fe03fb87f2e8b1eb3771d30817caec
 f
@@ -296,8 +290,9 @@ G.idea/sonarlint/issuestore/8/9/89ad4146e8fe03fb87f2e8b1eb3771d30817caec,a\3\a3
 Å
 Q.idea/sonarlint/securityhotspotstore/e/5/e53a494762bf7b2597b7c9ac9e826c4d67bdf5f0,9\4\94bc21ad906cfbee12552aa788b932f18ba23ddb
 Å
-Q.idea/sonarlint/securityhotspotstore/0/4/0460003801259b75504eb387a9b8f01a2aeb534b,d\5\d5145fc5328194f105fba44c3a205eb0d7141f80
-Å
 Q.idea/sonarlint/securityhotspotstore/8/e/8e48e671d7b619079c937e676d10923aacd06c89,a\f\af32bd99dad0afb1556606b0e702801fc19f7579
 Å
 Q.idea/sonarlint/securityhotspotstore/9/8/98be67880a6b99479b5352df585f223c9dae01aa,4\0\406f924dcc424cdfa5581bc4b06db1946a605eac
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

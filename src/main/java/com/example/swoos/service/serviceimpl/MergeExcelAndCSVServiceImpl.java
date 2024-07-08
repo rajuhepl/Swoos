@@ -44,70 +44,6 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     @Autowired
     private PlatformRepository platformRepository;
 
-//    public SuccessResponse<Object> readDataFromFile() {
-//
-//        SuccessResponse<Object> response1 = new SuccessResponse<>();
-//
-//        List<ExcelModel> dataList = excelRepository.findAll();
-//        List<CSVModel> csvModelList = csvRepository.findAll();
-//        List<MergedModel> mergedModels = mergeLists(csvModelList, dataList);
-//        response1.setData(mergedModels);
-//
-//        return response1;
-//    }
-//    private List<MergedModel> mergeLists(List<CSVModel> csvData, List<ExcelModel> excelData) {
-//        Map<String, List<ExcelModel>> excelDataMap = groupExcelDataByASIN(excelData);
-//        return mergeCSVAndExcelData(csvData, excelDataMap);
-//    }
-//    private Map<String, List<ExcelModel>> groupExcelDataByASIN(List<ExcelModel> excelData) {
-//        return excelData.stream()
-//                .collect(Collectors.groupingBy(ExcelModel::getAsin));
-//    }
-//    private List<MergedModel > mergeCSVAndExcelData(List<CSVModel> csvData, Map<String, List<ExcelModel>> excelDataMap) {
-//        List<MergedModel> mergedList = new ArrayList<>();
-//        for (CSVModel csvModel : csvData) {
-//            List<ExcelModel> excelModels = excelDataMap.get(csvModel.getMainSKUCode());
-//            if (excelModels!= null) {
-//                MergedModel mergedModel = createMergedModel(csvModel, excelModels);
-//                if (!mergedModel.getValueLoss().equals("0.00")) {
-//                    mergedList.add(mergedModel);
-//                }
-//            }
-//        }
-//        return calculateContributionAndSave(mergedList);
-//    }
-//    private List<MergedModel> calculateContributionAndSave(List<MergedModel> mergedList) {
-//        List<String> distinctPlatforms = mergedList.stream()
-//                .map(MergedModel::getPlatform)
-//                .distinct()
-//                .toList();
-//        List<MergedModel> finalMergedList = new ArrayList<>();
-//        for (String platform : distinctPlatforms) {
-//            List<MergedModel> filteredMergedList = mergedList.stream()
-//                    .filter(mergedModel -> mergedModel.getPlatform().equals(platform))
-//                    .toList();
-//            double totalValueLoss = filteredMergedList.stream()
-//                    .mapToDouble(mergedModel -> Double.parseDouble(mergedModel.getValueLoss()))
-//                    .sum();
-//            for (MergedModel mergedModel : filteredMergedList) {
-//                double contribution = totalValueLoss > 0? (Double.valueOf(mergedModel.getValueLoss()) / totalValueLoss) * 100 : 0;
-//                String formattedLoss = String.format("%.2f ", contribution);
-//                mergedModel.setSWOOSContribution(formattedLoss + "%");
-//                finalMergedList.add(mergedModel);
-//            }
-//        }
-//        List<MergedModel> existingMergedModels = mergedRepository.findAll();
-//        List<MergedModel> uniqueMergedModels = finalMergedList.stream()
-//                .filter(mergedModel -> existingMergedModels.stream()
-//                        .noneMatch(existing -> existing.getAsin().equals(mergedModel.getAsin())))
-//                .toList();
-//        if (!uniqueMergedModels.isEmpty()) {
-//            mergedRepository.saveAll(uniqueMergedModels);
-//        }
-//        List<MergedModel>mergedModels =mergedRepository.findAllOrderByValueLossDesc();
-//        return mergedModels;
-//    }
-
     public void readDataFromFile() {
         List<ExcelModel> dataList = excelRepository.findByTriggeredOnToday();
         List<CSVModel> csvModelList = csvRepository.findAllDataForMonth(csvRepository.findLastLoadedMonth());
@@ -380,11 +316,13 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                     if (disCont.getReason().equalsIgnoreCase("Discontinued")) {
                         mergedModel.setHistoryFlag(true);
                         mergedModel.setReason("Last Day Reason");
+                        mergedModel.setRemarks(disCont.getRemarks());
                         mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                     } else {
                         if(locationNotAlign(disCont,mergedModel)){
                           mergedModel.setHistoryFlag(true);
                           mergedModel.setReason("Last Day Reason");
+                          mergedModel.setRemarks(disCont.getRemarks());
                           mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                         }
                     }

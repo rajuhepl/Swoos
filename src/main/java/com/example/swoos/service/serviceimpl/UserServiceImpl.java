@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
                     user.setMobileNumber(userSignUpRequest.getMobileNumber());
                     user.setFirstName(userSignUpRequest.getFirstName());
                     user.setLastName(userSignUpRequest.getLastName());
-                    user.setIsActive(userSignUpRequest.isActive());
+                    user.setActive(userSignUpRequest.isActive());
                     user.setDeleteFlag(!userSignUpRequest.isActive());
                     user.setPassword(bCryptPasswordEncoder.encode(userSignUpRequest.getPassword()));
                     user.setOgPassword(userSignUpRequest.getPassword());
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
                     users.setMobileNumber(userSignUpRequest.getMobileNumber());
                     users.setFirstName(userSignUpRequest.getFirstName());
                     users.setLastName(userSignUpRequest.getLastName());
-                    users.setIsActive(userSignUpRequest.isActive());
+                    users.setActive(userSignUpRequest.isActive());
                     users.setDeleteFlag(!userSignUpRequest.isActive());
                     this.userRepository.save(users);
                     successResponse.setData(Constant.USER_CREATED_SUCCESSFULLY);
@@ -144,7 +144,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private static void setActive(UserSignUpRequest userSignUpRequest, User user) {
-        user.setIsActive(userSignUpRequest.isActive());
+        user.setActive(userSignUpRequest.isActive());
         user.setDeleteFlag(!userSignUpRequest.isActive());
     }
 

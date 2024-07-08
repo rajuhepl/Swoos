@@ -52,10 +52,10 @@ public class User {
     private MasterRole applicationRole;
 
     @Column(name = "is_active")
-    private Boolean isActive;
+    private boolean isActive;
 
     @Column(name = "delete_flag")
-    private Boolean deleteFlag;
+    private boolean deleteFlag;
 
     @CreationTimestamp
     @Column(name = "created_at")

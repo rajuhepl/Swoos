@@ -1,3 +1,7 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8óêµò†2J$3b23798f-ec0a-4be4-bf4d-7d6e60c1b776
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8óêµò†2J$ebdb58fe-b8c9-4c2e-b60b-e3a18ec09e40
+•
+java:S1128"RRemove this unused import 'com.example.swoos.exception.CustomValidationException'.(É¤ÎÄ8æñõ‰ˆ2J$c8d9b3b3-5f20-43b8-af37-d46441ba1715
+_
+java:S1128"=Remove this unused import 'jakarta.annotation.PostConstruct'.(û²ñüþÿÿÿÿ8ÜŒ¯„‰2

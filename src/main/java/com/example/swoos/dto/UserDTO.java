@@ -16,8 +16,8 @@ public class UserDTO {
     private String dob;
     private String mobileNumber;
     private MasterRoleDTO applicationRole;
-    private Boolean isActive;
-    private Boolean deleteFlag;
+    private boolean isActive;
+    private boolean deleteFlag;
     private String createdAt;
     private int createdBy;
     private String updatedAt;
