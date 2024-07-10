@@ -201,8 +201,6 @@ Tsrc/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl
 Lsrc/main/java/com/example/swoos/service/serviceimpl/DropDownServiceImpl.java,3\4\34ddfe75910abbece71b48e47d34d314086bb3fc
 z
 Jsrc/main/java/com/example/swoos/service/serviceimpl/ReasonServiceImpl.java,f\5\f5f022872445e026adbfec80013463fb7e70d6e0
-i
-9src/main/java/com/example/swoos/configure/CorsConfig.java,3\6\3688950ebd2f891994cd6a75790929c16fe8b399
 h
 8src/main/java/com/example/swoos/configure/Scheduler.java,6\4\6455e3ea811cfa7235a8e0415b01c9081b2827bd
 i

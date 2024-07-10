@@ -7,7 +7,7 @@ public class ColumnDto {
     private boolean sNo;
     private boolean date;
     private boolean channel;
-    private boolean sapDescription;
+    private boolean pname;
     private boolean asin;
     private boolean revenue;
     private boolean daySales;
@@ -28,5 +28,9 @@ public class ColumnDto {
     private boolean calcutta;
     private boolean reason;
     private boolean remarks;
-    private boolean download;
+    private boolean valueLoss;
+    private boolean swooscontribution;
+    private boolean swoosPercentage;
+    private boolean other;
+
 }

@@ -1,13 +1,10 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8®ªÁê‡2J$a4f3eef3-1736-4efc-a8c9-a8476b5d126c
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8®ªÁê‡2J$6803f09a-e7cf-455e-b7a5-ad73819a544f
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$4fd6ba3d-43c1-47a3-a445-6983850a9e70
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$ff565853-c98c-4993-9fa1-386cef30d081
 …
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$ef6f65fe-a071-4aca-adab-ca7f235c7c9c
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$12cbcc32-4720-44f3-b5d6-9d24a8e9358b
 …
-java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$f9c59fc7-d97a-495c-8ae9-397ad9daee56
-c
-java:S1128"ARemove this unused import 'com.example.swoos.dto.MergedModelDto'.(Íâ¥´şÿÿÿÿ8ŸÇşì‡2
-c
-java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8ŸÇşì‡2
+java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$bd66f469-6292-4da0-a697-ed319832572d
+~	java:S125U"<This block of commented-out lines of code should be removed.(ıñŒ™8­—İÛ‰2J$eba93fb7-d5ed-4a04-b1c1-e55e19a99047

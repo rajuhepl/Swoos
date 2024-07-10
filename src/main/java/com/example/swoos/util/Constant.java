@@ -1,6 +1,9 @@
 package com.example.swoos.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Constant {
 
     /* JWT INFO */
@@ -38,6 +41,7 @@ public class Constant {
     public static final String INVALID_TOKEN_FORMAT = "Invalid Token format, could validate further";
     public static final String EMPTY_TOKEN = "Token can not to be empty";
     public static final String AUTHORIZATION = "Authorization";
+    public static final String DISCONTINUED = "Discontinued";
 
     public static final String SWOOS_USER = "SWOOS-user";
 

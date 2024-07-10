@@ -1,22 +1,22 @@
 
-ˆ	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(Øğíã8ÑÄÕë‡2J$6f8b7460-0485-412c-a540-d6779c063542
-	java:S112³"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÓÄÕë‡2J$52549fd8-7686-4635-8014-828cff19e329
-	java:S112Õ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÔÄÕë‡2J$bc6a9550-53a6-4604-ab15-44f243f6cead
-‰	java:S112æ"FDefine and throw a dedicated exception instead of using a generic one.(ÚÓô½8ÖÄÕë‡2J$7098cc72-3a6e-4ca0-ab8c-d4b57585f5e3
-‰	java:S112é"FDefine and throw a dedicated exception instead of using a generic one.(ÚÓô½8×ÄÕë‡2J$520e5486-fc47-483c-988e-23ac98d896a4
+ˆ	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(Øğíã8ä­­»‰2J$d8a4c5ab-9521-4cab-9df2-a1cd6c7c0e54
+	java:S112·"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8å­­»‰2J$4fe7f453-f362-4451-98a6-f27f8293493b
+	java:S112Ù"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8å­­»‰2J$bdd37791-200e-41cc-8aee-a704c3e57468
+‰	java:S112ê"FDefine and throw a dedicated exception instead of using a generic one.(ÚÓô½8å­­»‰2J$6da3cf78-6933-44d8-b570-5e7eba26b552
+‰	java:S112í"FDefine and throw a dedicated exception instead of using a generic one.(ÚÓô½8å­­»‰2J$17470725-5e0a-4aef-a334-5502ca6128c7
 r
-java:S3740*"/Provide the parametrized type for this generic.(›‘ß8ÙÄÕë‡2J$ea8f1f0e-c6d9-4382-b159-48eb2872906e
+java:S3740*"/Provide the parametrized type for this generic.(›‘ß8ç­­»‰2J$570bd9a8-63f4-4054-a585-9da5790b0a42
 —
-java:S1192L"ODefine a constant instead of duplicating this literal "User not found" 4 times.(õé”¯üÿÿÿÿ8äÄÕë‡2J$80fde627-74b6-47e7-9e31-14e6d98db134
+java:S1192L"ODefine a constant instead of duplicating this literal "User not found" 4 times.(õé”¯üÿÿÿÿ8é­­»‰2J$e81b232e-04c6-4977-bedd-87fc8341b23f
 …
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8‚ÅÕë‡2J$c8a7809f-902c-432f-8891-45194cd8282e
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8õ®­»‰2J$ed8ba491-b5b1-4bf6-bcf8-991ad2aa787f
 …
-java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8‚ÅÕë‡2J$1392922e-0d85-4f9c-a71e-61ee6c662655
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8ö®­»‰2J$f4626dec-7fc2-4800-bbd7-c1a577dfff91
 …
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8‚ÅÕë‡2J$91c43bd5-8eba-4d2b-999c-8324cbaf4aa3
-…
-java:S6813|"BRemove this field injection and use constructor injection instead.(êæÄŞ8‚ÅÕë‡2J$2ddc5ac4-ecdf-44de-8111-fbbc9a19e3f9
-t
-java:S1144",Remove this unused private "setRole" method.(ÍÀ¢‚úÿÿÿÿ8ÅÕë‡2J$2fd1d946-13df-4fe5-a3e0-f5722a5195a0
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8ö®­»‰2J$30a37b5c-d60b-4344-b592-17dec814214a
+†
+java:S6813€"BRemove this field injection and use constructor injection instead.(êæÄŞ8ö®­»‰2J$507e5ae6-8b91-4682-9c0b-3564c50709fa
+u
+java:S1144ƒ",Remove this unused private "setRole" method.(ÍÀ¢‚úÿÿÿÿ8¼¯­»‰2J$8a53022b-1134-4a14-b746-2c3a8df45b1b
 w
-java:S1144’".Remove this unused private "setActive" method.(ö¥…‚ÿÿÿÿÿ8ûÅ»ì‡2J$5f24a712-e888-48a2-8576-fac5061d53a9
+java:S1144–".Remove this unused private "setActive" method.(ö¥…‚ÿÿÿÿÿ8¼¯­»‰2J$dbe397c3-8f28-4eaf-82f9-c7f74641df21

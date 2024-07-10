@@ -313,7 +313,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                 .filter(disCont -> mergedModel.getAsin().equalsIgnoreCase(disCont.getAsin()))
                 .findFirst()
                 .ifPresent(disCont -> {
-                    if (disCont.getReason().equalsIgnoreCase("Discontinued")) {
+                    if (disCont.getReason().equalsIgnoreCase(Constant.DISCONTINUED)) {
                         mergedModel.setHistoryFlag(true);
                         mergedModel.setReason("Last Day Reason");
                         mergedModel.setRemarks(disCont.getRemarks());
@@ -346,7 +346,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                 String newValue = (String) getterMethod.invoke(newAsin);
 
                 // Check if the city is "Out-of-Stock" in both old and new Asin
-                if (oldValue.equalsIgnoreCase("Out-of-Stock") && oldValue.equalsIgnoreCase(newValue)) {
+                if (oldValue.equalsIgnoreCase(Constant.OUT_OF_STOCK) && oldValue.equalsIgnoreCase(newValue)) {
                     return true; // If condition matches, return true
                 }
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
@@ -433,7 +433,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                 } else {
                     a = cityStatusMap.get(cityStatus);
                     if (a.equals("0")) {
-                        a = "Out-of-Stock";
+                        a = Constant.OUT_OF_STOCK;
                         int count = map.getOrDefault(a,0);
                         map.put(a, count);
 
@@ -463,7 +463,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         } else {
             a = cityStatusMap.get(b);
             if (a.equals("0")) {
-                a = "Out-of-Stock";
+                a = Constant.OUT_OF_STOCK;
 
             } else if (a.equals("1")) {
                 a = "Available";

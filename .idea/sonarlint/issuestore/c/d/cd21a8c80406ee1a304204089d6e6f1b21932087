@@ -1,45 +1,43 @@
 
 “
-java:S1192"JDefine a constant instead of duplicating this literal "Ahmedabad" 3 times.(ß§êşÿÿÿÿ8¯‡üƒ‰2J$14346ac4-c6d9-4e93-a542-1abfc26c956b
+java:S1192"JDefine a constant instead of duplicating this literal "Ahmedabad" 3 times.(ß§êşÿÿÿÿ8¯‡üƒ‰2J$44bec381-ce9c-4911-9371-35a638f397cb
 
-java:S1192 "FDefine a constant instead of duplicating this literal "Delhi" 3 times.(Œù–àûÿÿÿÿ8°‡üƒ‰2J$bf637dbc-0872-4237-9557-a48b72172f06
+java:S1192 "FDefine a constant instead of duplicating this literal "Delhi" 3 times.(Œù–àûÿÿÿÿ8°‡üƒ‰2J$6973ee30-ac8c-41d8-9cdc-6c31d04234bb
 ‹
-java:S1192¢"GDefine a constant instead of duplicating this literal "Indore" 3 times.(ûÍ8°‡üƒ‰2J$7d55a753-69cd-4378-b2f2-8b016a8c06a4
+java:S1192¢"GDefine a constant instead of duplicating this literal "Indore" 3 times.(ûÍ8°‡üƒ‰2J$2e2f114a-2328-466a-b5f7-14b7fe7ba333
 ‹
-java:S1192¤"GDefine a constant instead of duplicating this literal "Mumbai" 3 times.(éİ‹8±‡üƒ‰2J$ef630af7-51ef-488c-b28a-4d9a896d5498
+java:S1192¤"GDefine a constant instead of duplicating this literal "Mumbai" 3 times.(éİ‹8±‡üƒ‰2J$939a9c78-b2d8-47c6-a118-54914cc511db
 
-java:S1192"JDefine a constant instead of duplicating this literal "Bangalore" 3 times.(Ø§ÌÆ8±‡üƒ‰2J$11e622b6-4cf1-4327-8a15-acfdfcd3a8ee
+java:S1192"JDefine a constant instead of duplicating this literal "Bangalore" 3 times.(Ø§ÌÆ8±‡üƒ‰2J$1d705030-006d-4671-adc1-893eb48f4c32
 ‘
-java:S1192Ÿ"HDefine a constant instead of duplicating this literal "Chennai" 3 times.(å´¯òüÿÿÿÿ8±‡üƒ‰2J$3da4cb58-9ae6-4496-bbf1-5cbe80296be8
+java:S1192Ÿ"HDefine a constant instead of duplicating this literal "Chennai" 3 times.(å´¯òüÿÿÿÿ8±‡üƒ‰2J$a0bab85e-3d38-4f09-8ac3-b314f8632306
 ’
-java:S1192£"IDefine a constant instead of duplicating this literal "Calcutta" 3 times.(¡×Æ×şÿÿÿÿ8²‡üƒ‰2J$92271de3-ddc1-4d2d-bd97-4d31e9ed4d3b
-–
-java:S1192İ"MDefine a constant instead of duplicating this literal "Out-of-Stock" 3 times.(±†ÑÏüÿÿÿÿ8²‡üƒ‰2J$e3f7f463-98eb-46aa-aa30-87da8315a185
+java:S1192£"IDefine a constant instead of duplicating this literal "Calcutta" 3 times.(¡×Æ×şÿÿÿÿ8²‡üƒ‰2J$64a565f4-56a2-4d51-a429-237b6e1ffffe
 
-java:S1192¡"JDefine a constant instead of duplicating this literal "Hyderabad" 3 times.(ğº”‹8²‡üƒ‰2J$838efc31-57f6-4595-a8dd-5622b1de045b
+java:S1192¡"JDefine a constant instead of duplicating this literal "Hyderabad" 3 times.(ğº”‹8²‡üƒ‰2J$5db1baf5-30c4-41da-9f21-3d9bcebec8e2
 –
-java:S1192ı"MDefine a constant instead of duplicating this literal "out-of-stock" 4 times.(ÌóÌ¾ùÿÿÿÿ8²‡üƒ‰2J$0853be22-8098-4931-b563-928c1576d5f4
+java:S1192ı"MDefine a constant instead of duplicating this literal "out-of-stock" 4 times.(ÌóÌ¾ùÿÿÿÿ8²‡üƒ‰2J$346cf843-d186-4132-ae99-09dc7c7ad8ad
 Š
-java:S1192¥"GDefine a constant instead of duplicating this literal "Nagpur" 3 times.(¨ƒÀz8²‡üƒ‰2J$ee255ef2-bcc5-4861-bd31-9ca5959932ff
+java:S1192¥"GDefine a constant instead of duplicating this literal "Nagpur" 3 times.(¨ƒÀz8²‡üƒ‰2J$c3b9017b-6cc5-4744-a0b4-90029e7510e3
 …
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$f4e564fa-a573-46e3-a74b-6931ae177afb
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$3491a88f-9d34-4d1d-92ed-1c00b36ded1b
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$cb27a770-17d6-4b72-b001-2618a1d0d950
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$e87921ac-e1f8-4789-96b7-adf67d10ba5b
 …
-java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$cf5f9580-0b55-4ad8-b5f8-2c8fbccec67c
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$5951646b-4d66-4d76-ba38-f2e53e81d47e
 …
-java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$9f013c4c-765c-4f90-8769-26c1bb2cb554
+java:S6813*"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$2d02e25b-c7d9-4a31-a235-7728d6e29c1a
 …
-java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$f7f1f19e-8133-480d-8424-3263933b0117
+java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$e5fe7d25-21cd-4846-9f06-d18d3978dc1c
 †
-java:S6813µ"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$dab64dfb-c3e8-4509-86e6-4c94bbff170b
+java:S6813µ"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$65340395-af0a-46e7-b96d-095120b78f2a
 †
-java:S6813ÿ"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$b7788225-fa82-4597-b139-f2167b85327f
-m	java:S106`"+Replace this use of System.out by a logger.(£¯îÏ8©üƒ‰2J$55bcec5e-f9f6-44e2-9833-a151aabab5e8
+java:S6813ÿ"BRemove this field injection and use constructor injection instead.(êæÄŞ8üƒ‰2J$4ddc3649-b450-4e92-89df-2530f97e2262
+m	java:S106`"+Replace this use of System.out by a logger.(£¯îÏ8©üƒ‰2J$b86cc8a0-78ab-4a58-b032-e5424662a6e7
 –
-java:S3776ô"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Øâ·š8¼üƒ‰2J$bab85eaa-50c5-41aa-ac30-c6bdb087bf8c
-s	java:S106©"+Replace this use of System.out by a logger.(ó‹£‹øÿÿÿÿ8Ğüƒ‰2J$df2c9b60-215b-43cb-a258-c2092ae31c32
+java:S3776ô"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Øâ·š8¼üƒ‰2J$b24665df-d370-485d-acf8-3004fc4e8af7
+s	java:S106©"+Replace this use of System.out by a logger.(ó‹£‹øÿÿÿÿ8Ğüƒ‰2J$7f1b9968-a24b-49ad-90e7-f18c3d67172f
 €
-java:S1128"=Remove this unused import 'com.example.swoos.dto.HistoryDto'.(–Ûˆ8ëüƒ‰2J$70fc5dc4-57fd-42e5-a53d-429f08cbaf25
+java:S1128"=Remove this unused import 'com.example.swoos.dto.HistoryDto'.(–Ûˆ8€­İ²‰2J$3c43dcec-d4d8-4a15-bfe9-509cd0cf3657
 z
-java:S1128"2Remove this unused import 'java.net.Inet4Address'.(ê…ÉÃúÿÿÿÿ8ëüƒ‰2J$10dee325-a121-45f1-b0c3-beb63694fabb
+java:S1128"2Remove this unused import 'java.net.Inet4Address'.(ê…ÉÃúÿÿÿÿ8ƒ­İ²‰2J$78c91c2a-4fa6-4bf2-a2d5-49337beb0ee4

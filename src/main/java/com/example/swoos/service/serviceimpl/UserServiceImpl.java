@@ -43,17 +43,17 @@ public class UserServiceImpl implements UserService {
              User user = new User();
             if (Objects.nonNull(userSignUpRequest)) {
                 User users = null;
-                Optional<User> savedUser = this.userRepository.findByEmail(userSignUpRequest.getEmail());
+                Optional<User> savedUser = userRepository.findByEmail(userSignUpRequest.getEmail());
                 if (savedUser.isPresent()) {
                     throw new RuntimeException("Mail Already exists");
                 }
 
-                List<User> usersPresented = this.userRepository.findAll();
+                List<User> usersPresented = userRepository.findAll();
                 MasterRole role;
                 if (usersPresented.isEmpty()) {
-                    role = this.masterRoleRepository.findByRoleName("Admin");
+                    role = masterRoleRepository.findByRoleName("Admin");
                 } else {
-                    role = this.masterRoleRepository.findByRoleName("Employee");
+                    role = masterRoleRepository.findByRoleName("Employee");
                 }
 
                 if (Objects.isNull(userSignUpRequest.getId())) {
@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
                     user.setDeleteFlag(!userSignUpRequest.isActive());
                     user.setPassword(bCryptPasswordEncoder.encode(userSignUpRequest.getPassword()));
                     user.setOgPassword(userSignUpRequest.getPassword());
-                    this.userRepository.save(user);
+                    userRepository.save(user);
                     successResponse.setData(Constant.USER_CREATED_SUCCESSFULLY);
                     log.info("user created");
                 } else {
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
         userProfile.setBangalore(true);
         userProfile.setDate(true);
         userProfile.setChannel(true);
-        userProfile.setSapDescription(true);
+        userProfile.setPname(true);
         userProfile.setRevenue(true);
         userProfile.setDaySales(true);
         userProfile.setDivision(true);
@@ -116,6 +116,10 @@ public class UserServiceImpl implements UserService {
         userProfile.setReason(true);
         userProfile.setRemarks(true);
         userProfile.setDownload(true);
+        userProfile.setValueLoss(true);
+        userProfile.setOther(true);
+        userProfile.setSwooscontribution(true);
+        userProfile.setSwoosPercentage(true);
         userProfile.setUser(user);
         columnRepository.save(userProfile);
         return successResponse;
@@ -247,7 +251,7 @@ public class UserServiceImpl implements UserService {
         userProfile.setBangalore(columnDto.isBangalore());
         userProfile.setDate(columnDto.isDate());
         userProfile.setChannel(columnDto.isChannel());
-        userProfile.setSapDescription(columnDto.isSapDescription());
+        userProfile.setPname(columnDto.isPname());
         userProfile.setRevenue(columnDto.isRevenue());
         userProfile.setDaySales(columnDto.isDaySales());
         userProfile.setDivision(columnDto.isDivision());
@@ -264,8 +268,10 @@ public class UserServiceImpl implements UserService {
         userProfile.setCalcutta(columnDto.isCalcutta());
         userProfile.setReason(columnDto.isReason());
         userProfile.setRemarks(columnDto.isRemarks());
-        userProfile.setDownload(columnDto.isDownload());
-
+        userProfile.setValueLoss(columnDto.isValueLoss());
+        userProfile.setOther(columnDto.isOther());
+        userProfile.setSwooscontribution(columnDto.isSwooscontribution());
+        userProfile.setSwoosPercentage(columnDto.isSwoosPercentage());
         columnRepository.save(userProfile);
 
         return "Column added successfully";
@@ -284,7 +290,7 @@ public class UserServiceImpl implements UserService {
         columnDto.setSNo(userProfile.isSNo());
         columnDto.setDate(userProfile.isDate());
         columnDto.setChannel(userProfile.isChannel());
-        columnDto.setSapDescription(userProfile.isSapDescription());
+        columnDto.setPname(userProfile.isPname());
         columnDto.setAsin(userProfile.isAsin());
         columnDto.setRevenue(userProfile.isRevenue());
         columnDto.setDaySales(userProfile.isDaySales());
@@ -305,8 +311,10 @@ public class UserServiceImpl implements UserService {
         columnDto.setCalcutta(userProfile.isCalcutta());
         columnDto.setReason(userProfile.isReason());
         columnDto.setRemarks(userProfile.isRemarks());
-        columnDto.setDownload(userProfile.isDownload());
-
+        columnDto.setValueLoss(userProfile.isValueLoss());
+        columnDto.setOther(userProfile.isOther());
+        columnDto.setSwooscontribution(userProfile.isSwooscontribution());
+        columnDto.setSwoosPercentage(userProfile.isSwoosPercentage());
         return columnDto;
     }
 

@@ -1,7 +1,6 @@
 package com.example.swoos.controller;
 
 import com.example.swoos.dto.MergeRequestDTO;
-import com.example.swoos.dto.MergedModelDto;
 import com.example.swoos.service.MergeExcelAndCSVService;
 import com.example.swoos.service.MergeFileService;
 import com.example.swoos.service.SalesLossService;
@@ -12,7 +11,6 @@ import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,9 +38,14 @@ public class MergeController {
                                             @RequestParam int pageNo,
                                             @RequestParam LocalDate fromDate,
                                             @RequestParam(required = false) String field,
-                                            @RequestParam(required = false)String searchString){
-
-        return mergeExcelAndCSVService.getMergedModel(pageSize,pageNo,fromDate,field,searchString);
+                                            @RequestParam(required = false)String searchString,
+                                            @RequestParam(required = false) String value ,
+                                            @RequestParam boolean greaterThan){
+        if(value == null){
+            return mergeExcelAndCSVService.getMergedModel(pageSize,pageNo,fromDate,field,searchString);
+        }else{
+            return mergeExcelAndCSVService.swoosFilter(value,greaterThan,pageNo,pageSize);
+        }
     }
 
     @GetMapping("/historyTrue")
@@ -75,11 +78,11 @@ public class MergeController {
         return mergeExcelAndCSVService.platformAndValueloss();
     }
 
-    @GetMapping("/swoosfilter")
+/*    @GetMapping("/swoosfilter")
     public PageResponse<Object> getSwoosFilter(@RequestParam String value ,
                                                @RequestParam boolean greaterThan,
                                                @RequestParam int pageNo,
                                                @RequestParam int pageSize){
         return mergeExcelAndCSVService.swoosFilter(value,greaterThan,pageNo,pageSize);
-    }
+    }*/
 }
