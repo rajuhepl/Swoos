@@ -41,7 +41,7 @@ public class MergeController {
                                             @RequestParam(required = false)String searchString,
                                             @RequestParam(required = false) String value ,
                                             @RequestParam boolean greaterThan){
-        if(value == null){
+        if(value == null|| value.isEmpty()){
             return mergeExcelAndCSVService.getMergedModel(pageSize,pageNo,fromDate,field,searchString);
         }else{
             return mergeExcelAndCSVService.swoosFilter(value,greaterThan,pageNo,pageSize);

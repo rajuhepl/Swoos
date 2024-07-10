@@ -652,7 +652,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         if (searchTerm==null) {
             mergedModelList = mergedRepository.findAllOrderByValueLossDescPageable(from,to,pageable);
         }else{
-            mergedModelList = mergedModelRepositoryCustom.findAllOrderByValueLossDescPageable(from,to,field,searchTerm,pageable);
+            mergedModelList = mergedModelRepositoryCustom.findAllOrderByValueLossDescPageable(field,searchTerm,pageable);
         }
         List<MergedModelDto> mergedModels = mergedModelList.getContent().stream()
                 .map(mergedModel -> modelMapper.map(mergedModel, MergedModelDto.class))

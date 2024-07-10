@@ -1,4 +1,14 @@
 
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-Q	java:S125G"<This block of commented-out lines of code should be removed.(ó¸ à
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$ce082f74-af20-40e0-a392-8fb81dba4466
+~	java:S125&"<This block of commented-out lines of code should be removed.(ëØÔð8ëä‰2J$5f96b322-8dc3-4cb6-907f-3585b2fdf204
+m	java:S106?"+Replace this use of System.out by a logger.(Í¤¯Î8Ÿ®åä‰2J$32e7e08f-9c86-4e4f-984e-d3b784101020
+m	java:S106@"+Replace this use of System.out by a logger.(Æ‡ÐŠ8¡®åä‰2J$13951cda-6f3d-4f64-bee6-7e19eda2fba4
+r	java:S106A"+Replace this use of System.out by a logger.(×Êªìûÿÿÿÿ8¢®åä‰2J$b7883fab-f9c1-4a32-ae47-e10a32917d81
+m	java:S106B"+Replace this use of System.out by a logger.(‰œ›8£®åä‰2J$c22195ca-ed0b-465c-9ae1-50acf70b33b2
+r	java:S106C"+Replace this use of System.out by a logger.(Ð÷Åïúÿÿÿÿ8¤®åä‰2J$93c04750-8630-4b6e-b15a-096d8e304109
+w	java:S125O"<This block of commented-out lines of code should be removed.(ó¸ àJ$f086200e-857c-4347-bd07-a68ab66fd51e
+|
+java:S1128"9Remove this unused import 'jakarta.persistence.criteria'.(éß°á8ª®åä‰2J$90272e9c-c511-4f21-aa6c-ae2f6112f28b
+q
+java:S1128"/Remove this unused import 'java.sql.Timestamp'.(èò½+8«®åä‰2J$931df962-b080-4f9e-8bf2-7dfb9b5271b2

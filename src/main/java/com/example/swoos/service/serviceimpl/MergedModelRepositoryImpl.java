@@ -21,46 +21,54 @@ public class MergedModelRepositoryImpl implements MergedModelRepositoryCustom {
     @Autowired
     private EntityManager entityManager;
     @Override
+
     public Page<MergedModel> findAllOrderByValueLossDescPageable(
-            Timestamp fromDate,
-            Timestamp toDate,
             String field,
             String searchTerm,
             Pageable pageable) {
 
-        String baseQuery = "SELECT m FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = false";
-        String countQueryStr = "SELECT COUNT(m) FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = false";
+        String baseQuery = "SELECT m FROM MergedModel m WHERE FUNCTION('DATE', m.createAt) = FUNCTION('CURDATE') AND m.historyFlag = false";
+        String countQueryStr = "SELECT COUNT(m) FROM MergedModel m WHERE FUNCTION('DATE', m.createAt) = FUNCTION('CURDATE') AND m.historyFlag = false";
 
         if (searchTerm != null && !searchTerm.isEmpty()) {
-            baseQuery += " AND m." + field + " LIKE :searchTerm";
-            countQueryStr += " AND m." + field + " LIKE :searchTerm";
+            baseQuery += " AND LOWER(m." + field + ") LIKE :searchTerm";
+            countQueryStr += " AND LOWER(m." + field + ") LIKE :searchTerm";
         }
 
-        baseQuery += " ORDER BY CAST(m.ValueLoss AS double) DESC";
+//        baseQuery += " ORDER BY CAST(m.ValueLoss AS double) DESC";
 
         TypedQuery<MergedModel> query = entityManager.createQuery(baseQuery, MergedModel.class);
-        query.setParameter("fromDate", fromDate);
-        query.setParameter("toDate", toDate);
         if (searchTerm != null && !searchTerm.isEmpty()) {
-            query.setParameter("searchTerm", "%" + searchTerm + "%");
+            query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
         }
-
         query.setFirstResult((int) pageable.getOffset());
         query.setMaxResults(pageable.getPageSize());
 
-        List<MergedModel> results = query.getResultList();
+        List<MergedModel> results;
+        try {
+            results = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(); // For debugging any potential issues with the query execution
+            throw e;
+        }
 
         Query countQuery = entityManager.createQuery(countQueryStr);
-        countQuery.setParameter("fromDate", fromDate);
-        countQuery.setParameter("toDate", toDate);
         if (searchTerm != null && !searchTerm.isEmpty()) {
-            countQuery.setParameter("searchTerm", "%" + searchTerm + "%");
+            countQuery.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
         }
 
         Long total = (Long) countQuery.getSingleResult();
 
+        // Debugging output
+        System.out.println("Base Query: " + baseQuery);
+        System.out.println("Count Query: " + countQueryStr);
+        System.out.println("Search Term: " + searchTerm);
+        System.out.println("Total Records: " + total);
+        System.out.println("Result Size: " + results.size());
+
         return new PageImpl<>(results, pageable, total);
     }
+
 
 /*    @Override
     public Page<MergedModel> findAllOrderByValueLossDescPageable(

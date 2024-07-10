@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 public interface MergedModelRepositoryCustom {
     Page<MergedModel> findAllOrderByValueLossDescPageable(
-            Timestamp fromDate,
-            Timestamp toDate,
             String field,
             String searchTerm,
             Pageable pageable);
