@@ -1,8 +1,8 @@
 
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(„‘ıÿÿÿÿ8¦é¯ë‡2J$5f1ad173-e99a-4afa-99bc-a0cec9c39888
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(„‘ıÿÿÿÿ8¦é¯ë‡2J$25a6572f-f955-48e7-b928-59344c0a1d38
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯é¯ë‡2J$f4eb9719-eece-42c1-88c1-110f8de142fc
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯é¯ë‡2J$4c073b49-71fe-4f52-a041-58d4eb426d2f
 ´
-java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(„‘ıÿÿÿÿ8³é¯ë‡2J$3ce76db3-f08d-4c0f-9a95-cece797a5000
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(„‘ıÿÿÿÿ8³é¯ë‡2J$6eac846a-4a70-4794-92d2-19ccd629dea2
 y
-java:S1128	"7Remove this unused import 'jakarta.persistence.Column'.(Ó‰ÙE8¹é¯ë‡2J$5db567b2-0220-45bc-b767-920a4491882b
+java:S1128	"7Remove this unused import 'jakarta.persistence.Column'.(Ó‰ÙE8¹é¯ë‡2J$7b47d3c6-86a9-4671-94ea-4a62e792368a

@@ -1,8 +1,8 @@
 
-	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬òÍåøÿÿÿÿJ$37f0e8eb-5e3e-4363-b4bb-76074479ba5a
+	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬òÍåøÿÿÿÿJ$1ad815e4-588e-42d6-af92-3a4eaf117d28
 ƒ
-java:S1128"@Remove this unused import 'com.example.swoos.model.MergedModel'.(¬£ŸÛ8Ç¤Åê‡2J$cda1bcc0-013e-4cf8-b23c-682b9dc34fff
+java:S1128"@Remove this unused import 'com.example.swoos.model.MergedModel'.(¬£ŸÛ8Ç¤Åê‡2J$70dcd472-5a93-4e0f-984b-ace87394b165
 ‰
-java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8É¤Åê‡2J$700a9da4-8375-4655-99a5-c740720544a5
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8É¤Åê‡2J$81ef7d72-3ba0-472c-82eb-79eef4c8bc34
 s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8øÕ¼ê‡2J$9c386e8b-32d1-4843-9d78-2666d113adfa
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8øÕ¼ê‡2J$4e573374-60b6-40a9-a208-b3ad19cee52e

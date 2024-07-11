@@ -5,13 +5,12 @@ import lombok.Data;
 @Data
 public class ColumnDto {
     private boolean sNo;
-    private boolean date;
-    private boolean channel;
+    private boolean platform;
     private boolean pname;
     private boolean asin;
     private boolean revenue;
     private boolean daySales;
-    private boolean division;
+    private boolean internalDivision;
     private boolean brand;
     private boolean category;
     private boolean subCategory;

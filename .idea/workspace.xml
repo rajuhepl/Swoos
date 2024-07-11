@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Removed Unused API">
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/MergeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/MergeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3feb0c8fcaae324b4cd8473e8b9c2ec6cd1c99dc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3feb0c8fcaae324b4cd8473e8b9c2ec6cd1c99dc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/6455e3ea811cfa7235a8e0415b01c9081b2827bd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/6455e3ea811cfa7235a8e0415b01c9081b2827bd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8da396aad4932403a6f385782cc2d2f24983bf19" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8da396aad4932403a6f385782cc2d2f24983bf19" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bbe7c4c0553603ddf112263fdb56befffcee8259" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bbe7c4c0553603ddf112263fdb56befffcee8259" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd21a8c80406ee1a304204089d6e6f1b21932087" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd21a8c80406ee1a304204089d6e6f1b21932087" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/ColumnDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/ColumnDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/configure/Scheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/configure/Scheduler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/dto/ColumnDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/dto/ColumnDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/DashboardServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/DashboardServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/service/serviceimpl/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720672018681</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Removed Unused API">
+      <option name="closed" value="true" />
+      <created>1720672382204</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1720672382204</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,27 +243,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>654</line>
+          <line>656</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>649</line>
+          <line>651</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>650</line>
+          <line>652</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>656</line>
+          <line>658</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>659</line>
+          <line>661</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

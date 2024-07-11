@@ -249,12 +249,12 @@ public class UserServiceImpl implements UserService {
         userProfile.setBrand(columnDto.isBrand());
         userProfile.setCategory(columnDto.isCategory());
         userProfile.setBangalore(columnDto.isBangalore());
-        userProfile.setDate(columnDto.isDate());
-        userProfile.setChannel(columnDto.isChannel());
+        userProfile.setDate(false);
+        userProfile.setChannel(columnDto.isPlatform());
         userProfile.setPname(columnDto.isPname());
         userProfile.setRevenue(columnDto.isRevenue());
         userProfile.setDaySales(columnDto.isDaySales());
-        userProfile.setDivision(columnDto.isDivision());
+        userProfile.setDivision(columnDto.isInternalDivision());
         userProfile.setSubCategory(columnDto.isSubCategory());
         userProfile.setIndore(columnDto.isIndore());
         userProfile.setDelhi(columnDto.isDelhi());
@@ -288,13 +288,12 @@ public class UserServiceImpl implements UserService {
 
         ColumnDto columnDto = new ColumnDto();
         columnDto.setSNo(userProfile.isSNo());
-        columnDto.setDate(userProfile.isDate());
-        columnDto.setChannel(userProfile.isChannel());
+        columnDto.setPlatform(userProfile.isChannel());
         columnDto.setPname(userProfile.isPname());
         columnDto.setAsin(userProfile.isAsin());
         columnDto.setRevenue(userProfile.isRevenue());
         columnDto.setDaySales(userProfile.isDaySales());
-        columnDto.setDivision(userProfile.isDivision());
+        columnDto.setInternalDivision(userProfile.isDivision());
         columnDto.setBrand(userProfile.isBrand());
         columnDto.setCategory(userProfile.isCategory());
         columnDto.setSubCategory(userProfile.isSubCategory());

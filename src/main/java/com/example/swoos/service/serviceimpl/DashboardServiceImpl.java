@@ -6,6 +6,7 @@ import com.example.swoos.dto.ProductDto;
 import com.example.swoos.repository.MergedRepository;
 import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.service.DashboardService;
+import com.example.swoos.util.Constant;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -258,7 +259,7 @@ public class DashboardServiceImpl implements DashboardService {
         return bd.doubleValue();
     }
     private boolean isPresented(String check){
-        return check.equalsIgnoreCase("Out-of-Stock") || check.equalsIgnoreCase("Available");
+        return check.equalsIgnoreCase(Constant.OUT_OF_STOCK) || check.equalsIgnoreCase("Available");
     }
     @Override
     public Map<String,Long> getPlatformSukCount(){

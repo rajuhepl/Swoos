@@ -315,13 +315,15 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                 .ifPresent(disCont -> {
                     if (disCont.getReason().equalsIgnoreCase(Constant.DISCONTINUED)) {
                         mergedModel.setHistoryFlag(true);
-                        mergedModel.setReason("Last Day Reason");
+                        mergedModel.setReason(disCont.getReason());
+                        mergedModel.setLastDayReason(disCont.getReason());
                         mergedModel.setRemarks(disCont.getRemarks());
                         mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                     } else {
                         if(locationNotAlign(disCont,mergedModel)){
                           mergedModel.setHistoryFlag(true);
-                          mergedModel.setReason("Last Day Reason");
+                          mergedModel.setReason(disCont.getReason());
+                          mergedModel.setLastDayReason(disCont.getReason());
                           mergedModel.setRemarks(disCont.getRemarks());
                           mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                         }
@@ -507,13 +509,13 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
                 if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
-                    locations.put(capitalizeFirstLetter(key), data.getLocation());
+                    locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
                 if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
-                    locations.put(capitalizeFirstLetter(otherCity), data.getLocation());
+                    locations.put(otherCity, data.getLocation());
                 }
             });
         });
@@ -542,25 +544,25 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
                 if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
-                    locations.put(capitalizeFirstLetter(key), data.getLocation());
+                    locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
                 if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
-                    locations.put(capitalizeFirstLetter(otherCity), data.getLocation());
+                    locations.put(otherCity, data.getLocation());
                 }
             });
         });
 
         return Map.of("location", locations);
     }
-    private String capitalizeFirstLetter(String input) {
+/*    private String capitalizeFirstLetter(String input) {
         if (input == null || input.isEmpty()) {
             return input;
         }
         return input.substring(0, 1).toUpperCase() + input.substring(1);
-    }
+    }*/
 
     @Autowired
     ExcelWriterServiceImpl excelWriterService ;
@@ -633,7 +635,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         mergedModelDto.setDeletedFlag(mergedModel.isDeletedFlag());
         mergedModelDto.setCreateAt(String.valueOf(mergedModel.getCreateAt()));
         mergedModelDto.setUpdatedAt(String.valueOf(mergedModel.getUpdatedAt()));
-
+        mergedModelDto.setLastDayReason(mergedModel.getLastDayReason());
         return mergedModelDto;
     }
     @Autowired
