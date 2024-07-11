@@ -270,6 +270,7 @@ public class UserServiceImpl implements UserService {
         userProfile.setRemarks(columnDto.isRemarks());
         userProfile.setValueLoss(columnDto.isValueLoss());
         userProfile.setOther(columnDto.isOther());
+        userProfile.setSNo(columnDto.isSNo());
         userProfile.setSwooscontribution(columnDto.isSwooscontribution());
         userProfile.setSwoosPercentage(columnDto.isSwoosPercentage());
         columnRepository.save(userProfile);
