@@ -1,10 +1,13 @@
 
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8®ªÁê‡2J$b590a200-2481-499f-9953-d0225f1061e4
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8®ªÁê‡2J$12e5fdab-7b15-4c00-9433-5534241118eb
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$27a0419c-ee7f-41f5-858c-6e9c724c254b
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$e7572d0b-4a9b-424e-821a-f98f093e2602
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$c7f98188-774f-43c6-b3a2-6a2c12013ecd
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$b760da91-6b92-44d8-99b1-d4b22c64e37f
 …
-java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$1bdcc2e9-8be4-4671-9f4c-98dd57dec048
-~	java:S125U"<This block of commented-out lines of code should be removed.(ıñŒ™8­—İÛ‰2J$18a393ce-cfd7-4823-b6fe-f1eba55389f3
+java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$3147bd38-b82a-4008-8f15-a3063f17ff00
+”
+java:S1128"LRemove this unused import 'org.springframework.web.multipart.MultipartFile'.(ôŸœÿÿÿÿÿ8Ï‘¹ÿ‰2J$f29acdcd-e8c5-411d-8eff-918d929dcb43
+r
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8•¤ºÿ‰2J$907b86d4-9ff8-4aa7-862c-611403deff7e

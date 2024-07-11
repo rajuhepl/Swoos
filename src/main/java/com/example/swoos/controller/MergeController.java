@@ -52,11 +52,7 @@ public class MergeController {
     public SuccessResponse<Object> historyTrue(HttpServletResponse response){
         return mergeExcelAndCSVService.readHistoryTrue(response);
     }
-    @PostMapping("/upload")
-    public ResponseEntity<String> uploadFiles(@RequestParam("csvFile") MultipartFile csvFile,
-                                              @RequestParam("excelFile") MultipartFile excelFile,HttpServletResponse response) {
-        return mergeFileService.readCSVData(csvFile,excelFile,response);
-    }
+
     @PostMapping("/update")
     public String updateModel(@RequestBody List<MergeRequestDTO> mergeRequestDTO ){
         return  mergeFileService.update(mergeRequestDTO );
@@ -68,21 +64,10 @@ public class MergeController {
         return mergedModel.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/location")
-    public Map<String,Map<String,String>> getLocations(@RequestParam long id){
-        return mergeExcelAndCSVService.locations(id);
-    }
-
     @GetMapping("/platform")
     public PlatformAndValueloss getPlatform(){
         return mergeExcelAndCSVService.platformAndValueloss();
     }
 
-/*    @GetMapping("/swoosfilter")
-    public PageResponse<Object> getSwoosFilter(@RequestParam String value ,
-                                               @RequestParam boolean greaterThan,
-                                               @RequestParam int pageNo,
-                                               @RequestParam int pageSize){
-        return mergeExcelAndCSVService.swoosFilter(value,greaterThan,pageNo,pageSize);
-    }*/
+
 }

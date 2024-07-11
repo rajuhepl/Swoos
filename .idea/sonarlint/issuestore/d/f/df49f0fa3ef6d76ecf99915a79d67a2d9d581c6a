@@ -1,9 +1,11 @@
 
-O
-java:S18542"9Remove this useless assignment to local variable "roll1".(åìôå
-V	java:S125"<This block of commented-out lines of code should be removed.(ÿ»Œ³şÿÿÿÿ
-Q	java:S125("<This block of commented-out lines of code should be removed.(Ô‡í‰
-@
-java:S14812"*Remove this unused "roll1" local variable.(åìôå
-V	java:S1255"<This block of commented-out lines of code should be removed.(ÓÔ´şÿÿÿÿ
-Q	java:S125U"<This block of commented-out lines of code should be removed.(äà–
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¬Ÿ¾ÿ‰2J$6893ca72-bf06-4476-adfa-65525ce8dfde
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8­Ÿ¾ÿ‰2J$8dcd3405-c065-497c-ba76-e8077cc90564
+|
+java:S1854'"9Remove this useless assignment to local variable "roll1".(åìôå8ï’Úÿ‰2J$d9cf8627-c144-4bd2-ba18-e51d713f0054
+|	java:S125"<This block of commented-out lines of code should be removed.(ÿ»Œ³şÿÿÿÿJ$cea74d0d-6adf-40cd-8f0c-de5d12ef835e
+m
+java:S1481'"*Remove this unused "roll1" local variable.(åìôå8ø’Úÿ‰2J$4d463fbc-9d84-486f-a6f2-ef9449380003
+ƒ	java:S125*"<This block of commented-out lines of code should be removed.(ÓÔ´şÿÿÿÿ8ú’Úÿ‰2J$e199bdb9-3e52-47be-844f-da4d70f701a3
