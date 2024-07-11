@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Value Added">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/9/093b7b797c3b72150de42a086be2a7e441937fbd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/9/093b7b797c3b72150de42a086be2a7e441937fbd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df49f0fa3ef6d76ecf99915a79d67a2d9d581c6a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df49f0fa3ef6d76ecf99915a79d67a2d9d581c6a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/MergeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/MergeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/Controller.class" afterDir="false" />
+    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Removed Unused API">
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/Controller.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/MergeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/swoos/controller/MergeController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720615477780</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Removed Unused API">
+      <option name="closed" value="true" />
+      <created>1720672018681</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1720672018681</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +207,8 @@
     <MESSAGE value="Reason added" />
     <MESSAGE value="Test" />
     <MESSAGE value="Value Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Value Added" />
+    <MESSAGE value="Removed Unused API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Unused API" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
