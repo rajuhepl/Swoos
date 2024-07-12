@@ -1,5 +1,4 @@
 package com.example.swoos.service.serviceimpl;
-
 import com.example.swoos.model.MergedModel;
 import com.example.swoos.repository.MergedRepository;
 import com.example.swoos.response.SuccessResponse;
@@ -9,42 +8,35 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
-
 @Service
 public class ExcelWriterServiceImpl implements ExcelService {
     @Autowired
     private MergedRepository mergedRepository;
-
     public SuccessResponse<Object> historyToExcel(HttpServletResponse response) {
         try {
-
-            LocalDate todayDate = LocalDate.now();
-            LocalDateTime fromDateTime = LocalDateTime.of(todayDate, LocalTime.MIN);
-            LocalDateTime toDateTime = LocalDateTime.of(todayDate, LocalTime.MAX);
-            Timestamp fromDate = Timestamp.valueOf(fromDateTime);
-            Timestamp toDate = Timestamp.valueOf(toDateTime);
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime twentyFourHoursAgo = now.minusHours(24);
+            Timestamp fromDate = Timestamp.valueOf(twentyFourHoursAgo);
+            Timestamp toDate = Timestamp.valueOf(now);
             List<MergedModel> mergedModels = mergedRepository.getAllHistoryTrue(fromDate, toDate);
             if (mergedModels.isEmpty()) {
                 throw new RuntimeException("No data found in the specified date range.");
             }
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Merged Data");
-
-            // Create headers
             Row headerRow = sheet.createRow(0);
-            String[] headers = {"MergedID", "Ahmedabad", "Ahmedabad%", "ASIN", "Bangalore", "Bangalore%", "Calcutta", "Calcutta%", "Category",
-                    "Chennai", "Chennai %", "Delhi", "Delhi %", "Hyderabad", "Hyderabad %", "Indore", "Indore %", "InternalDivision", "Mumbai", "Mumbai%",
-                    "NA", "Nagpur", "Nagpur%", "Patna", "Patna%", "Platform", "ProductName", "Pune", "Pune%", "Revenue", "SWOOSContribution", "Sub-Category",
-                    "SWOOS(%)", "ValueLoss", "Brand", "City", "Day", "DaySales", "LastDayReason", "MonthlySales", "Other", "Reason", "Remarks",
-                    "TotalValueLoss", "CreatedAt", "DeletedFlag", "IsSubmitted", "UpdatedAt", "Location", "Date", "HistoryFlag"};
+            String[] headers = {"Platform", "ASIN", "ProductName", "Revenue", "InternalDivision", "Brand", "Category",
+                    "SubCategory", "Ahmedabad", "Bangalore", "Chennai", "Delhi", "Hyderabad", "Indore",
+                    "Calcutta", "Mumbai", "Nagpur", "Patna", "Pune", "Ahmedabad%", "Bangalore%", "Chennai%",
+                    "Delhi%", "Hyderabad%", "Indore%", "Calcutta%", "Mumbai%", "Nagpur%", "Patna%", "Pune%",
+                    "NA","DaySales", "SWOOS%", "ValueLoss", "SWOOSContribution",
+                    "Other", "Remarks", "Reason", "LastDayReason", "Deleted",
+                    "CreatedAt", "UpdatedAt", "HistoryFlag"};
 
             for (int i = 0; i < headers.length; i++) {
                 Cell cell = headerRow.createCell(i);
@@ -85,53 +77,26 @@ public class ExcelWriterServiceImpl implements ExcelService {
                 row.createCell(28).setCellValue(mergedModel.getPatnaPercentage());
                 row.createCell(29).setCellValue(mergedModel.getPunePercentage());
                 row.createCell(30).setCellValue(mergedModel.getNA());
-                row.createCell(31).setCellValue(mergedModel.getMonthlySales());
-                row.createCell(32).setCellValue(mergedModel.getDaySales());
-
-                // Handling nullable fields
-                row.createCell(33).setCellValue(mergedModel.getSwoosPercentage() != null ? mergedModel.getSwoosPercentage().toString() : "");
-                row.createCell(34).setCellValue(mergedModel.getValueLoss());
-                row.createCell(35).setCellValue(mergedModel.getSWOOSContribution());
-                row.createCell(36).setCellValue(mergedModel.getTotalValueLoss() != null ? mergedModel.getTotalValueLoss().toString() : "");
-                row.createCell(37).setCellValue(mergedModel.getOther());
-                row.createCell(38).setCellValue(mergedModel.getRemarks());
-                row.createCell(39).setCellValue(mergedModel.getReason());
-
-                // Handling LocalDateTime or LocalDate fields
-                row.createCell(40).setCellValue(mergedModel.getDay() != null ? mergedModel.getDay().toString() : "");
-                row.createCell(41).setCellValue(mergedModel.getLastDayReason());
-                row.createCell(42).setCellValue(mergedModel.getCity());
-
-                // Handling Boolean fields
-                Boolean isSubmitted = mergedModel.getIsSubmited();
-                row.createCell(43).setCellValue(isSubmitted != null && isSubmitted);
-
+                row.createCell(31).setCellValue(mergedModel.getDaySales());
+                row.createCell(32).setCellValue(mergedModel.getSwoosPercentage() != null ? mergedModel.getSwoosPercentage().toString() : "");
+                row.createCell(33).setCellValue(mergedModel.getValueLoss());
+                row.createCell(34).setCellValue(mergedModel.getSWOOSContribution());
+                row.createCell(35).setCellValue(mergedModel.getOther());
+                row.createCell(36).setCellValue(mergedModel.getRemarks());
+                row.createCell(37).setCellValue(mergedModel.getReason());
+                row.createCell(38).setCellValue(mergedModel.getLastDayReason());
                 Boolean deletedFlag = mergedModel.isDeletedFlag();
-                row.createCell(44).setCellValue(deletedFlag != null && deletedFlag);
-
-                // Handling Timestamp or LocalDateTime fields
-                row.createCell(45).setCellValue(mergedModel.getCreateAt() != null ? mergedModel.getCreateAt().toString() : "");
-                row.createCell(46).setCellValue(mergedModel.getUpdatedAt() != null ? mergedModel.getUpdatedAt().toString() : "");
-
-                row.createCell(47).setCellValue(mergedModel.getLocation());
-
-                // Handling LocalDate or LocalDateTime fields
-                row.createCell(48).setCellValue(mergedModel.getDate() != null ? mergedModel.getDate().toString() : "");
-
+                row.createCell(39).setCellValue(deletedFlag != null && deletedFlag);
+                row.createCell(40).setCellValue(mergedModel.getCreateAt() != null ? mergedModel.getCreateAt().toString() : "");
+                row.createCell(41).setCellValue(mergedModel.getUpdatedAt() != null ? mergedModel.getUpdatedAt().toString() : "");
                 Boolean historyFlag = mergedModel.isHistoryFlag();
-                row.createCell(49).setCellValue(historyFlag != null && historyFlag);
+                row.createCell(42).setCellValue(historyFlag != null && historyFlag);
             }
-
-            // Set response headers
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setHeader("Content-Disposition", "attachment; filename=History.xlsx");
-
-            // Write to response output stream
             OutputStream outputStream = response.getOutputStream();
             workbook.write(outputStream);
             workbook.close();
-
-            // Return success response
             SuccessResponse<Object> successResponse = new SuccessResponse<>();
             successResponse.setStatusCode(200);
             return successResponse;
@@ -139,5 +104,4 @@ public class ExcelWriterServiceImpl implements ExcelService {
             throw new RuntimeException("Failed to write Excel file.", e);
         }
     }
-
 }
