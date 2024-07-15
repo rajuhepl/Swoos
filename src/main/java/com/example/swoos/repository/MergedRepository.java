@@ -14,10 +14,10 @@ import java.util.List;
 public interface MergedRepository extends JpaRepository<MergedModel,Long> {
 
     @Query(value = "SELECT * FROM merged_model m WHERE CAST(REPLACE(m.swooscontribution, ' %', '') AS DECIMAL(10, 2)) > :value " +
-            "AND DATE(m.create_at) = CURDATE()", nativeQuery = true)
+            "AND DATE(m.create_at) = CURDATE() AND m.history_flag = false ", nativeQuery = true)
     Page<MergedModel> findAllBySWOOSContributionGreaterThanAndCreatedAtToday(@Param("value") String value, Pageable pageable);
     @Query(value = "SELECT * FROM merged_model m WHERE CAST(REPLACE(m.swooscontribution, ' %', '') AS DECIMAL(10, 2)) < :value " +
-            "AND DATE(m.create_at) = CURDATE()", nativeQuery = true)
+            "AND DATE(m.create_at) = CURDATE() AND m.history_flag = false", nativeQuery = true)
     Page<MergedModel> findAllBySWOOSContributionLesserThanAndCreatedAtToday(@Param("value") String value, Pageable pageable);
 
     @Query("SELECT m FROM MergedModel m WHERE m.historyFlag = false ORDER BY CAST(m.ValueLoss AS double) DESC")

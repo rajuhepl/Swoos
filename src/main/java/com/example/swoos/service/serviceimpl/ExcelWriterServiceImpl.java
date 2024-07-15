@@ -25,12 +25,10 @@ public class ExcelWriterServiceImpl implements ExcelService {
 
     public SuccessResponse<Object> historyToExcel(HttpServletResponse response) {
         try {
-
-            LocalDate todayDate = LocalDate.now();
-            LocalDateTime fromDateTime = LocalDateTime.of(todayDate, LocalTime.MIN);
-            LocalDateTime toDateTime = LocalDateTime.of(todayDate, LocalTime.MAX);
-            Timestamp fromDate = Timestamp.valueOf(fromDateTime);
-            Timestamp toDate = Timestamp.valueOf(toDateTime);
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime twentyFourHoursAgo = now.minusHours(24);
+            Timestamp fromDate = Timestamp.valueOf(twentyFourHoursAgo);
+            Timestamp toDate = Timestamp.valueOf(now);
             List<MergedModel> mergedModels = mergedRepository.getAllHistoryTrue(fromDate, toDate);
             if (mergedModels.isEmpty()) {
                 throw new RuntimeException("No data found in the specified date range.");
