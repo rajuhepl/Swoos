@@ -1,5 +1,9 @@
 package com.example.swoos.service.serviceimpl;
+import com.example.swoos.exception.CustomValidationException;
+import com.example.swoos.exception.ErrorCode;
+import com.example.swoos.model.DropDownModel;
 import com.example.swoos.model.Reason;
+import com.example.swoos.repository.DropDownRepository;
 import com.example.swoos.repository.ReasonRepository;
 import com.example.swoos.service.ReasonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,8 @@ import java.util.List;
 
 @Service
 public class ReasonServiceImpl implements ReasonService {
+    @Autowired
+    DropDownRepository dropDownRepository;
     private final ReasonRepository reasonRepository;
 
     @Autowired
@@ -16,9 +22,11 @@ public class ReasonServiceImpl implements ReasonService {
         this.reasonRepository = reasonRepository;
     }
 
-    public void addReason(int rowId, String reason) {
-        Reason newReason = new Reason(rowId, reason);
-        reasonRepository.save(newReason);
+    public void addReason(long rowId, String reason) throws CustomValidationException {
+        Reason reason1 = reasonRepository.findById(rowId)
+                .orElse(new Reason());
+        reason1.setReason(reason);
+        reasonRepository.save(reason1);
     }
 
     public Reason getLastReason(int rowId) {

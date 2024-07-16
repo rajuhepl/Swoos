@@ -90,11 +90,8 @@ public class MergeFileServiceImpl implements MergeFileService {
 
     public String update(List<MergeRequestDTO> mergeRequestDTO) {
         for(MergeRequestDTO mergeRequestDTO1 :mergeRequestDTO) {
-
             Optional<MergedModel> mergedModel1 = mergedRepository.findById(mergeRequestDTO1.getMergedId());
-
             DropDownModel dropDownModel = dropDownRepository.findByDescription(mergeRequestDTO1.getReason());
-
             if (mergedModel1.isPresent()) {
                 if(dropDownModel != null) {
                     mergedModel1.get().setReason(dropDownModel.getDescription());
@@ -108,7 +105,6 @@ public class MergeFileServiceImpl implements MergeFileService {
                 mergedRepository.save(mergedModel1.get());
             }
         }
-
         return "updated";
     }
 }

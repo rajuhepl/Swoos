@@ -1,5 +1,6 @@
 package com.example.swoos.controller;
 
+import com.example.swoos.exception.CustomValidationException;
 import com.example.swoos.model.DropDownModel;
 import com.example.swoos.service.DropDownService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class DropDownController {
     }
 
     @PostMapping("/post")
-    public DropDownModel createIssue(@RequestBody DropDownModel issue) {
+    public DropDownModel createIssue(@RequestBody DropDownModel issue) throws CustomValidationException {
         return dropDownService.createIssue(issue);
     }
 
