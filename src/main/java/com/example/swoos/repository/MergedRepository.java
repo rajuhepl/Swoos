@@ -1,7 +1,8 @@
 package com.example.swoos.repository;
 
-import com.example.swoos.dto.MergedModelProjection;
+import com.example.swoos.projection.MergedModelProjection;
 import com.example.swoos.model.MergedModel;
+import com.example.swoos.projection.PlatformCount;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,10 +33,9 @@ public interface MergedRepository extends JpaRepository<MergedModel,Long> {
     List<MergedModel> getAllHistoryTrue();
     @Query("SELECT m FROM MergedModel m WHERE m.updatedAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true ORDER BY CAST(m.ValueLoss AS double) DESC")
     List<MergedModel> getAllHistoryTrue(@Param("fromDate")Timestamp fromDate,@Param("toDate")Timestamp toDate);
-    //    @Query(value = "SELECT location, SUM(loss) FROM SalesLossData GROUP BY location", nativeQuery = true)
-//    List<Object[]> findLocationWiseSalesLoss();
-@Query(value = "SELECT location, SUM(value_loss) FROM merged_model GROUP BY location", nativeQuery = true)
-List<Object[]> findLocationWiseSalesLoss();
+
+    @Query(value = "SELECT location, SUM(value_loss) FROM merged_model GROUP BY location", nativeQuery = true)
+    List<Object[]> findLocationWiseSalesLoss();
 
 
 
@@ -80,4 +80,22 @@ List<Object[]> findLocationWiseSalesLoss();
     List<Object[]> getAllPlatformProductsDate(@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
     @Query("SELECT m.Pname,m.mergedId FROM MergedModel m WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate")
     List<Object[]> findAllByPlatformsNativeDateProduct(@Param("platforms") List<String> platforms, @Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
+
+
+    @Query("SELECT m.Platform AS platform, " +
+            "       SUM(CASE WHEN m.Ahmedabad = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Bangalore = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Chennai = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Delhi = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Hyderabad = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Indore = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Calcutta = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Mumbai = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Nagpur = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Patna = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.other = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
+            "           CASE WHEN m.Pune = 'OUT-OF-STOCK' THEN 1 ELSE 0 END) AS outOfStockCount " +
+            "FROM MergedModel m " +
+            "GROUP BY m.Platform")
+    List<PlatformCount> countDataByPlatform();
 }

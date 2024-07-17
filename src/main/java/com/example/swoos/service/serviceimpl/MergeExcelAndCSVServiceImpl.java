@@ -1,8 +1,8 @@
 package com.example.swoos.service.serviceimpl;
-import com.example.swoos.dto.DataListProjection;
-import com.example.swoos.dto.HistoryDto;
+import com.example.swoos.projection.DataListProjection;
 import com.example.swoos.dto.MergedModelDto;
 import com.example.swoos.model.*;
+import com.example.swoos.projection.PlatformCount;
 import com.example.swoos.repository.*;
 import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
@@ -22,7 +22,6 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import java.net.Inet4Address;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -60,10 +59,11 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     private void mergeCSVAndExcelData(List<CSVModel> csvData, Map<String, List<ExcelModel>> excelDataMap) {
         List<MergedModel> mergedList = new ArrayList<>();
         List<MergedModel> discontinued = mergedRepository.findAllDiscontinuedOrLocationNotAlign();
+        List<DataListProjection> dataList = excelRepository.findByTriggeredOnTodayProjection();
         for (CSVModel csvModel : csvData) {
             List<ExcelModel> excelModels = excelDataMap.get(csvModel.getMainSKUCode());
             if (excelModels!= null) {
-                MergedModel mergedModel = createMergedModel(csvModel, excelModels,discontinued);
+                MergedModel mergedModel = createMergedModel(csvModel, excelModels,discontinued,dataList);
                 if (!mergedModel.getValueLoss().equals("0.00")) {
                     mergedList.add(mergedModel);
                 }
@@ -97,65 +97,35 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
 
     }
     public PlatformAndValueloss platformAndValueloss() {
-        List<MergedModel> mergedList = mergedRepository.findAll();
-        Map<String, Integer> outOfStockCounts = countOutOfStockByPlatform(mergedList);
+        // Fetch platform counts from repository
+        List<PlatformCount> platformCounts = mergedRepository.countDataByPlatform();
 
-        PlatformAndValueloss platformAndValueloss = new PlatformAndValueloss();
-        List<Platform> national = new ArrayList<>();
-        List<Platform> beauty = new ArrayList<>();
-        List<Platform> grocery = new ArrayList<>();
-        List<Platform> quickComm = new ArrayList<>();
+        // Initialize maps for different categories
+        Map<String, Long> nationalMap = new HashMap<>();
+        Map<String, Long> quickComMap = new HashMap<>();
+        Map<String, Long> groceryMap = new HashMap<>();
+        Map<String, Long> beautyMap = new HashMap<>();
 
-        Map<String, Double> platformValueLossMap = calculatePlatformValueLoss(mergedList);
-        savePlatforms(platformValueLossMap, outOfStockCounts, national, beauty, grocery, quickComm);
+        // Populate maps based on platform counts
+        for (PlatformCount platformCount : platformCounts) {
+            String platform = platformCount.getPlatform().toLowerCase(); // normalize platform name
 
-        platformAndValueloss.setNational(national);
-        platformAndValueloss.setBeauty(beauty);
-        platformAndValueloss.setGrocery(grocery);
-        platformAndValueloss.setQuickCom(quickComm);
-
-        double flipkartValueLoss = platformValueLossMap.getOrDefault(Constant.FLIPKART  , 0.0);
-        double amazonValueLoss = platformValueLossMap.getOrDefault(Constant.AMAZON  , 0.0);
-        double totalFlipkartAmazon = flipkartValueLoss + amazonValueLoss;
-
-        platformAndValueloss.setTotalFlipkartAmazon(totalFlipkartAmazon);
-        platformAndValueloss.setFlipkartPercentage(calculatePercentage(flipkartValueLoss, totalFlipkartAmazon));
-        platformAndValueloss.setAmazonPercentage(calculatePercentage(amazonValueLoss, totalFlipkartAmazon));
-        platformAndValueloss.setCountAmazon(outOfStockCounts.getOrDefault(Constant.AMAZON  , 0));
-        platformAndValueloss.setCountFlipkart(outOfStockCounts.getOrDefault(Constant.FLIPKART  , 0));
-
-        return platformAndValueloss;
-    }
-
-
-    private Map<String, Double> calculatePlatformValueLoss(List<MergedModel> mergedList) {
-        return mergedList.stream()
-                .collect(Collectors.groupingBy(
-                        MergedModel::getPlatform,
-                        Collectors.summingDouble(model -> Double.parseDouble(model.getValueLoss()))
-                ));
-    }
-
-    private void savePlatforms(Map<String, Double> platformValueLossMap, Map<String, Integer> outOfStockCounts,
-                               List<Platform> national, List<Platform> beauty, List<Platform> grocery, List<Platform> quickComm) {
-        platformValueLossMap.forEach((platformName, totalValueLoss) -> {
-            Platform platform = platformRepository.findByName(platformName);
-            if (platform == null) {
-                platform = new Platform();
-                platform.setName(platformName);
+            if (platform.equalsIgnoreCase("amazon") || platform.equalsIgnoreCase("flipkart")) {
+                nationalMap.put(platform, platformCount.getOutOfStockCount());
+            } else if (platform.equalsIgnoreCase("zepto") || platform.equalsIgnoreCase("blinkit")) {
+                quickComMap.put(platform, platformCount.getOutOfStockCount());
+            } else if (platform.equalsIgnoreCase("bigbasket")) {
+                groceryMap.put(platform, platformCount.getOutOfStockCount());
+            } else if (platform.equalsIgnoreCase("purplle")) {
+                beautyMap.put(platform, platformCount.getOutOfStockCount());
             }
+            // Add more conditions as needed for other categories
+        }
 
-            platform.setValueLoss(totalValueLoss);
-            platform.setOutOfStockCount(outOfStockCounts.getOrDefault(platformName, 0));
-
-            double percentage = calculateCategoryPercentage(platformName, platformValueLossMap);
-            platform.setPercentage(percentage);
-
-            platformRepository.save(platform);
-
-            categorizePlatform(platform, national, beauty, grocery, quickComm);
-        });
+        // Create and return PlatformAndValueloss object with populated maps
+        return new PlatformAndValueloss(nationalMap, quickComMap, groceryMap, beautyMap);
     }
+
 
     private double calculateCategoryPercentage(String platformName, Map<String, Double> platformValueLossMap) {
         double totalCategoryLoss = platformValueLossMap.entrySet().stream()
@@ -243,7 +213,8 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
 
     private MergedModel createMergedModel(CSVModel csvModel,
                                           List<ExcelModel> excelModels,
-                                          List<MergedModel> discontinued) {
+                                          List<MergedModel> discontinued,
+                                          List<DataListProjection> dataList) {
         MergedModel mergedModel = new MergedModel();
         ExcelModel firstExcelModel = excelModels.get(0);
 
@@ -309,7 +280,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                         (existing, replacement) -> existing.getUpdatedAt().after(replacement.getUpdatedAt()) ? existing : replacement
                 ));
 
-        latestDiscontinuedMap.values().stream()
+    latestDiscontinuedMap.values().stream()
                 .filter(disCont -> mergedModel.getAsin().equalsIgnoreCase(disCont.getAsin()))
                 .findFirst()
                 .ifPresent(disCont -> {
@@ -329,7 +300,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                         }
                     }
                 });
-
+        locationsModel(mergedModel,dataList);
         return mergedModel;
     }
 
@@ -550,13 +521,94 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
 
             otherCities.forEach(otherCity -> {
                 if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
-                    locations.put(otherCity, data.getLocation());
+                    locations.put(otherCity , data.getLocation());
                 }
             });
         });
-
         return Map.of("location", locations);
     }
+    //For Testing
+    public void locationsModel(MergedModel mergedModels,List<DataListProjection> dataList){
+
+        Map<String, String> stockStatusMap = new HashMap<>();
+        stockStatusMap.put("ahmedabad", mergedModels.getAhmedabad());
+        stockStatusMap.put("bangalore", mergedModels.getBangalore());
+        stockStatusMap.put("indore", mergedModels.getIndore());
+        stockStatusMap.put("chennai", mergedModels.getChennai());
+        stockStatusMap.put("delhi", mergedModels.getDelhi());
+        stockStatusMap.put("hyderabad", mergedModels.getHyderabad());
+        stockStatusMap.put("calcutta", mergedModels.getCalcutta());
+        stockStatusMap.put("mumbai", mergedModels.getMumbai());
+        stockStatusMap.put("nagpur", mergedModels.getNagpur());
+        stockStatusMap.put("patna", mergedModels.getPatna());
+        stockStatusMap.put("pune", mergedModels.getPune());
+
+        List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
+
+        Map<String, String> locations = new HashMap<>();
+        dataList.forEach(data -> {
+            String city = data.getCity().toLowerCase();
+            stockStatusMap.forEach((key, value) -> {
+                if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
+                    locations.put(key, data.getLocation());
+                }
+            });
+
+            otherCities.forEach(otherCity -> {
+                if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
+                    locations.put(otherCity , data.getLocation());
+                }
+            });
+        });
+        mergedModels.setLocation(saveLocationCode(locations));
+    }
+    @Autowired
+    private LocationCodeRepository locationCodeRepository;
+    private LocationWithStatusCode saveLocationCode(Map<String, String> locations) {
+        LocationWithStatusCode location = new LocationWithStatusCode();
+        Map<String,String> others = new HashMap<>();
+        locations.forEach((key, value) -> {
+            switch (key.toLowerCase()) {
+                case "ahmedabad":
+                    location.setAhmedabad(value);
+                    break;
+                case "bangalore":
+                    location.setBangalore(value);
+                    break;
+                case "chennai":
+                    location.setChennai(value);
+                    break;
+                case "delhi":
+                    location.setDelhi(value);
+                    break;
+                case "hyderabad":
+                    location.setHyderabad(value);
+                    break;
+                case "indore":
+                    location.setIndore(value);
+                    break;
+                case "mumbai":
+                    location.setMumbai(value);
+                    break;
+                case "nagpur":
+                    location.setNagpur(value);
+                    break;
+                case "patna":
+                    location.setPatna(value);
+                    break;
+                case "pune":
+                    location.setPune(value);
+                    break;
+                default :
+                    others.put(key, value);
+                    break;
+            }
+        });
+        location.setOtherCities(others.toString());
+//       LocationWithStatusCode savedLocation = locationCodeRepository.save(location);
+       return locationCodeRepository.save(location);
+    }
+
 /*    private String capitalizeFirstLetter(String input) {
         if (input == null || input.isEmpty()) {
             return input;
@@ -567,8 +619,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     @Autowired
     ExcelWriterServiceImpl excelWriterService ;
 
-    public SuccessResponse<Object> readHistoryTrue(HttpServletResponse response) {
-        SuccessResponse<Object> successResponse = new SuccessResponse<>();
+    public List<MergedModelDto> readHistoryTrue(HttpServletResponse response) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime twentyFourHoursAgo = now.minusHours(24);
         Timestamp fromDate = Timestamp.valueOf(twentyFourHoursAgo);
@@ -577,9 +628,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         List<MergedModelDto> mergedModelDtos = mergedModels.stream()
                 .map(this::convertToDto)
                 .toList();
-        successResponse.setStatusCode(200);
-        successResponse.setData(mergedModelDtos);
-        return successResponse;
+        return mergedModelDtos;
     }
 
 
@@ -649,19 +698,19 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         Timestamp from = Timestamp.valueOf(fromDateTime);
         LocalDateTime endDate = LocalDateTime.of(fromDate, LocalTime.MAX);
         Timestamp to = Timestamp.valueOf(endDate);
-        List<DataListProjection> dataList = excelRepository.findByTriggeredOnTodayProjection();
+//        List<DataListProjection> dataList = excelRepository.findByTriggeredOnTodayProjection();
         Page<MergedModel> mergedModelList = null;
         if (searchTerm==null) {
             mergedModelList = mergedRepository.findAllOrderByValueLossDescPageable(from,to,pageable);
         }else{
             mergedModelList = mergedModelRepositoryCustom.findAllOrderByValueLossDescPageable(field,searchTerm,pageable);
         }
-        List<MergedModelDto> mergedModels = mergedModelList.getContent().stream()
+     /*   List<MergedModelDto> mergedModels = mergedModelList.getContent().stream()
                 .map(mergedModel -> modelMapper.map(mergedModel, MergedModelDto.class))
-                .toList();
-        mergedModels.forEach(mergedModelDto ->
-                mergedModelDto.setStockStatus(locations(mergedModelDto,dataList)));
-        response.setData(mergedModels);
+                .toList();*/
+     /*   mergedModels.forEach(mergedModelDto ->
+                mergedModelDto.setStockStatus(locations(mergedModelDto,dataList)));*/
+        response.setData(mergedModelList.getContent());
         response.setHasPrevious(mergedModelList.hasPrevious());
         response.setTotalRecordCount(mergedModelList.getTotalElements());
         response.setHasNext(mergedModelList.hasNext());

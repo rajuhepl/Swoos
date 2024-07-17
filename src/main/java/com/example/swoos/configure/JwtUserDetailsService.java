@@ -1,5 +1,6 @@
 package com.example.swoos.configure;
 
+import com.example.swoos.exception.ApplicationException;
 import com.example.swoos.model.User;
 import com.example.swoos.service.Authservice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ public class JwtUserDetailsService implements UserDetailsService {
         try {
             user = authService.getUser(username);
         } catch (Exception e) {
-            throw new RuntimeException(String.valueOf(e.getMessage()));
+            throw new ApplicationException(String.valueOf(e.getMessage()));
         }
-        List<GrantedAuthority> listRole = new ArrayList<GrantedAuthority>();
+        List<GrantedAuthority> listRole = new ArrayList<>();
 
         return new org.springframework.security.core.userdetails.User
                 (user.getUsername(), user.getPassword(), listRole);

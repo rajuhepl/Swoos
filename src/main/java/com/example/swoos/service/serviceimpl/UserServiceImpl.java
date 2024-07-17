@@ -2,6 +2,9 @@ package com.example.swoos.service.serviceimpl;
 
 import com.example.swoos.configure.UserContextHolder;
 import com.example.swoos.dto.*;
+import com.example.swoos.exception.ApplicationException;
+import com.example.swoos.exception.CustomValidationException;
+import com.example.swoos.exception.ErrorCode;
 import com.example.swoos.model.MasterRole;
 import com.example.swoos.model.User;
 import com.example.swoos.model.UserProfile;
@@ -9,11 +12,9 @@ import com.example.swoos.repository.ColumnRepository;
 import com.example.swoos.repository.MasterRoleRepository;
 import com.example.swoos.repository.UserRepository;
 import com.example.swoos.response.PageResponse;
-import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.response.UserSignUpRequest;
 import com.example.swoos.service.UserService;
 import com.example.swoos.util.Constant;
-import jakarta.persistence.Column;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,62 +36,66 @@ public class UserServiceImpl implements UserService {
     MasterRoleRepository masterRoleRepository;
     @Autowired
     ModelMapper modelMapper;
+    @Autowired
+    private ColumnRepository columnRepository;
 
     @Override
-    public SuccessResponse<Object> userSignup(UserSignUpRequest userSignUpRequest) throws RuntimeException {
-        SuccessResponse<Object> successResponse = null;
-            successResponse = new SuccessResponse();
-             User user = new User();
-            if (Objects.nonNull(userSignUpRequest)) {
-                User users = null;
-                Optional<User> savedUser = userRepository.findByEmail(userSignUpRequest.getEmail());
-                if (savedUser.isPresent()) {
-                    throw new RuntimeException("Mail Already exists");
-                }
-
-                List<User> usersPresented = userRepository.findAll();
-                MasterRole role;
-                if (usersPresented.isEmpty()) {
-                    role = masterRoleRepository.findByRoleName("Admin");
-                } else {
-                    role = masterRoleRepository.findByRoleName("Employee");
-                }
-
-                if (Objects.isNull(userSignUpRequest.getId())) {
-                    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-                    user.setUsername(userSignUpRequest.getUsername());
-                    user.setApplicationRole(role);
-                    user.setEmail(userSignUpRequest.getEmail());
-                    user.setDob(userSignUpRequest.getDob());
-                    user.setMobileNumber(userSignUpRequest.getMobileNumber());
-                    user.setFirstName(userSignUpRequest.getFirstName());
-                    user.setLastName(userSignUpRequest.getLastName());
-                    user.setActive(userSignUpRequest.isActive());
-                    user.setDeleteFlag(!userSignUpRequest.isActive());
-                    user.setPassword(bCryptPasswordEncoder.encode(userSignUpRequest.getPassword()));
-                    user.setOgPassword(userSignUpRequest.getPassword());
-                    userRepository.save(user);
-                    successResponse.setData(Constant.USER_CREATED_SUCCESSFULLY);
-                    log.info("user created");
-                } else {
-                    users = userRepository.findById(userSignUpRequest.getId()).orElseThrow(()->new RuntimeException("User not found"));
-                    users.setUsername(userSignUpRequest.getUsername());
-                    if (userSignUpRequest.getApplicationRole().getId() > 0L) {
-                       masterRoleRepository.findById(userSignUpRequest.getApplicationRole().getId())
-                               .ifPresent(users::setApplicationRole);
-
-                    }
-                    users.setEmail(userSignUpRequest.getEmail());
-                    users.setDob(userSignUpRequest.getDob());
-                    users.setMobileNumber(userSignUpRequest.getMobileNumber());
-                    users.setFirstName(userSignUpRequest.getFirstName());
-                    users.setLastName(userSignUpRequest.getLastName());
-                    users.setActive(userSignUpRequest.isActive());
-                    users.setDeleteFlag(!userSignUpRequest.isActive());
-                    this.userRepository.save(users);
-                    successResponse.setData(Constant.USER_CREATED_SUCCESSFULLY);
-                }
+    public String userSignup(UserSignUpRequest userSignUpRequest) throws CustomValidationException {
+         User user = new User();
+        if (Objects.nonNull(userSignUpRequest)) {
+            User users = null;
+            Optional<User> savedUser = userRepository.findByEmail(userSignUpRequest.getEmail());
+            if (savedUser.isPresent()) {
+                throw new CustomValidationException(ErrorCode.CAP_1018);
             }
+            List<User> usersPresented = userRepository.findAll();
+            MasterRole role;
+            if (usersPresented.isEmpty()) {
+                role = masterRoleRepository.findByRoleName("Admin");
+            } else {
+                role = masterRoleRepository.findByRoleName("Employee");
+            }
+
+            if (Objects.isNull(userSignUpRequest.getId())) {
+                BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+                user.setUsername(userSignUpRequest.getUsername());
+                user.setApplicationRole(role);
+                user.setEmail(userSignUpRequest.getEmail());
+                user.setDob(userSignUpRequest.getDob());
+                user.setMobileNumber(userSignUpRequest.getMobileNumber());
+                user.setFirstName(userSignUpRequest.getFirstName());
+                user.setLastName(userSignUpRequest.getLastName());
+                user.setActive(userSignUpRequest.isActive());
+                user.setDeleteFlag(!userSignUpRequest.isActive());
+                user.setPassword(bCryptPasswordEncoder.encode(userSignUpRequest.getPassword()));
+                user.setOgPassword(userSignUpRequest.getPassword());
+                userRepository.save(user);
+                log.info("user created");
+
+            } else {
+                users = userRepository.findById(userSignUpRequest.getId()).orElseThrow(()->new RuntimeException("User not found"));
+                users.setUsername(userSignUpRequest.getUsername());
+                if (userSignUpRequest.getApplicationRole().getId() > 0L) {
+                   masterRoleRepository.findById(userSignUpRequest.getApplicationRole().getId())
+                           .ifPresent(users::setApplicationRole);
+
+                }
+                users.setEmail(userSignUpRequest.getEmail());
+                users.setDob(userSignUpRequest.getDob());
+                users.setMobileNumber(userSignUpRequest.getMobileNumber());
+                users.setFirstName(userSignUpRequest.getFirstName());
+                users.setLastName(userSignUpRequest.getLastName());
+                users.setActive(userSignUpRequest.isActive());
+                users.setDeleteFlag(!userSignUpRequest.isActive());
+                this.userRepository.save(users);
+            }
+        }
+        final var userProfile = getUserProfile(user);
+        columnRepository.save(userProfile);
+        return Constant.USER_CREATED_SUCCESSFULLY;
+    }
+
+    private static UserProfile getUserProfile(User user) {
         UserProfile userProfile = new UserProfile();
         userProfile.setAsin(true);
         userProfile.setBrand(true);
@@ -121,75 +126,31 @@ public class UserServiceImpl implements UserService {
         userProfile.setSwooscontribution(true);
         userProfile.setSwoosPercentage(true);
         userProfile.setUser(user);
-        columnRepository.save(userProfile);
-        return successResponse;
-
-    }
-    @Autowired
-    private ColumnRepository columnRepository;
-
-    private void setRole(UserSignUpRequest userSignUpRequest, User user) {
-        if (userSignUpRequest.getApplicationRole().getId()>0) {
-            Optional<MasterRole> masterRole = masterRoleRepository.findById
-                    (userSignUpRequest.getApplicationRole().getId());
-            if (masterRole.isPresent()) {
-                user.setApplicationRole(masterRole.get());
-
-            } else {
-                MasterRole masterRole1 = new MasterRole();
-                masterRole1.setId(userSignUpRequest.getApplicationRole().getId());
-                masterRole1.setRoleName(userSignUpRequest.getApplicationRole().getRoleName());
-                masterRole1.setActive(true);
-                masterRole1.setDeletedFlag(false);
-                masterRoleRepository.save(masterRole1);
-                user.setApplicationRole(masterRole1);
-            }
-        }
-    }
-
-    private static void setActive(UserSignUpRequest userSignUpRequest, User user) {
-        user.setActive(userSignUpRequest.isActive());
-        user.setDeleteFlag(!userSignUpRequest.isActive());
-    }
-
-    @Override
-    public SuccessResponse<Object> getUserById(String id) {
-
-        SuccessResponse<Object> response = new SuccessResponse<>();
-        try {
-            if (Objects.nonNull(id)) {
-                Optional<User> user = userRepository.findById(Long.valueOf(id));
-                if (user.isPresent()) {
-                    UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-
-                    Optional<MasterRole> masterRole = masterRoleRepository.findById(user.get().getApplicationRole().getId());
-                    if (masterRole.isPresent()){
-                        MasterRoleDTO masterRoleDTO = new MasterRoleDTO();
-                        masterRoleDTO.setId(masterRole.get().getId());
-                        masterRoleDTO.setRoleName(masterRole.get().getRoleName());
-                        masterRoleDTO.setIsActive(masterRole.get().isActive());
-                        userDTO.setApplicationRole(masterRoleDTO);
-                    }
-
-                    response.setStatusCode(200);
-                    response.setStatusMessage("success");
-                    response.setData(userDTO);
-                }
-            } else {
-                response.setStatusCode(500);
-                response.setStatusMessage("Data Not Found");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return response;
+        return userProfile;
     }
 
 
     @Override
-    public PageResponse<Object> getAllUser(Integer pageNo) {
+    public UserDTO getUserById(String id) {
+        User user = userRepository.findById(Long.valueOf(id))
+                .orElseThrow(()->new ApplicationException("User not found"));
+        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+        Optional<MasterRole> masterRole = masterRoleRepository.findById(user.getApplicationRole().getId());
+        if (masterRole.isPresent()){
+            MasterRoleDTO masterRoleDTO = new MasterRoleDTO();
+            masterRoleDTO.setId(masterRole.get().getId());
+            masterRoleDTO.setRoleName(masterRole.get().getRoleName());
+            masterRoleDTO.setIsActive(masterRole.get().isActive());
+            userDTO.setApplicationRole(masterRoleDTO);
+        }
+        return userDTO;
+    }
 
-        PageResponse<Object> pageResponse = new PageResponse<>();
+
+    @Override
+    public PageResponse<List<UserResponseDTO>> getAllUser(Integer pageNo) {
+
+        PageResponse<List<UserResponseDTO>> pageResponse = new PageResponse<>();
         Pageable pageable = PageRequest.of(pageNo - 1, 15);
         List<UserResponseDTO> userDTOS = new LinkedList<>();
 

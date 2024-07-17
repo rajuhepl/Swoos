@@ -1,5 +1,6 @@
 package com.example.swoos.service;
 
+import com.example.swoos.dto.MergedModelDto;
 import com.example.swoos.model.MergedModel;
 import com.example.swoos.model.PlatformAndValueloss;
 import com.example.swoos.response.PageResponse;
@@ -15,7 +16,7 @@ public interface MergeExcelAndCSVService {
     PageResponse<Object> getMergedModel(int pageSize, int pageNo, LocalDate fromDate, String field,
                                         String searchTerm);
 
-    SuccessResponse<Object> readHistoryTrue(HttpServletResponse response);
+    List<MergedModelDto> readHistoryTrue(HttpServletResponse response);
 
     Map<String, Map<String, String>> locations(long id);
 

@@ -22,11 +22,12 @@ public class ReasonServiceImpl implements ReasonService {
         this.reasonRepository = reasonRepository;
     }
 
-    public void addReason(long rowId, String reason) throws CustomValidationException {
+    public String addReason(long rowId, String reason) throws CustomValidationException {
         Reason reason1 = reasonRepository.findById(rowId)
                 .orElse(new Reason());
         reason1.setReason(reason);
         reasonRepository.save(reason1);
+        return "Reason Added";
     }
 
     public Reason getLastReason(int rowId) {

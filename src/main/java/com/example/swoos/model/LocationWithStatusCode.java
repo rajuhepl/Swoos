@@ -1,5 +1,6 @@
 package com.example.swoos.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="location_with_status_code")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LocationWithStatusCode {
 
     @Id
@@ -14,25 +16,25 @@ public class LocationWithStatusCode {
     @Column(name = "location_id")
     private Long locationId;
     @Column(name = "ahmedabad")
-    private String Ahmedabad;
+    private String ahmedabad;
     @Column(name = "bangalore")
-    private String Bangalore;
+    private String bangalore;
     @Column(name = "chennai")
-    private String Chennai;
+    private String chennai;
     @Column(name = "delhi")
-    private String Delhi;
+    private String delhi;
     @Column(name = "hyderabad")
-    private String Hyderabad;
+    private String hyderabad;
     @Column(name = "indore")
-    private String Indore;
-    @Column(name = "kolkata")
-    private String Kolkata;
+    private String indore;
     @Column(name = "mumbai")
-    private String Mumbai;
+    private String mumbai;
     @Column(name = "nagpur")
-    private String Nagpur;
+    private String nagpur;
     @Column(name = "patna")
-    private String Patna;
+    private String patna;
     @Column(name = "pune")
-    private String Pune;
+    private String pune;
+    @Column(name = "others")
+    private String otherCities;
 }

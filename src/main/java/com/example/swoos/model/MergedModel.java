@@ -1,5 +1,6 @@
 package com.example.swoos.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import lombok.Data;
@@ -69,9 +70,10 @@ public class MergedModel {
     private Timestamp createAt;
     @UpdateTimestamp
     private Timestamp updatedAt;
-    private String location;
+    @OneToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "location_id")
+    private LocationWithStatusCode location;
     private LocalDateTime date;
-//    @UserProfile(name = "history_flag")
     private boolean historyFlag;
 }
 

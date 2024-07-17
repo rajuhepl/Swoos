@@ -8,11 +8,9 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-//@Table(name = "data",schema = "swoos",catalog = "citpl_sales")
 @Table(name ="data")
 public class ExcelModel {
     @Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long excelId;
 

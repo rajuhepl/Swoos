@@ -125,27 +125,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             throw new ServletException(e.getMessage());
         }
     }
-//    private void processJwtToken(String jwtToken, HttpServletRequest request) throws ServletException {
-//        try {
-//            String username = getUsernameFromJwtToken(jwtToken);
-//            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-//                User user = authservice.getUser(username);
-//                if (user != null) {
-//                    UserDetails userDetails = createUserDetails(username, user.getPassword());
-//                    if (Boolean.TRUE.equals(jwtTokenUtil.validateToken(jwtToken, userDetails))) {
-//                        authenticateWithJwtToken(userDetails, request);
-//                    } else {
-//                        throw new ServletException("Access Token is invalid");
-//                    }
-//                }
-//            }
-//        } catch (ExpiredJwtException e) {
-//            logger.warn("Access Token has expired: " + e.getMessage());
-//            throw new ServletException("Access Token has expired");
-//        } catch (Exception e) {
-//            throw new ServletException(e.getMessage());
-//        }
-//    }
 
     private String getUsernameFromJwtToken(String jwtToken) throws JsonProcessingException {
         DecodeTokenDTO dto = extractTokenDto(jwtToken);
@@ -259,12 +238,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (request.getRequestURI().startsWith("/create")) {
             return true;
         }
-        if (request.getRequestURI().startsWith("/update")) {
-            return true;
-        }
-        return false;
+        return request.getRequestURI().startsWith("/update");
     }
-
 
 }
 

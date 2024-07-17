@@ -1,10 +1,9 @@
 package com.example.swoos.service.serviceimpl;
 
 import com.example.swoos.dto.DashboardCalcDto;
-import com.example.swoos.dto.MergedModelProjection;
+import com.example.swoos.projection.MergedModelProjection;
 import com.example.swoos.dto.ProductDto;
 import com.example.swoos.repository.MergedRepository;
-import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.service.DashboardService;
 import com.example.swoos.util.Constant;
 import org.modelmapper.ModelMapper;
@@ -26,20 +25,18 @@ public class DashboardServiceImpl implements DashboardService {
     @Autowired
     private ModelMapper modelMapper;
     @Override
-    public SuccessResponse<Object> getDashboardCalculation(String platform,
+    public DashboardCalcDto getDashboardCalculation(String platform,
                                                            String channel,
                                                            long productId,
                                                            LocalDate from,
                                                            LocalDate to) {
-        SuccessResponse<Object> response = new SuccessResponse<>();
         DashboardCalcDto calcDto;
         List<MergedModelProjection> mergedModels ;
             if(productId!=0){
                 mergedModels = mergedRepository.findByIdProduct(productId);
                 calcDto = swoosLoss(mergedModels);
                 calcDto.setSwoosContribution(mergedModels.get(0).getSWOOSContribution());
-                response.setData(calcDto);
-                return response;
+                return calcDto;
             }
         if (from == null&&to == null) {
             mergedModels = datesNotPresented(platform, channel);
@@ -47,24 +44,22 @@ public class DashboardServiceImpl implements DashboardService {
             mergedModels = datesPresented(platform, channel, from, to);
         }
         assert mergedModels != null;
-        response.setData(swoosLoss(mergedModels));
-        return response;
+        return swoosLoss(mergedModels);
     }
 
 
     @Override
-    public SuccessResponse<Object> getProductList(String platform,
+    public List<ProductDto> getProductList(String platform,
                                                   String channel,
                                                   LocalDate fromDate,
                                                   LocalDate toDate) {
-        SuccessResponse<Object> response = new SuccessResponse<>();
         List<Object[]> mergedModels;
         if (fromDate == null&&toDate == null) {
             mergedModels = datesNotPresentedGetProducts(platform, channel);
         }else{
             mergedModels = datesPresentedGetProducts(platform, channel, fromDate, toDate);
         }
-        List<ProductDto> products = mergedModels.stream()
+        return mergedModels.stream()
                 .map(mergedModel -> {
                     ProductDto productDto = new ProductDto();
                     productDto.setProductName((String) mergedModel[0]);
@@ -72,9 +67,6 @@ public class DashboardServiceImpl implements DashboardService {
                     return productDto;
                 })
                 .toList();
-        response.setData(products);
-
-        return response;
     }
 
     private List<Object[]> datesNotPresentedGetProducts(String platform, String channel) {

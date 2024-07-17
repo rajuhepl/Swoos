@@ -1,4 +1,4 @@
-package com.example.swoos.dto;
+package com.example.swoos.projection;
 
 public interface DataListProjection {
     String getCity();

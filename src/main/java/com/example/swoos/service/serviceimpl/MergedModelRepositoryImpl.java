@@ -35,8 +35,6 @@ public class MergedModelRepositoryImpl implements MergedModelRepositoryCustom {
             countQueryStr += " AND LOWER(m." + field + ") LIKE :searchTerm";
         }
 
-//        baseQuery += " ORDER BY CAST(m.ValueLoss AS double) DESC";
-
         TypedQuery<MergedModel> query = entityManager.createQuery(baseQuery, MergedModel.class);
         if (searchTerm != null && !searchTerm.isEmpty()) {
             query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");

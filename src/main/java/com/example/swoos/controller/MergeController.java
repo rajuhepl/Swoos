@@ -1,6 +1,7 @@
 package com.example.swoos.controller;
 
 import com.example.swoos.dto.MergeRequestDTO;
+import com.example.swoos.dto.MergedModelDto;
 import com.example.swoos.service.MergeExcelAndCSVService;
 import com.example.swoos.service.MergeFileService;
 import com.example.swoos.service.SalesLossService;
@@ -49,8 +50,8 @@ public class MergeController {
     }
 
     @GetMapping("/historyTrue")
-    public SuccessResponse<Object> historyTrue(HttpServletResponse response){
-        return mergeExcelAndCSVService.readHistoryTrue(response);
+    public ResponseEntity<List<MergedModelDto>> historyTrue(HttpServletResponse response){
+        return ResponseEntity.ok(mergeExcelAndCSVService.readHistoryTrue(response));
     }
 
     @PostMapping("/update")
@@ -68,6 +69,4 @@ public class MergeController {
     public PlatformAndValueloss getPlatform(){
         return mergeExcelAndCSVService.platformAndValueloss();
     }
-
-
 }

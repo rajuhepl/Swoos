@@ -2,13 +2,18 @@ package com.example.swoos.controller;
 
 import com.example.swoos.dto.ColumnDto;
 import com.example.swoos.dto.PasswordUpdateDTO;
+import com.example.swoos.dto.UserDTO;
+import com.example.swoos.dto.UserResponseDTO;
 import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.response.UserSignUpRequest;
 import com.example.swoos.service.UserService;
 import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -17,17 +22,17 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/userSignup")
-    public SuccessResponse<Object> userSignup(@RequestBody UserSignUpRequest userSignUpRequest) throws Exception {
-        return userService.userSignup(userSignUpRequest);
+    public ResponseEntity<String> userSignup(@RequestBody UserSignUpRequest userSignUpRequest) throws Exception {
+        return ResponseEntity.ok(userService.userSignup(userSignUpRequest));
     }
 
     @GetMapping("/getUserById")
-    public SuccessResponse<Object> getUserById(@RequestParam(value = "id") String id) {
-        return userService.getUserById(id);
+    public ResponseEntity<UserDTO> getUserById(@RequestParam(value = "id") String id) {
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @GetMapping("/getAllUser")
-    public PageResponse<Object> getAllUser(@RequestParam(value = "pageNo") int pageNo){
+    public PageResponse<List<UserResponseDTO>> getAllUser(@RequestParam(value = "pageNo") int pageNo){
         return userService.getAllUser(pageNo);
     }
 

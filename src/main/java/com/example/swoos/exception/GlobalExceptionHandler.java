@@ -13,6 +13,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private static final String ERROR = "Oops!";
+    @ExceptionHandler({ApplicationException.class})
+    public ResponseEntity<ErrorMessage> handleCustomException(ApplicationException ex) {
+        log.error(ERROR, ex);
+        ErrorHandle errorHandle = ErrorCode.CAP_1001;
+        ErrorMessage errorMessage = new ErrorMessage();
+        errorMessage.setErrorCode(errorHandle.getErrorCode());
+        errorMessage.setMessage(ex.getMessage());
+        return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 
     @ExceptionHandler(value = CustomValidationException.class)

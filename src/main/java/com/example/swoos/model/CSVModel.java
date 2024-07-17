@@ -7,11 +7,9 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-//@Table(name = "ecom_offtake",schema = "swoos",catalog = "citpl_sales")
 @Table(name ="ecom_offtake")
 public class CSVModel {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long csvId;
 
@@ -41,7 +39,5 @@ public class CSVModel {
 
     @Column(name = "triggeredon")
     private LocalDateTime triggeredOn;
-//    @UserProfile(name ="contribution")
-//    private String Contribution;
 
 }

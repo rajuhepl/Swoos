@@ -4,7 +4,7 @@ import com.example.swoos.exception.CustomValidationException;
 import com.example.swoos.model.Reason;
 
 public interface ReasonService {
-    void addReason(long rowId, String reason) throws CustomValidationException;
+    String addReason(long rowId, String reason) throws CustomValidationException;
 
     Reason getLastReason(int rowId);
 
