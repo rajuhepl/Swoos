@@ -1,5 +1,6 @@
 package com.example.swoos.controller;
 
+import com.example.swoos.exception.CustomValidationException;
 import com.example.swoos.model.Reason;
 import com.example.swoos.service.ReasonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class ReasonController {
     }
 
     @PostMapping("/add")
-    public String addReason(@RequestParam int rowId, @RequestParam String reason) {
+    public String addReason(@RequestParam int rowId, @RequestParam String reason) throws CustomValidationException {
        return reasonService.addReason(rowId, reason);
     }
 
