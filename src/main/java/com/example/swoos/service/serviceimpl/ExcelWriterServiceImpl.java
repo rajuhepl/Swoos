@@ -1,4 +1,6 @@
 package com.example.swoos.service.serviceimpl;
+import com.example.swoos.exception.CustomValidationException;
+import com.example.swoos.exception.ErrorCode;
 import com.example.swoos.model.MergedModel;
 import com.example.swoos.repository.MergedRepository;
 import com.example.swoos.response.SuccessResponse;
@@ -17,7 +19,7 @@ import java.util.List;
 public class ExcelWriterServiceImpl implements ExcelService {
     @Autowired
     private MergedRepository mergedRepository;
-    public SuccessResponse<Object> historyToExcel(HttpServletResponse response) {
+    public SuccessResponse<Object> historyToExcel(HttpServletResponse response) throws CustomValidationException {
         try {
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime twentyFourHoursAgo = now.minusHours(24);
@@ -25,7 +27,7 @@ public class ExcelWriterServiceImpl implements ExcelService {
             Timestamp toDate = Timestamp.valueOf(now);
             List<MergedModel> mergedModels = mergedRepository.getAllHistoryTrue(fromDate, toDate);
             if (mergedModels.isEmpty()) {
-                throw new RuntimeException("No data found in the specified date range.");
+                throw new CustomValidationException(ErrorCode.CAP_10019);
             }
             Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet("Merged Data");
@@ -101,7 +103,9 @@ public class ExcelWriterServiceImpl implements ExcelService {
             successResponse.setStatusCode(200);
             return successResponse;
         } catch (IOException e) {
-            throw new RuntimeException("Failed to write Excel file.", e);
+            throw new CustomValidationException(ErrorCode.CAP_1020);
+        } catch (CustomValidationException e) {
+            throw new CustomValidationException(ErrorCode.CAP_1020);
         }
     }
 }

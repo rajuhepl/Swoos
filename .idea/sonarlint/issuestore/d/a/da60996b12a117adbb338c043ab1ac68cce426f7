@@ -1,13 +1,12 @@
 
 ~
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$7f53d47b-a432-443f-bb8b-d678709693bc
-~	java:S125&"<This block of commented-out lines of code should be removed.(ëØÔğ8ëä‰2J$36bd7e14-61cd-48dd-8a71-9648aa71dc64
-m	java:S106?"+Replace this use of System.out by a logger.(Í¤¯Î8Ÿ®åä‰2J$4c5d38b9-9eab-4c16-aa99-f6b18ef3183f
-m	java:S106@"+Replace this use of System.out by a logger.(Æ‡ĞŠ8¡®åä‰2J$29e44fbf-26b5-4cb3-908a-8655f92b08c3
-r	java:S106A"+Replace this use of System.out by a logger.(×Êªìûÿÿÿÿ8¢®åä‰2J$60470c3f-f2bb-4007-aec0-a0c470afedba
-m	java:S106B"+Replace this use of System.out by a logger.(‰œ›8£®åä‰2J$d1eb21ee-8656-4a3d-aca2-ad3b438ca8a6
-r	java:S106C"+Replace this use of System.out by a logger.(Ğ÷Åïúÿÿÿÿ8¤®åä‰2J$0c2decbf-1562-4171-a3ec-89a729e0bc20
-w	java:S125O"<This block of commented-out lines of code should be removed.(ó¸ àJ$93fa2849-66a3-4e14-bb29-4597bae3d720
+m	java:S106="+Replace this use of System.out by a logger.(Í¤¯Î8Ÿ®åä‰2J$4c5d38b9-9eab-4c16-aa99-f6b18ef3183f
+m	java:S106>"+Replace this use of System.out by a logger.(Æ‡ĞŠ8¡®åä‰2J$29e44fbf-26b5-4cb3-908a-8655f92b08c3
+r	java:S106?"+Replace this use of System.out by a logger.(×Êªìûÿÿÿÿ8¢®åä‰2J$60470c3f-f2bb-4007-aec0-a0c470afedba
+m	java:S106@"+Replace this use of System.out by a logger.(‰œ›8£®åä‰2J$d1eb21ee-8656-4a3d-aca2-ad3b438ca8a6
+r	java:S106A"+Replace this use of System.out by a logger.(Ğ÷Åïúÿÿÿÿ8¤®åä‰2J$0c2decbf-1562-4171-a3ec-89a729e0bc20
+w	java:S125M"<This block of commented-out lines of code should be removed.(ó¸ àJ$93fa2849-66a3-4e14-bb29-4597bae3d720
 |
 java:S1128"9Remove this unused import 'jakarta.persistence.criteria'.(éß°á8ª®åä‰2J$86e33ab4-9791-482e-b98e-99d950f31cb0
 q

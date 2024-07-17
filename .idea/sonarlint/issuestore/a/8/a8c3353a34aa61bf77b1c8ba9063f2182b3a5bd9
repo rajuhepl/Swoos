@@ -1,8 +1,3 @@
 
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(„‘ıÿÿÿÿ8¦é¯ë‡2J$01abca8c-85fc-42f2-9e07-2b786c6f3efd
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯é¯ë‡2J$f7016feb-a1fa-40c5-8021-a617d406166f
-´
-java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(„‘ıÿÿÿÿ8³é¯ë‡2J$ba71e842-1302-4146-aa26-26a0e0561d9a
-y
-java:S1128	"7Remove this unused import 'jakarta.persistence.Column'.(Ó‰ÙE8¹é¯ë‡2J$fb901e30-18e6-4343-9640-d3d765c800fc
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯é¯ë‡2J$f7016feb-a1fa-40c5-8021-a617d406166f

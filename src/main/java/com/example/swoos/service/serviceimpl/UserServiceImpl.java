@@ -25,6 +25,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.undo.CannotUndoException;
 import java.util.*;
 
 @Slf4j
@@ -73,7 +74,7 @@ public class UserServiceImpl implements UserService {
                 log.info("user created");
 
             } else {
-                users = userRepository.findById(userSignUpRequest.getId()).orElseThrow(()->new RuntimeException("User not found"));
+                users = userRepository.findById(userSignUpRequest.getId()).orElseThrow(()->new CustomValidationException(ErrorCode.CAP_1001));
                 users.setUsername(userSignUpRequest.getUsername());
                 if (userSignUpRequest.getApplicationRole().getId() > 0L) {
                    masterRoleRepository.findById(userSignUpRequest.getApplicationRole().getId())
@@ -131,9 +132,9 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserDTO getUserById(String id) {
+    public UserDTO getUserById(String id) throws CustomValidationException {
         User user = userRepository.findById(Long.valueOf(id))
-                .orElseThrow(()->new ApplicationException("User not found"));
+                .orElseThrow(()->new CustomValidationException(ErrorCode.CAP_1001));
         UserDTO userDTO = modelMapper.map(user, UserDTO.class);
         Optional<MasterRole> masterRole = masterRoleRepository.findById(user.getApplicationRole().getId());
         if (masterRole.isPresent()){
@@ -148,7 +149,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public PageResponse<List<UserResponseDTO>> getAllUser(Integer pageNo) {
+    public PageResponse<List<UserResponseDTO>> getAllUser(Integer pageNo) throws CustomValidationException {
 
         PageResponse<List<UserResponseDTO>> pageResponse = new PageResponse<>();
         Pageable pageable = PageRequest.of(pageNo - 1, 15);
@@ -175,7 +176,7 @@ public class UserServiceImpl implements UserService {
             pageResponse.setTotalRecordCount(userResponseDTOPage.getTotalElements());
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new CustomValidationException(ErrorCode.CAP_1001);
         }
         return pageResponse;
     }
@@ -192,17 +193,18 @@ public class UserServiceImpl implements UserService {
                 userRepository.save(user);
                 return "The Password Updated";
             }else {
-                throw new RuntimeException(Constant.INVALID_CREDENTIALS);
+
+                throw new CustomValidationException(ErrorCode.CAP_1016);
             }
         }
-        throw new RuntimeException(Constant.INVALID_CREDENTIALS);
+        throw new CustomValidationException(ErrorCode.CAP_1016);
     }
 
     @Override
     public String addColumn(ColumnDto columnDto) {
         UserDTO userDTO =  UserContextHolder.getUserDto();
         User user = userRepository.findById(userDTO.getId())
-                .orElseThrow(()->new NoSuchElementException("User not found"));
+                .orElseThrow(()->new NoSuchElementException(Constant.User));
         UserProfile userProfile = columnRepository.findByUser(user)
                 .orElseThrow(()->new NoSuchElementException("User not found"));
         userProfile.setUser(user);

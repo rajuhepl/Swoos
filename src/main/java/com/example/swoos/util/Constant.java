@@ -9,8 +9,8 @@ public class Constant {
     public static final String LOGIN = "/login";
     public static final String REFRESH = "/refresh";
 
-    public static final String USER_SIGNUP="/userSignup";
-    public static final String USER_CREATED_SUCCESSFULLY ="USER CREATED SUCCESSFULLY" ;
+    public static final String USER_SIGNUP = "/userSignup";
+    public static final String USER_CREATED_SUCCESSFULLY = "USER CREATED SUCCESSFULLY";
     public static final String EMAIL = "email";
     public static final String USERID = "id";
     public static final String AUTHORIZATION = "Authorization";
@@ -30,9 +30,10 @@ public class Constant {
     public static final String ZEPTO = "ZEPTO";
     public static final String OUT_OF_STOCK = "OUT-OF-STOCK";
     public static final String INVALID_CREDENTIALS = "INVALID_CREDENTIALS";
+    public static final String Percentage = "%.2f%%";
 
+    public static final String User = "User not found";
+    public static final String Data = "No data found in the specified date range.";
 
 
 }
-
-

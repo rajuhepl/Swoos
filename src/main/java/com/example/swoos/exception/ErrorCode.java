@@ -8,7 +8,12 @@ public enum ErrorCode implements ErrorHandle {
     CAP_1003("1003", "Reason Already Exists"),
     CAP_1017("1017", "Login Failed !!"),
     CAP_1018("1018","Mail Already exists"),
-    CAP_1016("1016", "INVALID_CREDENTIALS");
+    CAP_1016("1016", "INVALID_CREDENTIALS"),
+    CAP_10019("1019","No data found in the specified date range" ),
+    CAP_1020("1020", "Failed to write Excel file.");
+
+
+
 
     private final String errorCode;
     private final String message;

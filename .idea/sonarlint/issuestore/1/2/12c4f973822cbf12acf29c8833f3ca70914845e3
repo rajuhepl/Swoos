@@ -1,11 +1,7 @@
 
-	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(îŠŠ‹J$40e5bdb4-f2b1-4baf-85c3-c97efa7a3d2c
-	java:S112‰"FDefine and throw a dedicated exception instead of using a generic one.(Ô®ÒEJ$5dcb73ee-8fb5-4652-9256-d428613e437b
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$c8b08785-8d90-47d0-a6fa-0881e8644566
-
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÎÌËœJ$6daee08a-fd89-470d-9217-338254ce3621
-R
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8İæ©Š2
-x
-java:S1128"0Remove this unused import 'java.time.LocalTime'.(à®øÃùÿÿÿÿ8×´æ©Š2J$af65a485-678f-4a45-a653-7a8c16040a3c
+l
+java:S2095 "JUse try-with-resources or close this "XSSFWorkbook" in a "finally" clause.(˜„°ÿÿÿÿÿ8ğĞÚû‹2
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8úÎ·û‹2
+b
+java:S2147k"ECombine this catch with the one at line 105, which has the same body.(®Çí8úĞÚû‹2

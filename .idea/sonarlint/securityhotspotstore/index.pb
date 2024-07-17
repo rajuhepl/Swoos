@@ -5,8 +5,6 @@ u
 Esrc/main/java/com/example/swoos/ProjectManagementToolApplication.java,e\d\edc8579278dea6ef44d17fe4a43c8ed4090e0956
 p
 @src/main/java/com/example/swoos/Repository/MergedRepository.java,b\e\be9451cbfd9f24e653a280adfae3d015f65450a6
-r
-Bsrc/main/java/com/example/swoos/Excel/MergeExcelAndCSVService.java,b\5\b51159880afe382092f00c1875264e8a62c3105d
 j
 :src/main/java/com/example/swoos/exception/ErrorHandle.java,e\5\e5b3413ecd0e121fabd0ab8d9e9f6110f606be50
 f
@@ -19,8 +17,6 @@ o
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 b
 2src/main/java/com/example/swoos/Util/Constant.java,4\d\4d4519479009aef5af90ab5de94a4a3f0f740ce6
-k
-;src/main/java/com/example/swoos/Excel/MergeFileService.java,8\8\88ea59f1146e388a5d0682b91db6e2eb4b2ff2b8
 x
 Hsrc/main/java/com/example/swoos/exception/CustomValidationException.java,0\3\03f66460fc52ecec71461db43e8f8bcbed13bc75
 c
@@ -31,8 +27,6 @@ m
 =src/main/java/com/example/swoos/Response/SuccessResponse.java,3\1\31afcf3a85bb90d7b2e9bd91c79b512f4b1140b8
 x
 Hsrc/main/java/com/example/swoos/Service/ServiceImpl/UserServiceImpl.java,b\4\b4e8f0830c5c8071729cc3b9c8bff4b44e9f809c
-r
-Bsrc/main/java/com/example/swoos/excel/MergeExcelAndCSVService.java,b\7\b7b3f2f6f6ca018aae11aeb362da675a2c46a538
 Y
 )src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
 m
@@ -69,8 +63,6 @@ f
 6src/main/java/com/example/swoos/dto/MasterRoleDTO.java,8\f\8fb76f1bbc18992b5eb4b1d704dc4b089fe5325a
 b
 2src/main/java/com/example/swoos/util/Constant.java,2\0\200cbd77f730f02c4169b552c5ae43ac47d6481b
-k
-;src/main/java/com/example/swoos/excel/MergeFileService.java,b\0\b053427742f746f8309e75ff2ff846c7e8a93d9b
 b
 2src/main/java/com/example/swoos/util/JWTUtils.java,9\a\9a21427d156fcd73d716d35137cec6f565091ecb
 q
@@ -153,8 +145,6 @@ t
 Dsrc/main/java/com/example/swoos/repository/MasterRoleRepository.java,8\0\8004f0ec195c79f742e5cb8ff507f951755b9083
 m
 =src/main/java/com/example/swoos/repository/CsvRepository.java,c\9\c918dd56de22f0cb21ed3b71f9c91f26159416be
-~
-Nsrc/main/java/com/example/swoos/repository/PlatformAndValuelossRepository.java,a\5\a5f73463ebdec6af7986f74359efd28052a7bbf7
 p
 @src/main/java/com/example/swoos/repository/ReasonRepository.java,3\6\36897800f39b4434317e79927bb31278f54fd6c8
 n
@@ -165,8 +155,6 @@ p
 @src/main/java/com/example/swoos/repository/MergedRepository.java,a\5\a5cc0741dbc84682b52fd11b641b8cfb49a50251
 r
 Bsrc/main/java/com/example/swoos/repository/PlatformRepository.java,e\8\e8770f97c3cb71bca583bc24382a5cdecd1e35e2
-s
-Csrc/main/java/com/example/swoos/sucessresponse/SuccessResponse.java,a\5\a5a15923f8444ebf734761762c12e771a691a9f4
 m
 =src/main/java/com/example/swoos/service/DashboardService.java,b\4\b4a5002e27906b15dbcc844ab73f78eb469d263a
 }
@@ -201,14 +189,8 @@ i
 9src/main/java/com/example/swoos/dto/DashboardCalcDto.java,3\4\34784100bf9e3e11d87153aa7f43074f970b19d1
 w
 G.idea/sonarlint/issuestore/0/9/093b7b797c3b72150de42a086be2a7e441937fbd,7\f\7f5b36019cee1c1980f0f809b95e02429b1184a4
-n
->src/main/java/com/example/swoos/dto/MergedModelProjection.java,f\5\f55f1539a6a3f86449d51d14ff6c7f05203b8479
-k
-;src/main/java/com/example/swoos/dto/DataListProjection.java,4\7\47a162a0ce333cfb2beb198a1a2a57085eb1e875
 w
 G.idea/sonarlint/issuestore/a/3/a3228d32f11131bd1cca520064a2374ad5563d18,f\8\f8b15faae08b6223749c1da9b6898809dfbfd935
-j
-:src/main/java/com/example/swoos/excel/DropDownService.java,1\3\1375121f14d047c49dbd9c7187033e372423ee7b
 Å
 Q.idea/sonarlint/securityhotspotstore/a/3/a3228d32f11131bd1cca520064a2374ad5563d18,7\2\7218c68c26e7e0717bfa35e0ad2fc4889790f337
 c

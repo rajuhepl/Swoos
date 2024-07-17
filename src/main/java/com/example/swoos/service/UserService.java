@@ -15,9 +15,9 @@ public interface UserService {
 
     String userSignup(UserSignUpRequest userSignUpRequest) throws CustomValidationException;
 
-    UserDTO getUserById(String id);
+    UserDTO getUserById(String id) throws CustomValidationException;
 
-    PageResponse<List<UserResponseDTO>> getAllUser(Integer pageNo);
+    PageResponse<List<UserResponseDTO>> getAllUser(Integer pageNo) throws CustomValidationException;
 
     String updatePassword(PasswordUpdateDTO pass) throws Exception;
 

@@ -4,6 +4,7 @@ import com.example.swoos.dto.ColumnDto;
 import com.example.swoos.dto.PasswordUpdateDTO;
 import com.example.swoos.dto.UserDTO;
 import com.example.swoos.dto.UserResponseDTO;
+import com.example.swoos.exception.CustomValidationException;
 import com.example.swoos.response.PageResponse;
 import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.response.UserSignUpRequest;
@@ -27,12 +28,12 @@ public class UserController {
     }
 
     @GetMapping("/getUserById")
-    public ResponseEntity<UserDTO> getUserById(@RequestParam(value = "id") String id) {
+    public ResponseEntity<UserDTO> getUserById(@RequestParam(value = "id") String id) throws CustomValidationException {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @GetMapping("/getAllUser")
-    public PageResponse<List<UserResponseDTO>> getAllUser(@RequestParam(value = "pageNo") int pageNo){
+    public PageResponse<List<UserResponseDTO>> getAllUser(@RequestParam(value = "pageNo") int pageNo) throws CustomValidationException {
         return userService.getAllUser(pageNo);
     }
 

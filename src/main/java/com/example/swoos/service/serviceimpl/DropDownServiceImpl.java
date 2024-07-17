@@ -18,7 +18,7 @@ public class DropDownServiceImpl implements DropDownService {
         return dropDownRepository.findAll();
     }
     public DropDownModel createIssue(DropDownModel issue) throws CustomValidationException {
-        DropDownModel dropDownModel = new DropDownModel();
+        DropDownModel dropDownModel;
         if (issue.getDropdownId() != null) {
             dropDownModel = dropDownRepository.findById(issue.getDropdownId())
                     .orElse(new DropDownModel());

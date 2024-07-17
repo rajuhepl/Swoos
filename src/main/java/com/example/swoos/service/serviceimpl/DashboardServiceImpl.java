@@ -187,9 +187,9 @@ public class DashboardServiceImpl implements DashboardService {
             totalLoss = (totalValueLoss / revenue) * 100;
         }
 
-        calcDto.setValueLoss(String.format("%.2f%%", totalLoss));
-        calcDto.setSwoosContribution(String.format("%.2f%%", swoowCont));
-        calcDto.setSwoosLoss(String.format("%.2f%%", percentage));
+        calcDto.setValueLoss(String.format(Constant.Percentage, totalLoss));
+        calcDto.setSwoosContribution(String.format(Constant.Percentage, swoowCont));
+        calcDto.setSwoosLoss(String.format(Constant.Percentage, percentage));
         calcDto.setReasonLevelCount(reasonLevelCount);
         calcDto.setLocationLevelCount(locationLossMap);
         return calcDto;
