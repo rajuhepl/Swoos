@@ -9,9 +9,11 @@ import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.service.MergeExcelAndCSVService;
 import com.example.swoos.service.MergedModelRepositoryCustom;
 import com.example.swoos.util.Constant;
+import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.http.HttpServletResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -42,6 +44,8 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     private MergedRepository mergedRepository;
     @Autowired
     private PlatformRepository platformRepository;
+    @Value("${day.sales.divisor}")
+    private int daySalesDivisor;
 
     public void readDataFromFile() {
         List<ExcelModel> dataList = excelRepository.findByTriggeredOnToday();
@@ -232,7 +236,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         String formattedRevenue = String.format("%.2f", revenue);
         mergedModel.setRevenue(formattedRevenue);
 
-        double daySales = revenue / 30;
+        double daySales = revenue / daySalesDivisor;
         String formattedDaySales = String.format("%.2f", daySales);
         mergedModel.setDaySales(formattedDaySales);
 
@@ -241,10 +245,12 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         int countOfZeros = 0;
         int count = 0;
         for (ExcelModel excelModel : excelModels) {
-            if (excelModel.getStatus().equals("1") || excelModel.getStatus().equals("0")) {
+            if (StringUtils.equalsAny(excelModel.getStatus(), "1", "0")){
+           // if (excelModel.getStatus().equals("1") || excelModel.getStatus().equals("0")) {
                 count++;
             }
-            if (excelModel.getCity() != null && !excelModel.getCity().isEmpty() && !excelModel.getCity().equals("-")) {
+            if (StringUtils.isNotEmpty(excelModel.getCity()) && !"-".equals(excelModel.getCity())) {
+            //if (excelModel.getCity() != null && !excelModel.getCity().isEmpty() && !excelModel.getCity().equals("-")) {
                 cityStatusMap.put(excelModel.getCity(), excelModel.getStatus());
                 if (excelModel.getStatus().equals("0")) {
                     countOfZeros++;
@@ -253,19 +259,19 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         }
 
         // Setting city statuses
-        mergedModel.setAhmedabad(findValuesForCity(cityStatusMap, "Ahmedabad"));
-        mergedModel.setBangalore(findValuesForCity(cityStatusMap, "Bangalore"));
-        mergedModel.setChennai(findValuesForCity(cityStatusMap, "Chennai"));
-        mergedModel.setDelhi(findValuesForCity(cityStatusMap, "Delhi"));
-        mergedModel.setHyderabad(findValuesForCity(cityStatusMap, "Hyderabad"));
-        mergedModel.setIndore(findValuesForCity(cityStatusMap, "Indore"));
-        mergedModel.setCalcutta(findValuesForCity(cityStatusMap, "Calcutta"));
-        mergedModel.setMumbai(findValuesForCity(cityStatusMap, "Mumbai"));
-        mergedModel.setNagpur(findValuesForCity(cityStatusMap, "Nagpur"));
-        mergedModel.setPatna(findValuesForCity(cityStatusMap, "Patna"));
-        mergedModel.setPune(findValuesForCity(cityStatusMap, "Pune"));
+        mergedModel.setAhmedabad(findValuesForCity(cityStatusMap, Constant.Ahmedabad));
+        mergedModel.setBangalore(findValuesForCity(cityStatusMap, Constant.Bangalore));
+        mergedModel.setChennai(findValuesForCity(cityStatusMap, Constant.Chennai));
+        mergedModel.setDelhi(findValuesForCity(cityStatusMap, Constant.Delhi));
+        mergedModel.setHyderabad(findValuesForCity(cityStatusMap, Constant.Hyderabad));
+        mergedModel.setIndore(findValuesForCity(cityStatusMap, Constant.Indore));
+        mergedModel.setCalcutta(findValuesForCity(cityStatusMap, Constant.Calcutta));
+        mergedModel.setMumbai(findValuesForCity(cityStatusMap, Constant.Mumbai));
+        mergedModel.setNagpur(findValuesForCity(cityStatusMap, Constant.Nagpur));
+        mergedModel.setPatna(findValuesForCity(cityStatusMap, Constant.Patna));
+        mergedModel.setPune(findValuesForCity(cityStatusMap, Constant.Pune));
         mergedModel.setOther(getOthersCityMap(cityStatusMap));
-        // Setting percentage of each city
+        // Setting percentage of each city]\
         setCityPercentage(mergedModel, cityStatusMap, count);
         // Calculating SWOOS percentage
         if (countOfZeros > 0) {
@@ -306,7 +312,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
 
     private boolean locationNotAlign(MergedModel oldAsin, MergedModel newAsin) {
         // Define an array of cities to check
-        String[] citiesToCheck = {"Bangalore", "Ahmedabad", "Chennai", "Delhi", "Pune", "Nagpur", "Mumbai", "Calcutta", "Indore", "Hyderabad"};
+        String[] citiesToCheck = {Constant.Bangalore,Constant.Ahmedabad, "Chennai", Constant.Delhi, "Pune", Constant.Nagpur, "Mumbai", "Calcutta", "Indore", "Hyderabad"};
 
         // Iterate through the cities and check the condition
         for (String city : citiesToCheck) {
@@ -334,15 +340,15 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     private void setCityPercentage(MergedModel mergedModel, Map<String, String> cityStatusMap, int count) {
         if (count == 0) return;
 
-        setPercentage(mergedModel::setAhmedabadPercentage, cityStatusMap, "Ahmedabad", count);
+        setPercentage(mergedModel::setAhmedabadPercentage, cityStatusMap, Constant.Ahmedabad, count);
         setPercentage(mergedModel::setBangalorePercentage, cityStatusMap, "Bangalore", count);
         setPercentage(mergedModel::setChennaiPercentage, cityStatusMap, "Chennai", count);
-        setPercentage(mergedModel::setDelhiPercentage, cityStatusMap, "Delhi", count);
+        setPercentage(mergedModel::setDelhiPercentage, cityStatusMap, Constant.Delhi, count);
         setPercentage(mergedModel::setHyderabadPercentage, cityStatusMap, "Hyderabad", count);
         setPercentage(mergedModel::setIndorePercentage, cityStatusMap, "Indore", count);
         setPercentage(mergedModel::setCalcuttaPercentage, cityStatusMap, "Calcutta", count);
         setPercentage(mergedModel::setMumbaiPercentage, cityStatusMap, "Mumbai", count);
-        setPercentage(mergedModel::setNagpurPercentage, cityStatusMap, "Nagpur", count);
+        setPercentage(mergedModel::setNagpurPercentage, cityStatusMap, Constant.Nagpur, count);
         setPercentage(mergedModel::setPatnaPercentage, cityStatusMap, "Patna", count);
         setPercentage(mergedModel::setPunePercentage, cityStatusMap, "Pune", count);
     }
@@ -388,7 +394,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         double a = (100.0 / count) * 100;
         double b = a * countOfZeros;
         double c = (b * Double.parseDouble(mergedModel.getRevenue()));
-        double loss = c / 30;
+        double loss = c / daySalesDivisor;
         String formattedLoss = String.format("%.2f", (loss / 100) / 100);
         mergedModel.setValueLoss(formattedLoss);
     }
@@ -396,24 +402,24 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     private String getOthersCityMap(Map<String,String> cityStatusMap){
         Map<String, Integer> map = new HashMap<>();
         System.out.println(cityStatusMap);
-        List<String> othersCities = List.of("Ghaziabad","Lucknow  HQ", "Gurgaon", "Jaipur", "Lucknow", "Chandigarh hq", "Ambalahq", "Goa-panaji");
+        List<String> othersCities = List.of(Constant.Ghaziabad,"Lucknow  HQ",Constant.Gurgaon, Constant.Jaipur, Constant.Lucknow, "Chandigarh hq", "Ambalahq", Constant.Goapanaji);
         for(String cityStatus : othersCities){
             if(cityStatusMap.containsKey(cityStatus)){
-                String a;
+                String result;
                 if (Objects.isNull(cityStatusMap.get(cityStatus))) {
                     int count = map.getOrDefault("NA",0);
                     map.put("NA", count);
                 } else {
-                    a = cityStatusMap.get(cityStatus);
-                    if (a.equals("0")) {
-                        a = Constant.OUT_OF_STOCK;
-                        int count = map.getOrDefault(a,0);
-                        map.put(a, count);
+                    result = cityStatusMap.get(cityStatus);
+                    if (result.equals("0")) {
+                        result = Constant.OUT_OF_STOCK;
+                        int count = map.getOrDefault(result,0);
+                        map.put(result, count);
 
-                    } else if (a.equals("1")) {
-                        a = "Available";
-                        int count = map.getOrDefault(a,0);
-                        map.put(a, count);
+                    } else if (result.equals("1")) {
+                        result = "Available";
+                        int count = map.getOrDefault(result,0);
+                        map.put(result, count);
                     }
                 }
 
@@ -430,19 +436,19 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
 
     }
     private String value(Map<String, String> cityStatusMap, String b) {
-        String a;
+        String result;
         if (Objects.isNull(cityStatusMap.get(b))) {
-            a = "NA";
+            result = "NA";
         } else {
-            a = cityStatusMap.get(b);
-            if (a.equals("0")) {
-                a = Constant.OUT_OF_STOCK;
+            result = cityStatusMap.get(b);
+            if (result.equals("0")) {
+                result = Constant.OUT_OF_STOCK;
 
-            } else if (a.equals("1")) {
-                a = "Available";
+            } else if (result.equals("1")) {
+                result = "Available";
             }
         }
-        return a;
+        return result;
     }
 
     public String findValuesForCity(Map<String, String> cityStatusMap, String cityName) {
@@ -459,19 +465,19 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         MergedModel mergedModels = mergedRepository.findById(id).orElseThrow();
 
         Map<String, String> stockStatusMap = new HashMap<>();
-        stockStatusMap.put("ahmedabad", mergedModels.getAhmedabad());
-        stockStatusMap.put("bangalore", mergedModels.getBangalore());
-        stockStatusMap.put("indore", mergedModels.getIndore());
-        stockStatusMap.put("chennai", mergedModels.getChennai());
-        stockStatusMap.put("delhi", mergedModels.getDelhi());
-        stockStatusMap.put("hyderabad", mergedModels.getHyderabad());
-        stockStatusMap.put("calcutta", mergedModels.getCalcutta());
-        stockStatusMap.put("mumbai", mergedModels.getMumbai());
-        stockStatusMap.put("nagpur", mergedModels.getNagpur());
-        stockStatusMap.put("patna", mergedModels.getPatna());
-        stockStatusMap.put("pune", mergedModels.getPune());
+        stockStatusMap.put(Constant.Ahmedabad.toLowerCase(), mergedModels.getAhmedabad());
+        stockStatusMap.put(Constant.Bangalore.toLowerCase(), mergedModels.getBangalore());
+        stockStatusMap.put(Constant.Indore.toLowerCase(), mergedModels.getIndore());
+        stockStatusMap.put(Constant.Chennai.toLowerCase(), mergedModels.getChennai());
+        stockStatusMap.put(Constant.Delhi.toLowerCase(), mergedModels.getDelhi());
+        stockStatusMap.put(Constant.Hyderabad.toLowerCase(), mergedModels.getHyderabad());
+        stockStatusMap.put(Constant.Calcutta.toLowerCase(), mergedModels.getCalcutta());
+        stockStatusMap.put(Constant.Mumbai.toLowerCase(), mergedModels.getMumbai());
+        stockStatusMap.put(Constant.Nagpur.toLowerCase(), mergedModels.getNagpur());
+        stockStatusMap.put(Constant.Patna.toLowerCase(), mergedModels.getPatna());
+        stockStatusMap.put(Constant.Pune.toLowerCase(), mergedModels.getPune());
 
-        List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
+        List<String> otherCities = List.of(Constant.Ghaziabad.toLowerCase(), Constant.Gurgaon.toLowerCase(), Constant.Jaipur.toLowerCase(), Constant.Lucknow.toLowerCase(), Constant.Chandigarhhq,Constant.Ambalahq.toLowerCase(), Constant.Goapanaji.toLowerCase());
 
         Map<String, String> locations = new HashMap<>();
         List<ExcelModel> dataList = excelRepository.findAll();
@@ -479,13 +485,13 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         dataList.forEach(data -> {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
-                if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
+                if (city.contains(key) && Constant.OUT_OF_STOCK.equalsIgnoreCase(value)) {
                     locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
-                if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
+                if (city.contains(otherCity) && Constant.OUT_OF_STOCK.equalsIgnoreCase(mergedModels.getOther())) {
                     locations.put(otherCity, data.getLocation());
                 }
             });
@@ -496,31 +502,31 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     public Map<String, Map<String, String>> locations(MergedModelDto mergedModels,List<DataListProjection> dataList){
 
         Map<String, String> stockStatusMap = new HashMap<>();
-        stockStatusMap.put("ahmedabad", mergedModels.getAhmedabad());
-        stockStatusMap.put("bangalore", mergedModels.getBangalore());
-        stockStatusMap.put("indore", mergedModels.getIndore());
-        stockStatusMap.put("chennai", mergedModels.getChennai());
-        stockStatusMap.put("delhi", mergedModels.getDelhi());
-        stockStatusMap.put("hyderabad", mergedModels.getHyderabad());
-        stockStatusMap.put("calcutta", mergedModels.getCalcutta());
-        stockStatusMap.put("mumbai", mergedModels.getMumbai());
-        stockStatusMap.put("nagpur", mergedModels.getNagpur());
-        stockStatusMap.put("patna", mergedModels.getPatna());
-        stockStatusMap.put("pune", mergedModels.getPune());
+        stockStatusMap.put(Constant.Ahmedabad.toLowerCase(), mergedModels.getAhmedabad());
+        stockStatusMap.put(Constant.Bangalore.toLowerCase(), mergedModels.getBangalore());
+        stockStatusMap.put(Constant.Indore.toLowerCase(), mergedModels.getIndore());
+        stockStatusMap.put(Constant.Chennai.toLowerCase(), mergedModels.getChennai());
+        stockStatusMap.put(Constant.Delhi.toLowerCase(), mergedModels.getDelhi());
+        stockStatusMap.put(Constant.Hyderabad.toLowerCase(), mergedModels.getHyderabad());
+        stockStatusMap.put(Constant.Calcutta.toLowerCase(), mergedModels.getCalcutta());
+        stockStatusMap.put(Constant.Mumbai.toLowerCase(), mergedModels.getMumbai());
+        stockStatusMap.put(Constant.Nagpur.toLowerCase(), mergedModels.getNagpur());
+        stockStatusMap.put(Constant.Patna.toLowerCase(), mergedModels.getPatna());
+        stockStatusMap.put(Constant.Pune.toLowerCase(), mergedModels.getPune());
 
-        List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
+        List<String> otherCities = List.of(Constant.Ghaziabad.toLowerCase(), "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", Constant.Goapanaji.toLowerCase());
 
         Map<String, String> locations = new HashMap<>();
         dataList.forEach(data -> {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
-                if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
+                if (city.contains(key) && Constant.OUT_OF_STOCK.equalsIgnoreCase(value)) {
                     locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
-                if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
+                if (city.contains(otherCity) && Constant.OUT_OF_STOCK.equalsIgnoreCase(mergedModels.getOther())) {
                     locations.put(otherCity , data.getLocation());
                 }
             });
@@ -531,17 +537,18 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     public void locationsModel(MergedModel mergedModels,List<DataListProjection> dataList){
 
         Map<String, String> stockStatusMap = new HashMap<>();
-        stockStatusMap.put("ahmedabad", mergedModels.getAhmedabad());
-        stockStatusMap.put("bangalore", mergedModels.getBangalore());
-        stockStatusMap.put("indore", mergedModels.getIndore());
-        stockStatusMap.put("chennai", mergedModels.getChennai());
-        stockStatusMap.put("delhi", mergedModels.getDelhi());
-        stockStatusMap.put("hyderabad", mergedModels.getHyderabad());
-        stockStatusMap.put("calcutta", mergedModels.getCalcutta());
-        stockStatusMap.put("mumbai", mergedModels.getMumbai());
-        stockStatusMap.put("nagpur", mergedModels.getNagpur());
-        stockStatusMap.put("patna", mergedModels.getPatna());
-        stockStatusMap.put("pune", mergedModels.getPune());
+        stockStatusMap.put(Constant.Ahmedabad.toLowerCase(), mergedModels.getAhmedabad());
+        stockStatusMap.put(Constant.Bangalore.toLowerCase(), mergedModels.getBangalore());
+        stockStatusMap.put(Constant.Indore.toLowerCase(), mergedModels.getIndore());
+        stockStatusMap.put(Constant.Chennai.toLowerCase(), mergedModels.getChennai());
+        stockStatusMap.put(Constant.Delhi.toLowerCase(), mergedModels.getDelhi());
+        stockStatusMap.put(Constant.Hyderabad.toLowerCase(), mergedModels.getHyderabad());
+        stockStatusMap.put(Constant.Calcutta.toLowerCase(), mergedModels.getCalcutta());
+        stockStatusMap.put(Constant.Mumbai.toLowerCase(), mergedModels.getMumbai());
+        stockStatusMap.put(Constant.Nagpur.toLowerCase(), mergedModels.getNagpur());
+        stockStatusMap.put(Constant.Patna.toLowerCase(), mergedModels.getPatna());
+        stockStatusMap.put(Constant.Pune.toLowerCase(), mergedModels.getPune());
+
 
         List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
 
@@ -549,13 +556,13 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         dataList.forEach(data -> {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
-                if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
+                if (city.contains(key) && Constant.OUT_OF_STOCK.equalsIgnoreCase(value)) {
                     locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
-                if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
+                if (city.contains(otherCity) && Constant.OUT_OF_STOCK.equalsIgnoreCase(mergedModels.getOther())) {
                     locations.put(otherCity , data.getLocation());
                 }
             });

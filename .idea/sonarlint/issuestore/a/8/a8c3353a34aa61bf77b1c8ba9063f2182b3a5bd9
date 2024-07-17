@@ -1,3 +1,8 @@
 
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(òÖùÍ8©²ïÿ‹2
 …
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯é¯ë‡2J$f7016feb-a1fa-40c5-8021-a617d406166f
+i
+java:S1128	"GRemove this unused import 'com.example.swoos.response.SuccessResponse'.( ÷¥†úÿÿÿÿ8ºïÿ‹2
+S
+java:S1128"7Remove this unused import 'jakarta.persistence.Column'.(Ó‰ÙE8 ºïÿ‹2

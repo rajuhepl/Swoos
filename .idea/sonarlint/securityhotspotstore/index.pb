@@ -161,14 +161,10 @@ m
 Msrc/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java,f\9\f96d46fa774967cf107199a66ec925dcd8e10409
 Å
 Q.idea/sonarlint/securityhotspotstore/8/d/8da396aad4932403a6f385782cc2d2f24983bf19,3\a\3ae626f4a06c495fd9e19eebbb25f78b30ad7037
-w
-G.idea/sonarlint/issuestore/b/7/b7b3f2f6f6ca018aae11aeb362da675a2c46a538,4\c\4cfbe0c85cb991f56b167d8fadab6744f675bd62
 Å
 Q.idea/sonarlint/securityhotspotstore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917,8\2\82c86377650abec73d0f98f9a220d629fd80d14a
 t
 Dsrc/main/java/com/example/swoos/service/MergeExcelAndCSVService.java,3\f\3feb0c8fcaae324b4cd8473e8b9c2ec6cd1c99dc
-Å
-Q.idea/sonarlint/securityhotspotstore/b/7/b7b3f2f6f6ca018aae11aeb362da675a2c46a538,6\f\6f1aa8a22d0231d1402632dadf38089bc6ab0681
 m
 =src/main/java/com/example/swoos/service/MergeFileService.java,f\1\f10b0539b8ed9f49339eb10f847aa1ee9dddd7f2
 }
@@ -270,3 +266,5 @@ Q.idea/sonarlint/securityhotspotstore/9/8/98be67880a6b99479b5352df585f223c9dae01
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+=
+gitleaks.toml,a\5\a540df1e7d653dfd73bbb1cea68528a91a0336ac

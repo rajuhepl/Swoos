@@ -34,6 +34,27 @@ public class Constant {
 
     public static final String User = "User not found";
     public static final String Data = "No data found in the specified date range.";
+    public static final String Ahmedabad = "Ahmedabad";
+    public static final String Delhi = "Delhi";
+    public static final String Nagpur = "Nagpur";
+    public static final String Hyderabad = "Hyderabad";
+    public static final String Ghaziabad = "Ghaziabad";
+    public static final String Calcutta = "Calcutta";
+    public static final String Chennai = "Chennai";
+    public static final String Mumbai = "Mumbai";
+    public static final String Lucknow = "Lucknow";
+    public static final String Gurgaon = "Gurgaon";
+    public static final String Goapanaji = "Goa-panaji";
+    public static final String Patna = "Patna";
+    public static final String Indore = "Indore";
+    public static final String Bangalore = "Bangalore";
+    public static final String Jaipur ="Jaipur";
+
+
+    public static final String Pune="Pune";
+    public static final String Chandigarhhq="chandigarh hq";
+    public static final String Ambalahq= "ambala hq";
+
 
 
 }

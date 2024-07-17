@@ -4,39 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Bug Fix">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/9/093b7b797c3b72150de42a086be2a7e441937fbd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/9/093b7b797c3b72150de42a086be2a7e441937fbd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12c4f973822cbf12acf29c8833f3ca70914845e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12c4f973822cbf12acf29c8833f3ca70914845e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/4/34ddfe75910abbece71b48e47d34d314086bb3fc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/4/34ddfe75910abbece71b48e47d34d314086bb3fc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39e1eb01d5fcff4c25b65944ac9eed37099eb7fa" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39e1eb01d5fcff4c25b65944ac9eed37099eb7fa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3feb0c8fcaae324b4cd8473e8b9c2ec6cd1c99dc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3feb0c8fcaae324b4cd8473e8b9c2ec6cd1c99dc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55160a7a66774c87b21adc970c4552c6b2f4d917" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55a12f19c4bdb568168767e828804dd8f2f465bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55a12f19c4bdb568168767e828804dd8f2f465bc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88d4a023349562f5258bc8cb48db0d91250a5f00" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88d4a023349562f5258bc8cb48db0d91250a5f00" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88ea59f1146e388a5d0682b91db6e2eb4b2ff2b8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8da396aad4932403a6f385782cc2d2f24983bf19" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8da396aad4932403a6f385782cc2d2f24983bf19" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4e2f526143ec32819d1a732fdcda19fd32e0cca" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4e2f526143ec32819d1a732fdcda19fd32e0cca" afterDir="false" />
+    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Updated constant and Exception">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8c3353a34aa61bf77b1c8ba9063f2182b3a5bd9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b51159880afe382092f00c1875264e8a62c3105d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7b3f2f6f6ca018aae11aeb362da675a2c46a538" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd21a8c80406ee1a304204089d6e6f1b21932087" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd21a8c80406ee1a304204089d6e6f1b21932087" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da60996b12a117adbb338c043ab1ac68cce426f7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da60996b12a117adbb338c043ab1ac68cce426f7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5f022872445e026adbfec80013463fb7e70d6e0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5f022872445e026adbfec80013463fb7e70d6e0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f96d46fa774967cf107199a66ec925dcd8e10409" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f96d46fa774967cf107199a66ec925dcd8e10409" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/8/88ea59f1146e388a5d0682b91db6e2eb4b2ff2b8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/5/b51159880afe382092f00c1875264e8a62c3105d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/7/b7b3f2f6f6ca018aae11aeb362da675a2c46a538" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/exception/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/ExcelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/ExcelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DropDownServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DropDownServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/ExcelWriterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/ExcelWriterServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/util/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/util/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -240,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720692774390</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Updated constant and Exception">
+      <option name="closed" value="true" />
+      <created>1721199367273</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1721199367273</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,7 +248,9 @@
     <MESSAGE value="Value Added" />
     <MESSAGE value="Removed Unused API" />
     <MESSAGE value="Bug Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Fix" />
+    <MESSAGE value="Updated constand and Exception" />
+    <MESSAGE value="Updated constant and Exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated constant and Exception" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -278,27 +262,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>656</line>
+          <line>663</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>651</line>
+          <line>658</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>652</line>
+          <line>659</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>658</line>
+          <line>665</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>661</line>
+          <line>668</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
