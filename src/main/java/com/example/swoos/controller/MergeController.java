@@ -1,6 +1,7 @@
 package com.example.swoos.controller;
 
 import com.example.swoos.dto.MergeRequestDTO;
+import com.example.swoos.dto.PlatformOFSCount;
 import com.example.swoos.service.MergeExcelAndCSVService;
 import com.example.swoos.service.MergeFileService;
 import com.example.swoos.service.SalesLossService;
@@ -65,8 +66,8 @@ public class MergeController {
     }
 
     @GetMapping("/platform")
-    public PlatformAndValueloss getPlatform(){
-        return mergeExcelAndCSVService.platformAndValueloss();
+    public ResponseEntity<PlatformOFSCount> getPlatform(){
+        return ResponseEntity.ok(mergeFileService.platformAndValueloss());
     }
 
 

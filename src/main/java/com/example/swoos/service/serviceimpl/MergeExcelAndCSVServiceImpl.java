@@ -667,13 +667,7 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         response.setHasNext(mergedModelList.hasNext());
         return response;
     }
-    @Override
-    public SuccessResponse<Object> MergedModel() {
-        SuccessResponse<Object> response1 = new SuccessResponse<>();
-        List<MergedModel>mergedModels =mergedRepository.findAllOrderByValueLossDesc();
-        response1.setData(mergedModels);
-        return response1;
-    }
+
 
     @Override
     public PageResponse<Object> swoosFilter(String value, boolean greaterThan,int pageNo,int pageSize) {

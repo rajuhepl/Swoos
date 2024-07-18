@@ -1,6 +1,8 @@
 package com.example.swoos.service.serviceimpl;
 
 import com.example.swoos.dto.MergeRequestDTO;
+import com.example.swoos.dto.PlatformCount;
+import com.example.swoos.dto.PlatformOFSCount;
 import com.example.swoos.model.*;
 import com.example.swoos.repository.DropDownRepository;
 import com.example.swoos.repository.MergedRepository;
@@ -18,9 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class MergeFileServiceImpl implements MergeFileService {
@@ -106,5 +106,34 @@ public class MergeFileServiceImpl implements MergeFileService {
             }
         }
         return "updated";
+    }
+    public PlatformOFSCount platformAndValueloss() {
+        // Fetch platform counts from repository
+        List<PlatformCount> platformCounts = mergedRepository.countDataByPlatform();
+
+        // Initialize maps for different categories
+        Map<String, Long> nationalMap = new HashMap<>();
+        Map<String, Long> quickComMap = new HashMap<>();
+        Map<String, Long> groceryMap = new HashMap<>();
+        Map<String, Long> beautyMap = new HashMap<>();
+
+        // Populate maps based on platform counts
+        for (PlatformCount platformCount : platformCounts) {
+            String platform = platformCount.getPlatform().toLowerCase(); // normalize platform name
+
+            if (platform.equalsIgnoreCase("amazon") || platform.equalsIgnoreCase("flipkart")) {
+                nationalMap.put(platform, platformCount.getOutOfStockCount());
+            } else if (platform.equalsIgnoreCase("zepto") || platform.equalsIgnoreCase("blinkit")) {
+                quickComMap.put(platform, platformCount.getOutOfStockCount());
+            } else if (platform.equalsIgnoreCase("bigbasket")) {
+                groceryMap.put(platform, platformCount.getOutOfStockCount());
+            } else if (platform.equalsIgnoreCase("purplle")) {
+                beautyMap.put(platform, platformCount.getOutOfStockCount());
+            }
+            // Add more conditions as needed for other categories
+        }
+
+        // Create and return PlatformOFSCount object with populated maps
+        return new PlatformOFSCount(nationalMap, quickComMap, groceryMap, beautyMap);
     }
 }

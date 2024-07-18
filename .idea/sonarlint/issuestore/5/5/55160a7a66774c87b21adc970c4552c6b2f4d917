@@ -1,13 +1,15 @@
 
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8®ªÁê‡2J$06ef6fea-5a4c-44a9-b3b7-c4e2150283dc
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$578acabd-4a59-4aaf-93bc-74564c442311
-…
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$4bd20f34-ef11-440f-8d1a-6c274308b0d5
-…
-java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8¯ªÁê‡2J$bb003c46-4e2a-46a4-84f7-dc6f5da925df
-”
-java:S1128"LRemove this unused import 'org.springframework.web.multipart.MultipartFile'.(ôŸœÿÿÿÿÿ8Ï‘¹ÿ‰2J$bad3ffe1-74aa-400a-a260-5dfe6555ac88
-r
-java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8•¤ºÿ‰2J$dea25fa1-d243-477e-b9e6-ef08ccc0d729
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¼ÃÁ¤Œ2
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¼ÃÁ¤Œ2
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¼ÃÁ¤Œ2
+_
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8¼ÃÁ¤Œ2
+k
+java:S1128	"IRemove this unused import 'com.example.swoos.model.PlatformAndValueloss'.(Í°ƒûÿÿÿÿ8ØÂ«¨Œ2
+n
+java:S1128"LRemove this unused import 'org.springframework.web.multipart.MultipartFile'.(ôŸœÿÿÿÿÿ8ÙÂ«¨Œ2
+L
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8ÙÂ«¨Œ2

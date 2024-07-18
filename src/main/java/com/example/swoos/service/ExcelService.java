@@ -1,11 +1,12 @@
 package com.example.swoos.service;
 
-import com.example.swoos.model.MergedModel;
-import com.example.swoos.response.SuccessResponse;
-import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public interface ExcelService {
-    SuccessResponse<Object> historyToExcel(HttpServletResponse response);
+    ResponseEntity<InputStreamResource> historyToExcel(ByteArrayOutputStream outputStream, boolean history) throws IOException;
+
 }

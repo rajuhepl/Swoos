@@ -21,7 +21,6 @@ public interface MergeExcelAndCSVService {
 
     PlatformAndValueloss platformAndValueloss();
 
-    SuccessResponse<Object> MergedModel();
 
     PageResponse<Object> swoosFilter(String value, boolean greaterThan,int pageNo,int pageSize);
 }

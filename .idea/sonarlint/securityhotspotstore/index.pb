@@ -288,3 +288,7 @@ Q.idea/sonarlint/securityhotspotstore/9/8/98be67880a6b99479b5352df585f223c9dae01
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+i
+9src/main/java/com/example/swoos/dto/PlatformOFSCount.java,6\e\6ea9fc4168ccf469aa4cd0330375a8998ab7e666
+f
+6src/main/java/com/example/swoos/dto/PlatformCount.java,4\b\4b850361481836fbd5cbea96fa17cf36a242ba5b
