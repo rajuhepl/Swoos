@@ -9,7 +9,7 @@ public class MasterRoleDTO {
 
     private Long id;
     private String roleName;
-    private Boolean isActive;
+    private boolean isActive;
 
 
 }

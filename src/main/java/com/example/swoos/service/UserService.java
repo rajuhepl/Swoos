@@ -23,6 +23,6 @@ public interface UserService {
 
     String addColumn(ColumnDto columnDto);
 
-   ColumnDto getAllColumns();
+    ColumnDto getAllColumns();
 }
 

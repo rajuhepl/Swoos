@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExcelController {
     @Autowired
-    ExcelService excelService ;
+    private ExcelService excelService ;
     @GetMapping("/historydownload")
     public ResponseEntity<String> exportDataToExcel(HttpServletResponse response) throws CustomValidationException {
             excelService .historyToExcel(response);

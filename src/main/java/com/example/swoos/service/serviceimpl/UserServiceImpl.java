@@ -18,6 +18,7 @@ import com.example.swoos.util.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -40,6 +41,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ColumnRepository columnRepository;
 
+    @Value("${role.admin}")
+     String ADMIN ;
+    @Value("${role.employee}")
+     String EMPLOYEE ;
+
+
     @Override
     public String userSignup(UserSignUpRequest userSignUpRequest) throws CustomValidationException {
          User user = new User();
@@ -52,9 +59,9 @@ public class UserServiceImpl implements UserService {
             List<User> usersPresented = userRepository.findAll();
             MasterRole role;
             if (usersPresented.isEmpty()) {
-                role = masterRoleRepository.findByRoleName("Admin");
+                role = masterRoleRepository.findByRoleName(ADMIN);
             } else {
-                role = masterRoleRepository.findByRoleName("Employee");
+                role = masterRoleRepository.findByRoleName(EMPLOYEE);
             }
 
             if (Objects.isNull(userSignUpRequest.getId())) {
@@ -141,7 +148,7 @@ public class UserServiceImpl implements UserService {
             MasterRoleDTO masterRoleDTO = new MasterRoleDTO();
             masterRoleDTO.setId(masterRole.get().getId());
             masterRoleDTO.setRoleName(masterRole.get().getRoleName());
-            masterRoleDTO.setIsActive(masterRole.get().isActive());
+            masterRoleDTO.setActive(masterRole.get().isActive());
             userDTO.setApplicationRole(masterRoleDTO);
         }
         return userDTO;
@@ -204,9 +211,9 @@ public class UserServiceImpl implements UserService {
     public String addColumn(ColumnDto columnDto) {
         UserDTO userDTO =  UserContextHolder.getUserDto();
         User user = userRepository.findById(userDTO.getId())
-                .orElseThrow(()->new NoSuchElementException(Constant.User));
+                .orElseThrow(()->new ApplicationException(Constant.User));
         UserProfile userProfile = columnRepository.findByUser(user)
-                .orElseThrow(()->new NoSuchElementException("User not found"));
+                .orElseThrow(()->new ApplicationException("User not found"));
         userProfile.setUser(user);
         userProfile.setAsin(columnDto.isAsin());
         userProfile.setBrand(columnDto.isBrand());
@@ -245,10 +252,10 @@ public class UserServiceImpl implements UserService {
 
     public ColumnDto getAllColumns() {
         User userEntity = userRepository.findById(UserContextHolder.getUserDto().getId())
-                .orElseThrow(() -> new NoSuchElementException("User not found"));
+                .orElseThrow(() -> new ApplicationException("User not found"));
 
         UserProfile userProfile = columnRepository.findByUser(userEntity)
-                .orElseThrow(() -> new NoSuchElementException("UserProfile not found for the given user"));
+                .orElseThrow(() -> new ApplicationException("UserProfile not found for the given user"));
 
         ColumnDto columnDto = new ColumnDto();
         columnDto.setSNo(userProfile.isSNo());

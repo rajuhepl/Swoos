@@ -4,6 +4,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RemarksRepository extends JpaRepository<Remarks,Long> {
 
-    Remarks findByRemarks(String remarks);
-
 }

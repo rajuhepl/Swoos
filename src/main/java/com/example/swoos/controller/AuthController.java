@@ -28,11 +28,11 @@ import java.util.Objects;
 @RestController
 public class AuthController {
     @Autowired
-    Authservice authService;
+    private Authservice authService;
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
     @Autowired
-    JWTUtils jwtUtils;
+    private JWTUtils jwtUtils;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest, HttpSession session) throws CustomValidationException {

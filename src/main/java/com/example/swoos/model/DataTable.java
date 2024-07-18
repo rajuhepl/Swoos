@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name ="data")
-public class ExcelModel {
+public class DataTable {
     @Id
     @Column(name = "id")
     private Long excelId;

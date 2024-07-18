@@ -15,14 +15,13 @@ import java.util.List;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
+
     @Autowired
     private Authservice authService;
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = null;
-
         try {
             user = authService.getUser(username);
         } catch (Exception e) {

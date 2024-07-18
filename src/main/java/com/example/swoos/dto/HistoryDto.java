@@ -1,3 +1,4 @@
+/*
 package com.example.swoos.dto;
 
 import com.example.swoos.model.MergedModel;
@@ -10,3 +11,4 @@ public class HistoryDto {
     private List<MergedModelDto> history;
     private String downloadLink;
 }
+*/

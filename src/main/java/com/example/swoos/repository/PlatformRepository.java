@@ -7,8 +7,5 @@ import java.util.List;
 
 public interface PlatformRepository extends JpaRepository<Platform,Long> {
 
-    List<Platform> findByNameIgnoreCase(String name);
-
-    Platform findByName(String s);
 
 }

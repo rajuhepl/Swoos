@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name ="ecom_offtake")
-public class CSVModel {
+public class EcomOffTake {
     @Id
     @Column(name = "id")
     private Long csvId;

@@ -2,37 +2,26 @@ package com.example.swoos.controller;
 
 import com.example.swoos.dto.MergeRequestDTO;
 import com.example.swoos.dto.MergedModelDto;
-import com.example.swoos.service.MergeExcelAndCSVService;
-import com.example.swoos.service.MergeFileService;
-import com.example.swoos.service.SalesLossService;
+import com.example.swoos.service.MergeService;
 import com.example.swoos.model.MergedModel;
-import com.example.swoos.model.PlatformAndValueloss;
+import com.example.swoos.dto.PlatformOFSCount;
 import com.example.swoos.repository.MergedRepository;
 import com.example.swoos.response.PageResponse;
-import com.example.swoos.response.SuccessResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
-//@RequestMapping("/api")
 public class MergeController {
     @Autowired
-    MergeExcelAndCSVService mergeExcelAndCSVService;
+    private MergeService mergeService;
     @Autowired
-    MergeFileService mergeFileService;
-    @Autowired
-    MergedRepository mergedRepository;
-
-    @Autowired
-    private SalesLossService salesLossService;
+    private MergedRepository mergedRepository;
 
     @GetMapping("/mergeModel")
     public PageResponse<Object> mergedModel(@RequestParam int pageSize,
@@ -43,20 +32,20 @@ public class MergeController {
                                             @RequestParam(required = false) String value ,
                                             @RequestParam boolean greaterThan){
         if(value == null|| value.isEmpty()){
-            return mergeExcelAndCSVService.getMergedModel(pageSize,pageNo,fromDate,field,searchString);
+            return mergeService.getMergedModel(pageSize,pageNo,fromDate,field,searchString);
         }else{
-            return mergeExcelAndCSVService.swoosFilter(value,greaterThan,pageNo,pageSize);
+            return mergeService.swoosFilter(value,greaterThan,pageNo,pageSize);
         }
     }
 
     @GetMapping("/historyTrue")
     public ResponseEntity<List<MergedModelDto>> historyTrue(HttpServletResponse response){
-        return ResponseEntity.ok(mergeExcelAndCSVService.readHistoryTrue(response));
+        return ResponseEntity.ok(mergeService.readHistoryTrue(response));
     }
 
     @PostMapping("/update")
-    public String updateModel(@RequestBody List<MergeRequestDTO> mergeRequestDTO ){
-        return  mergeFileService.update(mergeRequestDTO );
+    public ResponseEntity<String> updateModel(@RequestBody List<MergeRequestDTO> mergeRequestDTO ){
+        return  ResponseEntity.ok(mergeService.update(mergeRequestDTO));
     }
 
     @GetMapping("getById/{id}")
@@ -66,7 +55,7 @@ public class MergeController {
     }
 
     @GetMapping("/platform")
-    public PlatformAndValueloss getPlatform(){
-        return mergeExcelAndCSVService.platformAndValueloss();
+    public ResponseEntity<PlatformOFSCount> getPlatform(){
+        return ResponseEntity.ok(mergeService.platformAndValueloss());
     }
 }

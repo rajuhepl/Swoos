@@ -10,5 +10,5 @@ import java.util.List;
 public interface MergeFileService {
     ResponseEntity<String> readCSVData(MultipartFile csvFile, MultipartFile excelFile, HttpServletResponse response);
 
-    String update(List<MergeRequestDTO> mergeRequestDTO);
+
 }

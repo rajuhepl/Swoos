@@ -38,17 +38,17 @@ public class UserController {
     }
 
     @PostMapping("/updatepassword")
-    public String upDatePassword(@RequestBody PasswordUpdateDTO pass) throws Exception {
-        return userService.updatePassword(pass);
+    public ResponseEntity<String> upDatePassword(@RequestBody PasswordUpdateDTO pass) throws Exception {
+        return ResponseEntity.ok(userService.updatePassword(pass));
     }
 
     @PostMapping("/column")
-    public String addColumn(@RequestBody ColumnDto columnDto){
-    return userService.addColumn(columnDto);
+    public ResponseEntity<String> addColumn(@RequestBody ColumnDto columnDto){
+        return ResponseEntity.ok(userService.addColumn(columnDto));
     }
 
     @GetMapping("/columns")
-    public ColumnDto getAllColumns(){
-        return userService.getAllColumns();
+    public ResponseEntity<ColumnDto> getAllColumns(){
+        return ResponseEntity.ok(userService.getAllColumns());
     }
 }

@@ -2,7 +2,6 @@ package com.example.swoos.service.serviceimpl;
 import com.example.swoos.exception.CustomValidationException;
 import com.example.swoos.exception.ErrorCode;
 import com.example.swoos.model.DropDownModel;
-import com.example.swoos.model.Reason;
 import com.example.swoos.repository.DropDownRepository;
 import com.example.swoos.service.DropDownService;
 import jakarta.transaction.Transactional;
