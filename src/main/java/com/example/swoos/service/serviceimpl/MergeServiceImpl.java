@@ -43,8 +43,6 @@ public class MergeServiceImpl implements MergeService {
     @Autowired
     private MergedRepository mergedRepository;
     @Autowired
-    private PlatformRepository platformRepository;
-    @Autowired
     private DropDownRepository dropDownRepository;
 
     public void readDataFromFile() {
@@ -500,8 +498,8 @@ public class MergeServiceImpl implements MergeService {
     }
     @Autowired
     private LocationCodeRepository locationCodeRepository;
-    private LocationWithStatusCode saveLocationCode(Map<String, String> locations) {
-        LocationWithStatusCode location = new LocationWithStatusCode();
+    private LocationPincode saveLocationCode(Map<String, String> locations) {
+        LocationPincode location = new LocationPincode();
         Map<String,String> others = new HashMap<>();
         locations.forEach((key, value) -> {
             switch (key.toLowerCase()) {
@@ -541,7 +539,7 @@ public class MergeServiceImpl implements MergeService {
             }
         });
         location.setOtherCities(others.toString());
-//       LocationWithStatusCode savedLocation = locationCodeRepository.save(location);
+//       LocationPincode savedLocation = locationCodeRepository.save(location);
        return locationCodeRepository.save(location);
     }
 

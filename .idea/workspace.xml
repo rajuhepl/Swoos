@@ -4,43 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Bug Fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/PlatformOFSCount.java" afterDir="false" />
+    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Code Optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/ProjectManagementToolApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/SWOOSApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/configure/JwtUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/configure/JwtUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/configure/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/configure/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/DropDownController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/DropDownController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/ExcelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/ExcelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/MergeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/MergeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/ReasonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/ReasonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/RemarkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/RemarkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/HistoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/HistoryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/MasterRoleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/MasterRoleDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/PathDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/PathDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/CSVModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/EcomOffTake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/ExcelModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/DataTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/PlatformAndValueloss.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/CsvRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/EcomOffTakeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/ExcelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/DataTableRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/PlatformRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/PlatformRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/RemarksRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/RemarksRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/request/ValueLossRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/MergeExcelAndCSVService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/MergeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/MergeFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/MergeFileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/SalesLossService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DropDownServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DropDownServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeFileServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergedModelRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergedModelRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/ReasonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/ReasonServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/SalesLossServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/swoos/ProjectManagementToolApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/swoos/SWOOSApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/HistoryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/PathDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/LocationWithStatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/LocationPincode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/MergedModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/MergedModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/Platform.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/LocationCodeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/LocationCodeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/PlatformRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720692774390</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Code Optimized">
+      <option name="closed" value="true" />
+      <created>1721283555247</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1721283555247</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,7 +250,8 @@
     <MESSAGE value="Value Added" />
     <MESSAGE value="Removed Unused API" />
     <MESSAGE value="Bug Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Fix" />
+    <MESSAGE value="Code Optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Optimized" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Table(name="location_with_status_code")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class LocationWithStatusCode {
+public class LocationPincode {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
