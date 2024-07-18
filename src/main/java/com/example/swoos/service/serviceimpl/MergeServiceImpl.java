@@ -44,6 +44,8 @@ public class MergeServiceImpl implements MergeService {
     private MergedRepository mergedRepository;
     @Autowired
     private DropDownRepository dropDownRepository;
+    @Autowired
+    private LocationCodeRepository locationCodeRepository;
 
     public void readDataFromFile() {
         List<DataTable> dataList = dataTableRepository.findByTriggeredOnToday();
@@ -127,25 +129,6 @@ public class MergeServiceImpl implements MergeService {
         // Create and return PlatformOFSCount object with populated maps
         return new PlatformOFSCount(nationalMap, quickComMap, groceryMap, beautyMap);
     }
-
-
-    private static int countOutOfStock(MergedModel model) {
-        int outOfStockCount = 0;
-        if (Constant.OUT_OF_STOCK.equals(model.getAhmedabad())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getBangalore())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getChennai())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getDelhi())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getHyderabad())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getIndore())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getCalcutta())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getMumbai())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getNagpur())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getPatna())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getPune())) outOfStockCount++;
-        if (Constant.OUT_OF_STOCK.equals(model.getOther())) outOfStockCount++;
-        return outOfStockCount;
-    }
-
 
     private MergedModel createMergedModel(EcomOffTake ecomOfftake,
                                           List<DataTable> dataTables,
@@ -392,18 +375,7 @@ public class MergeServiceImpl implements MergeService {
     public Map<String, Map<String, String>> locations(long id){
         MergedModel mergedModels = mergedRepository.findById(id).orElseThrow();
 
-        Map<String, String> stockStatusMap = new HashMap<>();
-        stockStatusMap.put("ahmedabad", mergedModels.getAhmedabad());
-        stockStatusMap.put("bangalore", mergedModels.getBangalore());
-        stockStatusMap.put("indore", mergedModels.getIndore());
-        stockStatusMap.put("chennai", mergedModels.getChennai());
-        stockStatusMap.put("delhi", mergedModels.getDelhi());
-        stockStatusMap.put("hyderabad", mergedModels.getHyderabad());
-        stockStatusMap.put("calcutta", mergedModels.getCalcutta());
-        stockStatusMap.put("mumbai", mergedModels.getMumbai());
-        stockStatusMap.put("nagpur", mergedModels.getNagpur());
-        stockStatusMap.put("patna", mergedModels.getPatna());
-        stockStatusMap.put("pune", mergedModels.getPune());
+        final var stockStatusMap = getStringStringMap(mergedModels);
 
         List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
 
@@ -427,8 +399,8 @@ public class MergeServiceImpl implements MergeService {
 
         return Map.of("location", locations);
     }
-    public Map<String, Map<String, String>> locations(MergedModelDto mergedModels,List<DataListProjection> dataList){
 
+    private static Map<String, String> getStringStringMap(MergedModel mergedModels) {
         Map<String, String> stockStatusMap = new HashMap<>();
         stockStatusMap.put("ahmedabad", mergedModels.getAhmedabad());
         stockStatusMap.put("bangalore", mergedModels.getBangalore());
@@ -441,6 +413,12 @@ public class MergeServiceImpl implements MergeService {
         stockStatusMap.put("nagpur", mergedModels.getNagpur());
         stockStatusMap.put("patna", mergedModels.getPatna());
         stockStatusMap.put("pune", mergedModels.getPune());
+        return stockStatusMap;
+    }
+
+    public Map<String, Map<String, String>> locations(MergedModelDto mergedModels,List<DataListProjection> dataList){
+
+        final var stockStatusMap = getStringMap(mergedModels);
 
         List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
 
@@ -461,9 +439,8 @@ public class MergeServiceImpl implements MergeService {
         });
         return Map.of("location", locations);
     }
-    //For Testing
-    public void locationsModel(MergedModel mergedModels,List<DataListProjection> dataList){
 
+    private static Map<String, String> getStringMap(MergedModelDto mergedModels) {
         Map<String, String> stockStatusMap = new HashMap<>();
         stockStatusMap.put("ahmedabad", mergedModels.getAhmedabad());
         stockStatusMap.put("bangalore", mergedModels.getBangalore());
@@ -476,6 +453,13 @@ public class MergeServiceImpl implements MergeService {
         stockStatusMap.put("nagpur", mergedModels.getNagpur());
         stockStatusMap.put("patna", mergedModels.getPatna());
         stockStatusMap.put("pune", mergedModels.getPune());
+        return stockStatusMap;
+    }
+
+    //For Testing
+    public void locationsModel(MergedModel mergedModels,List<DataListProjection> dataList){
+
+        final var stockStatusMap = getStringStringMap(mergedModels);
 
         List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
 
@@ -496,8 +480,7 @@ public class MergeServiceImpl implements MergeService {
         });
         mergedModels.setLocation(saveLocationCode(locations));
     }
-    @Autowired
-    private LocationCodeRepository locationCodeRepository;
+
     private LocationPincode saveLocationCode(Map<String, String> locations) {
         LocationPincode location = new LocationPincode();
         Map<String,String> others = new HashMap<>();
@@ -539,16 +522,9 @@ public class MergeServiceImpl implements MergeService {
             }
         });
         location.setOtherCities(others.toString());
-//       LocationPincode savedLocation = locationCodeRepository.save(location);
        return locationCodeRepository.save(location);
     }
 
-/*    private String capitalizeFirstLetter(String input) {
-        if (input == null || input.isEmpty()) {
-            return input;
-        }
-        return input.substring(0, 1).toUpperCase() + input.substring(1);
-    }*/
 
     @Autowired
     ExcelWriterServiceImpl excelWriterService ;
@@ -559,10 +535,9 @@ public class MergeServiceImpl implements MergeService {
         Timestamp fromDate = Timestamp.valueOf(twentyFourHoursAgo);
         Timestamp toDate = Timestamp.valueOf(now);
         List<MergedModel> mergedModels = mergedRepository.getAllHistoryTrue(fromDate,toDate);
-        List<MergedModelDto> mergedModelDtos = mergedModels.stream()
+        return mergedModels.stream()
                 .map(this::convertToDto)
                 .toList();
-        return mergedModelDtos;
     }
 
 
@@ -632,18 +607,12 @@ public class MergeServiceImpl implements MergeService {
         Timestamp from = Timestamp.valueOf(fromDateTime);
         LocalDateTime endDate = LocalDateTime.of(fromDate, LocalTime.MAX);
         Timestamp to = Timestamp.valueOf(endDate);
-//        List<DataListProjection> dataList = dataTableRepository.findByTriggeredOnTodayProjection();
-        Page<MergedModel> mergedModelList = null;
+        Page<MergedModel> mergedModelList ;
         if (searchTerm==null) {
             mergedModelList = mergedRepository.findAllOrderByValueLossDescPageable(from,to,pageable);
         }else{
             mergedModelList = mergedModelRepositoryCustom.findAllOrderByValueLossDescPageable(field,searchTerm,pageable);
         }
-     /*   List<MergedModelDto> mergedModels = mergedModelList.getContent().stream()
-                .map(mergedModel -> modelMapper.map(mergedModel, MergedModelDto.class))
-                .toList();*/
-     /*   mergedModels.forEach(mergedModelDto ->
-                mergedModelDto.setStockStatus(locations(mergedModelDto,dataList)));*/
         response.setData(mergedModelList.getContent());
         response.setHasPrevious(mergedModelList.hasPrevious());
         response.setTotalRecordCount(mergedModelList.getTotalElements());
