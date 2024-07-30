@@ -37,11 +37,11 @@ public class DashboardServiceImpl implements DashboardService {
             if(productId!=0){
                 mergedModels = mergedRepository.findByIdProduct(productId);
                 calcDto = swoosLoss(mergedModels);
-                calcDto.setSwoosContribution(mergedModels.get(0).getSWOOSContribution());
+                calcDto.setQuantityLoss(mergedModels.get(0).getSWOOSContribution());
                 response.setData(calcDto);
                 return response;
             }
-        if (from == null&&to == null) {
+        if (from == null && to == null) {
             mergedModels = datesNotPresented(platform, channel);
         }else{
             mergedModels = datesPresented(platform, channel, from, to);
@@ -69,6 +69,7 @@ public class DashboardServiceImpl implements DashboardService {
                     ProductDto productDto = new ProductDto();
                     productDto.setProductName((String) mergedModel[0]);
                     productDto.setId((long) mergedModel[1]);
+                    productDto.setChannel((String) mergedModel[2]);
                     return productDto;
                 })
                 .toList();
@@ -151,15 +152,15 @@ public class DashboardServiceImpl implements DashboardService {
 
     private DashboardCalcDto swoosLoss(List<MergedModelProjection> mergedModels) {
         DashboardCalcDto calcDto = new DashboardCalcDto();
-        double swoosLossTotal = 0;
+        double daySalesTotal = 0;
         double revenue = 0;
         double swoosContribution = 0;
-        double totalValueLoss = 0;
+        double valueLoss = 0;
         Map<String,Long>reasonLevelCount = new HashMap<>();
         Map<String,Double> locationLossMap = new HashMap<>();
         for (MergedModelProjection model : mergedModels) {
-            String swoosCont = model.getSWOOSContribution();
-            String valueLoss =  model.getValueLoss();
+            String daySales = model.getDaySales();
+            String valueLossString =  model.getValueLoss();
             String rev = model.getRevenue();
             String reason= "No Reasons";
             if (model.getReason()!=null) {
@@ -168,10 +169,10 @@ public class DashboardServiceImpl implements DashboardService {
             try {
                 long count = reasonLevelCount.getOrDefault(reason,0L);
                 reasonLevelCount.put(reason,count+1);
-                swoosLossTotal += Double.parseDouble(swoosCont.replace("%", ""));
+                daySalesTotal += Double.parseDouble(daySales.replace("%", ""));
                 revenue +=(long) Double.parseDouble(rev) ;
-                swoosContribution += Double.parseDouble(swoosCont.replace("%", ""));
-                totalValueLoss += Double.parseDouble(valueLoss.replace("%", ""));
+                swoosContribution += Double.parseDouble(daySales.replace("%", ""));
+                valueLoss += Double.parseDouble(valueLossString.replace("%", ""));
             } catch (NumberFormatException e) {
                 // Handle the exception as needed
                 // For example, log the error and continue with the next model
@@ -180,9 +181,9 @@ public class DashboardServiceImpl implements DashboardService {
             locationLossCalculations(model,locationLossMap);
         }
 
-        double percentage = 0;
+        double swoosLoss = 0;
         if (revenue > 0) {
-            percentage = (swoosLossTotal / revenue) * 100;
+            swoosLoss = (daySalesTotal / revenue) * 100;
         }
 
         double swoowCont = 0;
@@ -192,12 +193,12 @@ public class DashboardServiceImpl implements DashboardService {
 
         double totalLoss = 0;
         if (!mergedModels.isEmpty()) {
-            totalLoss = (totalValueLoss / revenue) * 100;
+            totalLoss = (valueLoss / revenue) * 100;
         }
 
         calcDto.setValueLoss(String.format("%.2f%%", totalLoss));
-        calcDto.setSwoosContribution(String.format("%.2f%%", swoowCont));
-        calcDto.setSwoosLoss(String.format("%.2f%%", percentage));
+        calcDto.setQuantityLoss(String.format("%.2f%%", swoowCont));
+        calcDto.setSwoosLoss(String.format("%.2f%%", swoosLoss));
         calcDto.setReasonLevelCount(reasonLevelCount);
         calcDto.setLocationLevelCount(locationLossMap);
         return calcDto;

@@ -2,7 +2,7 @@ package com.example.swoos.dto;
 
 public interface MergedModelProjection {
     String getSWOOSContribution();
-    String getTotalValueLoss();
+    String getDaySales();
     String getValueLoss();
     String getRevenue();
     String getReason();

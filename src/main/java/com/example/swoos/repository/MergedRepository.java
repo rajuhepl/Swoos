@@ -44,44 +44,83 @@ List<Object[]> findLocationWiseSalesLoss();
 
     // If Date is not present
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
-            "  m.totalValueLoss as totalValueLoss, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason," +
+            "   m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason,m.daySales as daySales," +
             " m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad " +
-            "  FROM MergedModel m WHERE m.Platform IN :platforms")
+            "  FROM MergedModel m WHERE m.Platform IN :platforms  AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
     List<MergedModelProjection> findAllByPlatformsNative(@Param("platforms") List<String> platforms);
-    @Query("SELECT m.Pname,m.mergedId FROM MergedModel m WHERE m.Platform IN :platforms")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform IN :platforms")
     List<Object[]> findAllByPlatformsNativeProducts(@Param("platforms") List<String> platforms);
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
-            " m.totalValueLoss as totalValueLoss, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason," +
+            "  m.ValueLoss as valueLoss, m.Revenue as revenue,m.daySales as daySales, m.reason as reason," +
             " m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad" +
-            " FROM MergedModel m WHERE m.Platform = :platform")
+            " FROM MergedModel m WHERE m.Platform = :platform AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
     List<MergedModelProjection> findAllByPlatform(@Param("platform") String platform);
 
-    @Query("SELECT m.Pname,m.mergedId FROM MergedModel m WHERE m.Platform = :platform")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform = :platform")
     List<Object[]> findAllByPlatformProduct(@Param("platform") String platform);
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
-            "  m.totalValueLoss as totalValueLoss, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason," +
+            "   m.ValueLoss as valueLoss, m.Revenue as revenue,m.daySales as daySales, m.reason as reason," +
             "  m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad" +
-            "  FROM MergedModel m WHERE m.mergedId = :productId")
+            "  FROM MergedModel m WHERE m.mergedId = :productId ")
     List<MergedModelProjection> findByIdProduct(long productId);
-    @Query("SELECT m.SWOOSContribution as SWOOSContribution, m.totalValueLoss as totalValueLoss, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad" +
-            " FROM MergedModel m")
+    @Query("SELECT m.SWOOSContribution as SWOOSContribution, " +
+            "m.ValueLoss as valueLoss, " +
+            "m.Revenue as revenue, " +
+            "m.reason as reason, " +
+            "m.Pune as pune, " +
+            "m.other as other, " +
+            "m.Patna as patna, " +
+            "m.Mumbai as mumbai, " +
+            "m.Indore as indore,m.daySales as daySales, " +
+            "m.Hyderabad as hyderabad, " +
+            "m.Delhi as delhi, " +
+            "m.Chennai as chennai, " +
+            "m.Calcutta as calcutta, " +
+            "m.Bangalore as bangalore, " +
+            "m.Ahmedabad as ahmedabad " +
+            "FROM MergedModel m " +
+            "WHERE m.historyFlag = true AND " +
+            "m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
     List<MergedModelProjection> getAll();
-    @Query("SELECT m.Pname,m.mergedId FROM MergedModel m")
+
+    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m")
     List<Object[]> getAllProducts();
     @Query("SELECT m.Platform, m.mergedId FROM MergedModel m")
     List<Object[]> getAllMergedModel();
 //If Date is Present
-    @Query("SELECT  m.SWOOSContribution as SWOOSContribution, m.totalValueLoss as totalValueLoss, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad FROM MergedModel m WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate")
-    List<MergedModelProjection> findAllByPlatformsNativeDate(@Param("platforms") List<String> platforms, @Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
-    @Query("SELECT  m.SWOOSContribution as SWOOSContribution, m.totalValueLoss as totalValueLoss, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad FROM MergedModel m WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate")
+@Query("SELECT m.SWOOSContribution as SWOOSContribution,m.daySales as daySales, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad " +
+        "FROM MergedModel m " +
+        "WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+List<MergedModelProjection> findAllByPlatformsNativeDate(@Param("platforms") List<String> platforms, @Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate);
+    @Query("SELECT  m.SWOOSContribution as SWOOSContribution,  m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason,m.daySales as daySales, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad FROM MergedModel m " +
+            "WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
     List<MergedModelProjection> findAllByPlatformDate(@Param("platform") String platform,@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
-    @Query("SELECT  m.SWOOSContribution as SWOOSContribution, m.totalValueLoss as totalValueLoss, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate")
-    List<MergedModelProjection> getAllPlat(@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
-    @Query("SELECT m.Pname,m.mergedId  FROM MergedModel m WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate")
+    @Query("SELECT m.SWOOSContribution AS SWOOSContribution, " +
+            "m.ValueLoss AS valueLoss, " +
+            "m.Revenue AS revenue, " +
+            "m.reason AS reason, " +
+            "m.Pune AS pune, " +
+            "m.other AS other, " +
+            "m.Patna AS patna, " +
+            "m.Mumbai AS mumbai,m.daySales as daySales, " +
+            "m.Indore AS indore, " +
+            "m.Hyderabad AS hyderabad, " +
+            "m.Delhi AS delhi, " +
+            "m.Chennai AS chennai, " +
+            "m.Calcutta AS calcutta, " +
+            "m.Bangalore AS bangalore, " +
+            "m.Ahmedabad AS ahmedabad " +
+            "FROM MergedModel m " +
+            "WHERE m.createAt BETWEEN :fromDate AND :toDate " +
+            "AND m.historyFlag = true " +
+            "AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+    List<MergedModelProjection> getAllPlat(@Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate);
+
+    @Query("SELECT m.Pname,m.mergedId,m.Platform  FROM MergedModel m WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate")
     List<Object[]> findAllByPlatformDateProducts(@Param("platform") String platform,@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
-    @Query("SELECT m.Pname,m.mergedId FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate")
     List<Object[]> getAllPlatformProductsDate(@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
-    @Query("SELECT m.Pname,m.mergedId FROM MergedModel m WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate")
     List<Object[]> findAllByPlatformsNativeDateProduct(@Param("platforms") List<String> platforms, @Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
     @Query("SELECT m.Platform AS platform, " +
             "       SUM(CASE WHEN m.Ahmedabad = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
