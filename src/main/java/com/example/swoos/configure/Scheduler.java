@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class Scheduler {
     @Autowired
     private MergeExcelAndCSVServiceImpl mergeExcelAndCSVService;
-    @Scheduled(cron = "00 30 10 * * *")
+    @Scheduled(cron = "00 30 10 * * *",zone = "Asia/Kolkata")
 //    @PostConstruct
     public void dataLoad() {
         mergeExcelAndCSVService.readDataFromFile();
