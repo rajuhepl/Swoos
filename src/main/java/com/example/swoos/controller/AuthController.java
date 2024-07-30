@@ -1,6 +1,7 @@
 package com.example.swoos.controller;
 
 import com.example.swoos.dto.TokenDTO;
+import com.example.swoos.dto.UserDTO;
 import com.example.swoos.model.User;
 import com.example.swoos.request.LoginRequest;
 import com.example.swoos.response.AuthResponse;
@@ -19,6 +20,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -71,6 +73,7 @@ public class AuthController {
 
         return new AuthResponse(token, refreshToken, user);
     }
+
     @PostMapping("/refresh")
     public ResponseEntity<LoginResponse> refreshToken(@RequestBody TokenDTO token, HttpSession session) throws Exception {
 

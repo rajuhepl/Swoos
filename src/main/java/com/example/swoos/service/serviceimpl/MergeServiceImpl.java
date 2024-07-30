@@ -14,6 +14,7 @@ import com.example.swoos.util.Constant;
 import jakarta.servlet.http.HttpServletResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -46,6 +47,23 @@ public class MergeServiceImpl implements MergeService {
     private DropDownRepository dropDownRepository;
     @Autowired
     private LocationCodeRepository locationCodeRepository;
+    @Autowired
+    private MergedModelRepositoryCustom mergedModelRepositoryCustom;
+
+    private List<String> cityList;
+    private List<String> otherCities;
+
+    @Value("${constant.cities}")
+    public void setCitiesList(String cityList) {
+        this.cityList = Arrays.asList(cityList.split(","));
+    }
+
+    @Value("${other.cities}")
+    public void setOtherCitiesList(String cityList) {
+        this.otherCities = Arrays.asList(cityList.split(","));
+    }
+
+
 
     public void readDataFromFile() {
         List<DataTable> dataList = dataTableRepository.findByTriggeredOnToday();
@@ -113,7 +131,6 @@ public class MergeServiceImpl implements MergeService {
         // Populate maps based on platform counts
         for (PlatformCount platformCount : platformCounts) {
             String platform = platformCount.getPlatform().toLowerCase(); // normalize platform name
-
             if (platform.equalsIgnoreCase("amazon") || platform.equalsIgnoreCase("flipkart")) {
                 nationalMap.put(platform, platformCount.getOutOfStockCount());
             } else if (platform.equalsIgnoreCase("zepto") || platform.equalsIgnoreCase("blinkit")) {
@@ -188,7 +205,7 @@ public class MergeServiceImpl implements MergeService {
         setCityPercentage(mergedModel, cityStatusMap, count);
         // Calculating SWOOS percentage
         if (countOfZeros > 0) {
-            setSwoosPercentage(mergedModel, countOfZeros);
+            setSWOOSPercentage(mergedModel, countOfZeros);
         }
         // Calculating value loss
         calculateValueLoss(mergedModel, count, countOfZeros);
@@ -243,7 +260,7 @@ public class MergeServiceImpl implements MergeService {
                 }
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                 // Handle exceptions if necessary
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
 
@@ -273,7 +290,7 @@ public class MergeServiceImpl implements MergeService {
         }
     }
 
-    private void setSwoosPercentage(MergedModel mergedModel, int countOfZeros) {
+    private void setSWOOSPercentage(@org.jetbrains.annotations.NotNull MergedModel mergedModel, int countOfZeros) {
         // Ensure to set only two digits after the decimal point
         List<String> cityPercentages = Arrays.asList(
                 mergedModel.getAhmedabadPercentage(),
@@ -288,7 +305,6 @@ public class MergeServiceImpl implements MergeService {
                 mergedModel.getPatnaPercentage(),
                 mergedModel.getPunePercentage()
         );
-
 
         for (String percentage : cityPercentages) {
             if (percentage != null && !percentage.equals("-")) {
@@ -313,24 +329,23 @@ public class MergeServiceImpl implements MergeService {
 
     private String getOthersCityMap(Map<String,String> cityStatusMap){
         Map<String, Integer> map = new HashMap<>();
-        List<String> othersCities = List.of("Ghaziabad","Lucknow  HQ", "Gurgaon", "Jaipur", "Lucknow", "Chandigarh hq", "Ambalahq", "Goa-panaji");
-        for(String cityStatus : othersCities){
+        for(String cityStatus : otherCities){
             if(cityStatusMap.containsKey(cityStatus)){
-                String a;
+                String status;
                 if (Objects.isNull(cityStatusMap.get(cityStatus))) {
                     int count = map.getOrDefault("NA",0);
                     map.put("NA", count);
                 } else {
-                    a = cityStatusMap.get(cityStatus);
-                    if (a.equals("0")) {
-                        a = Constant.OUT_OF_STOCK;
-                        int count = map.getOrDefault(a,0);
-                        map.put(a, count);
+                    status = cityStatusMap.get(cityStatus);
+                    if (status.equals("0")) {
+                        status = Constant.OUT_OF_STOCK;
+                        int count = map.getOrDefault(status,0);
+                        map.put(status, count);
 
-                    } else if (a.equals("1")) {
-                        a = "Available";
-                        int count = map.getOrDefault(a,0);
-                        map.put(a, count);
+                    } else if (status.equals("1")) {
+                        status = "Available";
+                        int count = map.getOrDefault(status,0);
+                        map.put(status, count);
                     }
                 }
 
@@ -363,7 +378,6 @@ public class MergeServiceImpl implements MergeService {
     }
 
     public String findValuesForCity(Map<String, String> cityStatusMap, String cityName) {
-
         for (Map.Entry<String, String> entry : cityStatusMap.entrySet()) {
             if (entry.getKey().contains(cityName)) {
                 return value(cityStatusMap, entry.getKey());
@@ -376,23 +390,20 @@ public class MergeServiceImpl implements MergeService {
         MergedModel mergedModels = mergedRepository.findById(id).orElseThrow();
 
         final var stockStatusMap = getStringStringMap(mergedModels);
-
-        List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
-
         Map<String, String> locations = new HashMap<>();
         List<DataTable> dataList = dataTableRepository.findAll();
 
         dataList.forEach(data -> {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
-                if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
+                if (city.contains(key) && Constant.OUT_OF_STOCK.toLowerCase().equalsIgnoreCase(value)) {
                     locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
-                if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
-                    locations.put(otherCity, data.getLocation());
+                if (city.contains(otherCity.toLowerCase()) && Constant.OUT_OF_STOCK.toLowerCase().equalsIgnoreCase(mergedModels.getOther())) {
+                    locations.put(otherCity.toLowerCase(), data.getLocation());
                 }
             });
         });
@@ -419,21 +430,18 @@ public class MergeServiceImpl implements MergeService {
     public Map<String, Map<String, String>> locations(MergedModelDto mergedModels,List<DataListProjection> dataList){
 
         final var stockStatusMap = getStringMap(mergedModels);
-
-        List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
-
         Map<String, String> locations = new HashMap<>();
         dataList.forEach(data -> {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
-                if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
+                if (city.contains(key) && Constant.OUT_OF_STOCK.toLowerCase().equalsIgnoreCase(value)) {
                     locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
-                if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
-                    locations.put(otherCity , data.getLocation());
+                if (city.contains(otherCity.toLowerCase()) && Constant.OUT_OF_STOCK.toLowerCase().equalsIgnoreCase(mergedModels.getOther())) {
+                    locations.put(otherCity.toLowerCase() , data.getLocation());
                 }
             });
         });
@@ -461,20 +469,18 @@ public class MergeServiceImpl implements MergeService {
 
         final var stockStatusMap = getStringStringMap(mergedModels);
 
-        List<String> otherCities = List.of("ghaziabad", "gurgaon", "jaipur", "lucknow", "chandigarh hq", "ambala hq", "goa-panaji");
-
         Map<String, String> locations = new HashMap<>();
         dataList.forEach(data -> {
             String city = data.getCity().toLowerCase();
             stockStatusMap.forEach((key, value) -> {
-                if (city.contains(key) && "out-of-stock".equalsIgnoreCase(value)) {
+                if (city.contains(key) && Constant.OUT_OF_STOCK.toLowerCase().equalsIgnoreCase(value)) {
                     locations.put(key, data.getLocation());
                 }
             });
 
             otherCities.forEach(otherCity -> {
-                if (city.contains(otherCity) && "out-of-stock".equalsIgnoreCase(mergedModels.getOther())) {
-                    locations.put(otherCity , data.getLocation());
+                if (city.contains(otherCity.toLowerCase()) && Constant.OUT_OF_STOCK.toLowerCase().equalsIgnoreCase(mergedModels.getOther())) {
+                    locations.put(otherCity.toLowerCase() , data.getLocation());
                 }
             });
         });
@@ -526,8 +532,7 @@ public class MergeServiceImpl implements MergeService {
     }
 
 
-    @Autowired
-    ExcelWriterServiceImpl excelWriterService ;
+
 
     public List<MergedModelDto> readHistoryTrue(HttpServletResponse response) {
         LocalDateTime now = LocalDateTime.now();
@@ -543,7 +548,6 @@ public class MergeServiceImpl implements MergeService {
 
     private MergedModelDto convertToDto(MergedModel mergedModel) {
         MergedModelDto mergedModelDto = new MergedModelDto();
-
         mergedModelDto.setMergedId(mergedModel.getMergedId());
         mergedModelDto.setPlatform(mergedModel.getPlatform());
         mergedModelDto.setAsin(mergedModel.getAsin());
@@ -596,8 +600,7 @@ public class MergeServiceImpl implements MergeService {
         mergedModelDto.setLastDayReason(mergedModel.getLastDayReason());
         return mergedModelDto;
     }
-    @Autowired
-    private MergedModelRepositoryCustom mergedModelRepositoryCustom;
+
 
     public PageResponse<Object> getMergedModel(int pageSize, int pageNo, LocalDate fromDate, String field,
                                                String searchTerm) {
@@ -667,6 +670,6 @@ public class MergeServiceImpl implements MergeService {
                 mergedRepository.save(mergedModel1.get());
             }
         }
-        return "updated";
+        return "Updated Successfully";
     }
 }

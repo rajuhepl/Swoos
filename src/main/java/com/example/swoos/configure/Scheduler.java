@@ -1,6 +1,10 @@
 package com.example.swoos.configure;
 
+import com.example.swoos.model.MasterRole;
+import com.example.swoos.repository.MasterRoleRepository;
+import com.example.swoos.repository.UserRepository;
 import com.example.swoos.service.serviceimpl.MergeServiceImpl;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -16,4 +20,10 @@ public class Scheduler {
     public void dataLoad() {
         mergeExcelAndCSVService.readDataFromFile();
     }
+
+    @Autowired
+    private MasterRoleRepository masterRoleRepository;
+    @Autowired
+    private UserRepository userRepository;
+
 }
