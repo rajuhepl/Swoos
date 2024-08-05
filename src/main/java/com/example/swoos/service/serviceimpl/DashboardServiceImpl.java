@@ -180,7 +180,7 @@ public class DashboardServiceImpl implements DashboardService {
 
         double swoosLoss = 0;
         if (revenue > 0) {
-            swoosLoss = (valueLoss / daySalesTotal) * 100;
+            swoosLoss = (valueLoss / daySalesTotal);
         }
 
         double swoowCont = 0;
@@ -190,7 +190,7 @@ public class DashboardServiceImpl implements DashboardService {
 
         double totalLoss = 0;
         if (!mergedModels.isEmpty()) {
-            totalLoss = (valueLoss / revenue) * 100;
+            totalLoss = (valueLoss / revenue);
         }
 
         calcDto.setValueLoss(String.format("%.2f%%", totalLoss));

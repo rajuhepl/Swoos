@@ -1,7 +1,6 @@
 package com.example.swoos.configure;
 
 import com.example.swoos.service.serviceimpl.MergeExcelAndCSVServiceImpl;
-import com.example.swoos.exception.CustomValidationException;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

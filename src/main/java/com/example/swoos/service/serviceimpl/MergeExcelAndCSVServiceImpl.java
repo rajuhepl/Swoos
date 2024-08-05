@@ -81,10 +81,12 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
             List<MergedModel> filteredMergedList = mergedList.stream()
                     .filter(mergedModel -> mergedModel.getPlatform().equals(platform))
                     .toList();
-            double totalValueLoss = filteredMergedList.stream()
-                    .mapToDouble(mergedModel -> Double.parseDouble(mergedModel.getValueLoss()))
-                    .sum();
+
             for (MergedModel mergedModel : filteredMergedList) {
+                double totalValueLoss = filteredMergedList.stream()
+                        .filter(merged -> merged.getPlatform().equals(mergedModel.getPlatform()))
+                        .mapToDouble(merged -> Double.parseDouble(merged.getValueLoss()))
+                        .sum();
                 double contribution = totalValueLoss > 0? (Double.parseDouble(mergedModel.getValueLoss()) / totalValueLoss) * 100 : 0;
                 String formattedLoss = String.format("%.2f ", contribution);
                 mergedModel.setSWOOSContribution(formattedLoss + "%");
