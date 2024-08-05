@@ -138,7 +138,6 @@ public class DashboardServiceImpl implements DashboardService {
 
         List<MergedModelProjection> mergedModels;
         if (platform !=null) {
-
             if(channel !=null){
                 mergedModels=   mergedRepository.findAllByPlatformDate(channel,fromDate,toDate);
             }else{
@@ -174,8 +173,6 @@ public class DashboardServiceImpl implements DashboardService {
                 swoosContribution += Double.parseDouble(daySales.replace("%", ""));
                 valueLoss += Double.parseDouble(valueLossString.replace("%", ""));
             } catch (NumberFormatException e) {
-                // Handle the exception as needed
-                // For example, log the error and continue with the next model
                 System.err.println("Invalid number format for model ");
             }
             locationLossCalculations(model,locationLossMap);
@@ -183,7 +180,7 @@ public class DashboardServiceImpl implements DashboardService {
 
         double swoosLoss = 0;
         if (revenue > 0) {
-            swoosLoss = (daySalesTotal / revenue) * 100;
+            swoosLoss = (valueLoss / daySalesTotal) * 100;
         }
 
         double swoowCont = 0;

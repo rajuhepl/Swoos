@@ -33,7 +33,7 @@ public interface MergedRepository extends JpaRepository<MergedModel,Long> {
 
     @Query("SELECT m FROM MergedModel m WHERE  m.historyFlag = true ORDER BY CAST(m.ValueLoss AS double) DESC")
     List<MergedModel> getAllHistoryTrue();
-    @Query("SELECT m FROM MergedModel m WHERE m.updatedAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true ORDER BY CAST(m.ValueLoss AS double) DESC")
+    @Query("SELECT m FROM MergedModel m WHERE m.updatedAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND  AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align') ORDER BY CAST(m.ValueLoss AS double) DESC")
     List<MergedModel> getAllHistoryTrue(@Param("fromDate")Timestamp fromDate,@Param("toDate")Timestamp toDate);
     //    @Query(value = "SELECT location, SUM(loss) FROM SalesLossData GROUP BY location", nativeQuery = true)
 //    List<Object[]> findLocationWiseSalesLoss();
