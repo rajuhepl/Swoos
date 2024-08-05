@@ -30,6 +30,7 @@ public class DashboardController {
         return dashboardService.getProductList(platform,channel,fromDate,toDate);
 
     }
+
     @GetMapping("/sukCount")
     public Map<String,Long> getSukCountPlatforms() {
     return dashboardService.getPlatformSukCount();

@@ -271,13 +271,13 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         int count = 0;
         for (ExcelModel excelModel : excelModels) {
             if (excelModel.getStatus().equals("1") || excelModel.getStatus().equals("0")) {
+                if (excelModel.getStatus().equals("0")) {
+                    countOfZeros++;
+                }
                 count++;
             }
             if (excelModel.getCity() != null && !excelModel.getCity().isEmpty() && !excelModel.getCity().equals("-")) {
                 cityStatusMap.put(excelModel.getCity(), excelModel.getStatus());
-                if (excelModel.getStatus().equals("0")) {
-                    countOfZeros++;
-                }
             }
         }
 
@@ -414,11 +414,11 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     private void calculateValueLoss(MergedModel mergedModel, int count, int countOfZeros) {
         if (count == 0) return;
 
-        double a = (100.0 / count) * 100;
+        double a = (100.0 / count);
         double b = a * countOfZeros;
         double c = (b * Double.parseDouble(mergedModel.getRevenue()));
         double loss = c / 30;
-        String formattedLoss = String.format("%.2f", (loss / 100) / 100);
+        String formattedLoss = String.format("%.2f", loss);
         mergedModel.setValueLoss(formattedLoss);
     }
 

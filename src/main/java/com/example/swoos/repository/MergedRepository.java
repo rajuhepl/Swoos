@@ -33,7 +33,7 @@ public interface MergedRepository extends JpaRepository<MergedModel,Long> {
 
     @Query("SELECT m FROM MergedModel m WHERE  m.historyFlag = true ORDER BY CAST(m.ValueLoss AS double) DESC")
     List<MergedModel> getAllHistoryTrue();
-    @Query("SELECT m FROM MergedModel m WHERE m.updatedAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND  AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align') ORDER BY CAST(m.ValueLoss AS double) DESC")
+    @Query("SELECT m FROM MergedModel m WHERE m.updatedAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND  AND m.reason NOT IN ('DisContinued') ORDER BY CAST(m.ValueLoss AS double) DESC")
     List<MergedModel> getAllHistoryTrue(@Param("fromDate")Timestamp fromDate,@Param("toDate")Timestamp toDate);
     //    @Query(value = "SELECT location, SUM(loss) FROM SalesLossData GROUP BY location", nativeQuery = true)
 //    List<Object[]> findLocationWiseSalesLoss();
@@ -46,14 +46,14 @@ List<Object[]> findLocationWiseSalesLoss();
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
             "   m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason,m.daySales as daySales," +
             " m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad " +
-            "  FROM MergedModel m WHERE m.Platform IN :platforms  AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+            "  FROM MergedModel m WHERE m.Platform IN :platforms  AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> findAllByPlatformsNative(@Param("platforms") List<String> platforms);
     @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform IN :platforms")
     List<Object[]> findAllByPlatformsNativeProducts(@Param("platforms") List<String> platforms);
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
             "  m.ValueLoss as valueLoss, m.Revenue as revenue,m.daySales as daySales, m.reason as reason," +
             " m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad" +
-            " FROM MergedModel m WHERE m.Platform = :platform AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+            " FROM MergedModel m WHERE m.Platform = :platform AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> findAllByPlatform(@Param("platform") String platform);
 
     @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform = :platform")
@@ -80,7 +80,7 @@ List<Object[]> findLocationWiseSalesLoss();
             "m.Ahmedabad as ahmedabad " +
             "FROM MergedModel m " +
             "WHERE m.historyFlag = true AND " +
-            "m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+            "m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> getAll();
 
     @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m")
@@ -90,10 +90,10 @@ List<Object[]> findLocationWiseSalesLoss();
 //If Date is Present
 @Query("SELECT m.SWOOSContribution as SWOOSContribution,m.daySales as daySales, m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad " +
         "FROM MergedModel m " +
-        "WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+        "WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
 List<MergedModelProjection> findAllByPlatformsNativeDate(@Param("platforms") List<String> platforms, @Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate);
     @Query("SELECT  m.SWOOSContribution as SWOOSContribution,  m.ValueLoss as valueLoss, m.Revenue as revenue, m.reason as reason,m.daySales as daySales, m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad FROM MergedModel m " +
-            "WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+            "WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> findAllByPlatformDate(@Param("platform") String platform,@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
     @Query("SELECT m.SWOOSContribution AS SWOOSContribution, " +
             "m.ValueLoss AS valueLoss, " +
@@ -113,7 +113,7 @@ List<MergedModelProjection> findAllByPlatformsNativeDate(@Param("platforms") Lis
             "FROM MergedModel m " +
             "WHERE m.createAt BETWEEN :fromDate AND :toDate " +
             "AND m.historyFlag = true " +
-            "AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location Not Align')")
+            "AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> getAllPlat(@Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate);
 
     @Query("SELECT m.Pname,m.mergedId,m.Platform  FROM MergedModel m WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate")
