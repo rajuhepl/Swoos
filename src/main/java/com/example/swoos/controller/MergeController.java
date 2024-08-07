@@ -65,10 +65,10 @@ public class MergeController {
         return mergedModel.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/platform")
+  /*  @GetMapping("/platform")
     public ResponseEntity<PlatformOFSCount> getPlatform(){
         return ResponseEntity.ok(mergeFileService.platformAndValueloss());
-    }
+    }*/
 
 
 }
