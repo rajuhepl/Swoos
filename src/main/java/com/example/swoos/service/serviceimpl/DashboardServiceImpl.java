@@ -56,13 +56,14 @@ public class DashboardServiceImpl implements DashboardService {
     public SuccessResponse<Object> getProductList(String platform,
                                                   String channel,
                                                   LocalDate fromDate,
-                                                  LocalDate toDate) {
+                                                  LocalDate toDate,
+                                                  String search) {
         SuccessResponse<Object> response = new SuccessResponse<>();
         List<Object[]> mergedModels;
         if (fromDate == null&&toDate == null) {
-            mergedModels = datesNotPresentedGetProducts(platform, channel);
+            mergedModels = datesNotPresentedGetProducts(platform, channel,search);
         }else{
-            mergedModels = datesPresentedGetProducts(platform, channel, fromDate, toDate);
+            mergedModels = datesPresentedGetProducts(platform, channel, fromDate, toDate,search);
         }
         List<ProductDto> products = mergedModels.stream()
                 .map(mergedModel -> {
@@ -70,6 +71,9 @@ public class DashboardServiceImpl implements DashboardService {
                     productDto.setProductName((String) mergedModel[0]);
                     productDto.setId((long) mergedModel[1]);
                     productDto.setChannel((String) mergedModel[2]);
+                    Timestamp createAt = (Timestamp) mergedModel[3];
+                    productDto.setDate(createAt.toLocalDateTime().toLocalDate());
+                    productDto.setPlatform(getPlatform(productDto.getChannel()));
                     return productDto;
                 })
                 .toList();
@@ -78,37 +82,60 @@ public class DashboardServiceImpl implements DashboardService {
         return response;
     }
 
-    private List<Object[]> datesNotPresentedGetProducts(String platform, String channel) {
+    private List<Object[]> datesNotPresentedGetProducts(String platform, String channel,String search) {
         List<Object[]> mergedModels;
-        if (platform !=null) {
-            if(channel !=null){
-                mergedModels=   mergedRepository.findAllByPlatformProduct(channel);
+        if (search==null) {
+            if (platform !=null) {
+                if(channel !=null){
+                    mergedModels=   mergedRepository.findAllByPlatformProduct(channel);
+                }else{
+                    mergedModels = mergedRepository.findAllByPlatformsNativeProducts(getChannels(platform));
+                }
             }else{
-                mergedModels = mergedRepository.findAllByPlatformsNativeProducts(getChannels(platform));
+                mergedModels = mergedRepository.getAllProducts();
             }
         }else{
-            mergedModels = mergedRepository.getAllProducts();
+            if (platform != null) {
+                if (channel != null) {
+                    mergedModels = mergedRepository.findAllByPlatformProduct(channel, search);
+                } else {
+                    mergedModels = mergedRepository.findAllByPlatformsNativeProducts(getChannels(platform), search);
+                }
+            } else {
+                mergedModels = mergedRepository.getAllProducts(search);
+            }
         }
         return mergedModels;
     }
 
 
-    private List<Object[]> datesPresentedGetProducts(String platform, String channel, LocalDate from, LocalDate to) {
+    private List<Object[]> datesPresentedGetProducts(String platform, String channel, LocalDate from, LocalDate to,String search) {
         LocalDateTime fromDateTime = LocalDateTime.of(from, LocalTime.MIN);
         LocalDateTime toDateTime = LocalDateTime.of(to, LocalTime.MAX);
         Timestamp fromDate = Timestamp.valueOf(fromDateTime);
         Timestamp toDate = Timestamp.valueOf(toDateTime);
 
         List<Object[]> mergedModels;
-        if (platform !=null) {
-
-            if(channel !=null){
-                mergedModels=   mergedRepository.findAllByPlatformDateProducts(channel,fromDate,toDate);
+        if (search==null) {
+            if (platform !=null) {
+                if(channel !=null){
+                    mergedModels=   mergedRepository.findAllByPlatformDateProducts(channel,fromDate,toDate);
+                }else{
+                    mergedModels = mergedRepository.findAllByPlatformsNativeDateProduct(getChannels(platform),fromDate,toDate);
+                }
             }else{
-                mergedModels = mergedRepository.findAllByPlatformsNativeDateProduct(getChannels(platform),fromDate,toDate);
+                mergedModels = mergedRepository.getAllPlatformProductsDate(fromDate,toDate);
             }
         }else{
-            mergedModels = mergedRepository.getAllPlatformProductsDate(fromDate,toDate);
+            if (platform != null) {
+                if (channel != null) {
+                    mergedModels = mergedRepository.findAllByPlatformDateProductsSearch(channel, fromDate, toDate, search);
+                } else {
+                    mergedModels = mergedRepository.findAllByPlatformsNativeDateProductSearch(getChannels(platform), fromDate, toDate, search);
+                }
+            } else {
+                mergedModels = mergedRepository.getAllPlatformProductsDateSearch(fromDate, toDate, search);
+            }
         }
         return mergedModels;
 
@@ -215,7 +242,17 @@ public class DashboardServiceImpl implements DashboardService {
             return List.of("Amazon", "Flipkart");
         }
     }
-        private void locationLossCalculations(MergedModelProjection location,
+    public String getPlatform(String channel) {
+        return switch (channel.toLowerCase()) {
+            case "amazon", "flipkart" -> "National"; // Flipkart is listed under "National" in getChannels
+            case "swiggy", "zepto", "blinkit" -> "QuickCom";
+            case "flipkart grocery", "bigbasket" -> "Grocery";
+            case "myntra", "nykaa", "purplle" -> "Beauty";
+            default -> "National"; // or some default platform if needed
+        };
+    }
+
+    private void locationLossCalculations(MergedModelProjection location,
                                                   Map<String,Double> locationLossMap){
             String[] cityNames = {
                     "Pune", "Other", "Patna", "Mumbai", "Indore",

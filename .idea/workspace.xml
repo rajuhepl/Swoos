@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Code Optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/controller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/MergedRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/repository/MergedRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/DashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/DashboardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722843582474</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Code Optimized">
+      <option name="closed" value="true" />
+      <created>1722856753773</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1722856753773</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -355,16 +366,36 @@
           <line>29</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>415</line>
-          <properties class="com.example.swoos.service.serviceimpl.MergeExcelAndCSVServiceImpl" method="calculateValueLoss">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java</url>
+          <line>55</line>
+          <properties class="com.example.swoos.service.serviceimpl.DashboardServiceImpl" method="getProductList">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="14" />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="response" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

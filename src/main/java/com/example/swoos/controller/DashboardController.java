@@ -26,8 +26,9 @@ public class DashboardController {
     public SuccessResponse<Object> getProductList(@RequestParam(required = false) String platform,
                                                   @RequestParam(required = false) String channel,
                                                   @RequestParam(required = false) LocalDate fromDate,
-                                                  @RequestParam(required = false) LocalDate toDate){
-        return dashboardService.getProductList(platform,channel,fromDate,toDate);
+                                                  @RequestParam(required = false) LocalDate toDate,
+                                                  @RequestParam(required = false) String search){
+        return dashboardService.getProductList(platform,channel,fromDate,toDate,search);
 
     }
 

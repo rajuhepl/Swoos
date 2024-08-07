@@ -49,7 +49,7 @@ List<Object[]> findLocationWiseSalesLoss();
             " m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad " +
             "  FROM MergedModel m WHERE m.Platform IN :platforms  AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> findAllByPlatformsNative(@Param("platforms") List<String> platforms);
-    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform IN :platforms")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform,m.createAt FROM MergedModel m WHERE m.Platform IN :platforms")
     List<Object[]> findAllByPlatformsNativeProducts(@Param("platforms") List<String> platforms);
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
             "  m.ValueLoss as valueLoss, m.Revenue as revenue,m.daySales as daySales, m.reason as reason," +
@@ -57,7 +57,7 @@ List<Object[]> findLocationWiseSalesLoss();
             " FROM MergedModel m WHERE m.Platform = :platform AND m.historyFlag = true AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> findAllByPlatform(@Param("platform") String platform);
 
-    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform = :platform")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform,m.createAt FROM MergedModel m WHERE m.Platform = :platform")
     List<Object[]> findAllByPlatformProduct(@Param("platform") String platform);
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
             "   m.ValueLoss as valueLoss, m.Revenue as revenue,m.daySales as daySales, m.reason as reason," +
@@ -84,7 +84,7 @@ List<Object[]> findLocationWiseSalesLoss();
             "m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> getAll();
 
-    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform,m.createAt FROM MergedModel m")
     List<Object[]> getAllProducts();
     @Query("SELECT m.Platform, m.mergedId FROM MergedModel m")
     List<Object[]> getAllMergedModel();
@@ -117,11 +117,11 @@ List<MergedModelProjection> findAllByPlatformsNativeDate(@Param("platforms") Lis
             "AND m.reason NOT IN ('DisContinued', 'Dispute', 'Location not align')")
     List<MergedModelProjection> getAllPlat(@Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate);
 
-    @Query("SELECT m.Pname,m.mergedId,m.Platform  FROM MergedModel m WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform,m.createAt  FROM MergedModel m WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate")
     List<Object[]> findAllByPlatformDateProducts(@Param("platform") String platform,@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
-    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform,m.createAt FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate")
     List<Object[]> getAllPlatformProductsDate(@Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
-    @Query("SELECT m.Pname,m.mergedId,m.Platform FROM MergedModel m WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate")
+    @Query("SELECT m.Pname,m.mergedId,m.Platform,m.createAt FROM MergedModel m WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate")
     List<Object[]> findAllByPlatformsNativeDateProduct(@Param("platforms") List<String> platforms, @Param("fromDate") Timestamp fromDate, @Param("toDate")Timestamp toDate);
     @Query("SELECT m.Platform AS platform, " +
             "       SUM(CASE WHEN m.Ahmedabad = 'OUT-OF-STOCK' THEN 1 ELSE 0 END + " +
@@ -140,4 +140,23 @@ List<MergedModelProjection> findAllByPlatformsNativeDate(@Param("platforms") Lis
             "GROUP BY m.Platform")
     List<PlatformCount> countDataByPlatform();
 
+
+    //Product List Search
+    @Query("SELECT m.Pname, m.mergedId, m.Platform, m.createAt FROM MergedModel m WHERE m.Platform = :platform AND m.createAt BETWEEN :fromDate AND :toDate AND m.Pname LIKE %:search%")
+    List<Object[]> findAllByPlatformDateProductsSearch(@Param("platform") String platform, @Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate, @Param("search") String search);
+
+    @Query("SELECT m.Pname, m.mergedId, m.Platform, m.createAt FROM MergedModel m WHERE m.createAt BETWEEN :fromDate AND :toDate AND m.Pname LIKE %:search%")
+    List<Object[]> getAllPlatformProductsDateSearch(@Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate, @Param("search") String search);
+
+    @Query("SELECT m.Pname, m.mergedId, m.Platform, m.createAt FROM MergedModel m WHERE m.Platform IN :platforms AND m.createAt BETWEEN :fromDate AND :toDate AND m.Pname LIKE %:search%")
+    List<Object[]> findAllByPlatformsNativeDateProductSearch(@Param("platforms") List<String> platforms, @Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate, @Param("search") String search);
+
+    @Query("SELECT m.Pname, m.mergedId, m.Platform, m.createAt FROM MergedModel m WHERE m.Platform = :platform AND m.Pname LIKE %:search%")
+    List<Object[]> findAllByPlatformProduct(@Param("platform") String platform, @Param("search") String search);
+
+    @Query("SELECT m.Pname, m.mergedId, m.Platform, m.createAt FROM MergedModel m WHERE m.Platform IN :platforms AND m.Pname LIKE %:search%")
+    List<Object[]> findAllByPlatformsNativeProducts(@Param("platforms") List<String> platforms, @Param("search") String search);
+
+    @Query("SELECT m.Pname, m.mergedId, m.Platform, m.createAt FROM MergedModel m WHERE m.Pname LIKE %:search%")
+    List<Object[]> getAllProducts(@Param("search") String search);
 }
