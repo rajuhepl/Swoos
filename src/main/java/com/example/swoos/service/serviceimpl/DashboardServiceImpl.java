@@ -19,6 +19,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class DashboardServiceImpl implements DashboardService {
@@ -29,23 +31,17 @@ public class DashboardServiceImpl implements DashboardService {
     @Override
     public SuccessResponse<Object> getDashboardCalculation(String platform,
                                                            String channel,
-                                                           long productId,
+                                                           String productId,
                                                            LocalDate from,
                                                            LocalDate to) {
         SuccessResponse<Object> response = new SuccessResponse<>();
         DashboardCalcDto calcDto;
         List<MergedModelProjection> mergedModels ;
-            if(productId!=0){
-                mergedModels = mergedRepository.findByIdProduct(productId);
-                calcDto = swoosLoss(mergedModels);
-                calcDto.setQuantityLoss(mergedModels.get(0).getSWOOSContribution());
-                response.setData(calcDto);
-                return response;
-            }
+
         if (from == null && to == null) {
-            mergedModels = datesNotPresented(platform, channel);
+            mergedModels = datesNotPresented(platform,productId, channel);
         }else{
-            mergedModels = datesPresented(platform, channel, from, to);
+            mergedModels = datesPresented(platform,productId, channel, from, to);
         }
         assert mergedModels != null;
         response.setData(swoosLoss(mergedModels));
@@ -66,19 +62,25 @@ public class DashboardServiceImpl implements DashboardService {
         }else{
             mergedModels = datesPresentedGetProducts(platform, channel, fromDate, toDate,search);
         }
-        List<ProductDto> products = mergedModels.stream()
+        Map<String, ProductDto> productDtoMap = mergedModels.stream()
                 .map(mergedModel -> {
                     ProductDto productDto = new ProductDto();
                     productDto.setProductName((String) mergedModel[0]);
-                    productDto.setId((long) mergedModel[1]);
+                    productDto.setId((String) mergedModel[1]);
                     productDto.setChannel((String) mergedModel[2]);
                     Timestamp createAt = (Timestamp) mergedModel[3];
-                    productDto.setDate(String.valueOf(createAt));
+                    productDto.setDate(createAt.toInstant().atZone(ZoneOffset.UTC).toLocalDateTime().toString());
                     productDto.setPlatform(getPlatform(productDto.getChannel()));
                     return productDto;
                 })
-                .toList();
-        response.setData(products);
+                // Collect into a LinkedHashMap to keep the order and ensure uniqueness based on ID
+                .collect(Collectors.toMap(
+                        ProductDto::getId,
+                        Function.identity(),
+                        (existing, replacement) -> existing,
+                        LinkedHashMap::new
+                ));
+        response.setData(productDtoMap.values().toArray());
 
         return response;
     }
@@ -143,22 +145,24 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
 
-    private List<MergedModelProjection> datesNotPresented(String platform, String channel) {
+    private List<MergedModelProjection> datesNotPresented(String platform,String productId, String channel) {
         List<MergedModelProjection> mergedModels;
-        if (platform !=null) {
 
+        if (platform !=null) {
             if(channel !=null){
                 mergedModels=   mergedRepository.findAllByPlatform(channel);
             }else{
                 mergedModels = mergedRepository.findAllByPlatformsNative(getChannels(platform));
             }
-        }else{
+        } else if (productId!=null) {
+            mergedModels = mergedRepository.findByIdProduct(productId);
+        } else{
             mergedModels = mergedRepository.getAll();
         }
         return mergedModels;
     }
 
-    private List<MergedModelProjection> datesPresented(String platform, String channel, LocalDate from,LocalDate to) {
+    private List<MergedModelProjection> datesPresented(String platform, String channel,String productId, LocalDate from,LocalDate to) {
         LocalDateTime fromDateTime = LocalDateTime.of(from, LocalTime.MIN);
         LocalDateTime toDateTime = LocalDateTime.of(to, LocalTime.MAX);
         Timestamp fromDate = Timestamp.valueOf(fromDateTime);
@@ -168,6 +172,8 @@ public class DashboardServiceImpl implements DashboardService {
         if (platform !=null) {
             if(channel !=null){
                 mergedModels=   mergedRepository.findAllByPlatformDate(channel,fromDate,toDate);
+            }else if (productId!=null) {
+                mergedModels = mergedRepository.findByIdProductAndDate(productId,fromDate,toDate);
             }else{
                 mergedModels = mergedRepository.findAllByPlatformsNativeDate(getChannels(platform),fromDate,toDate);
             }

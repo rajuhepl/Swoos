@@ -17,7 +17,8 @@ public class DashboardController {
     @GetMapping("/dashboard")
     public SuccessResponse<Object> getDashboardCalculation(@RequestParam(required = false) String platform,
                                                            @RequestParam(required = false) String channel,
-                                                           @RequestParam long productId,@RequestParam(required = false) LocalDate fromDate,
+                                                           @RequestParam(required = false) String productId,
+                                                           @RequestParam(required = false) LocalDate fromDate,
                                                            @RequestParam(required = false) LocalDate toDate){
         return dashboardService.getDashboardCalculation(platform,channel,productId,fromDate,toDate);
 
