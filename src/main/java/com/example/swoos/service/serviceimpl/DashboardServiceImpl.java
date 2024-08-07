@@ -17,6 +17,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.*;
 
 @Service
@@ -72,7 +73,7 @@ public class DashboardServiceImpl implements DashboardService {
                     productDto.setId((long) mergedModel[1]);
                     productDto.setChannel((String) mergedModel[2]);
                     Timestamp createAt = (Timestamp) mergedModel[3];
-                    productDto.setDate(createAt.toLocalDateTime().toLocalDate());
+                    productDto.setDate(String.valueOf(createAt));
                     productDto.setPlatform(getPlatform(productDto.getChannel()));
                     return productDto;
                 })
