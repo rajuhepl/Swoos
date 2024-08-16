@@ -314,6 +314,31 @@ public class DashboardServiceImpl implements DashboardService {
         }
         return sukCountMap;
     }
+    public SuccessResponse<Object> getDashboardCalculationReason(String platform,
+                                                           String channel,
+                                                           String productId,
+                                                           LocalDate from,
+                                                           LocalDate to) {
+        SuccessResponse<Object> response = new SuccessResponse<>();
+        List<MergedModelProjection> mergedModels ;
+
+        if (from == null && to == null) {
+            mergedModels = datesNotPresented(platform,productId, channel);
+        }else{
+            mergedModels = datesPresented(platform,channel,productId , from, to);
+        }
+        Map<String, List<MergedModelProjection>> groupedByReason = mergedModels.stream()
+                .collect(Collectors.groupingBy(MergedModelProjection::getReason));
+
+        Map<String, DashboardCalcDto> reasonDashboardMap = groupedByReason.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> swoosLoss(entry.getValue())
+                ));
+
+        response.setData(reasonDashboardMap);
+        return response;
+    }
 
 
 }
