@@ -38,6 +38,8 @@ public class CSVModel {
 
     @Column(name = "revenue")
     private String Revenue;
+    @Column(name = "units")
+    private int units;
 
     @Column(name = "triggeredon")
     private LocalDateTime triggeredOn;

@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Get Products By Asin" />
+    <list default="true" id="dba8a7af-5bde-4e71-bb62-9dd1f6c93695" name="Changes" comment="Platform Count API Removed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/MergedModelProjection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/dto/MergedModelProjection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/CSVModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/model/CSVModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/DashboardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,23 +46,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Application.ProjectManagementToolApplication.executor": "Run",
-    "Maven.swoos [clean,package,install].executor": "Run",
-    "Maven.swoos [clean].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/SWOOS_AZURE_LOCAL_CODE/azure_main-cicd/backend",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Application.ProjectManagementToolApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.swoos [clean,package,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.swoos [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SWOOS_AZURE_LOCAL_CODE/azure_main-cicd/backend&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ProjectManagementToolApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.swoos.ProjectManagementToolApplication" />
@@ -278,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723028178054</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Platform Count API Removed">
+      <option name="closed" value="true" />
+      <created>1723028276190</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1723028276190</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,7 +359,8 @@
     <MESSAGE value="Added Search" />
     <MESSAGE value="TimeStamp converted to String" />
     <MESSAGE value="Get Products By Asin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get Products By Asin" />
+    <MESSAGE value="Platform Count API Removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Platform Count API Removed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -357,27 +372,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>602</line>
+          <line>604</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>597</line>
+          <line>599</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>598</line>
+          <line>600</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>604</line>
+          <line>606</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/swoos/service/serviceimpl/MergeExcelAndCSVServiceImpl.java</url>
-          <line>607</line>
+          <line>609</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

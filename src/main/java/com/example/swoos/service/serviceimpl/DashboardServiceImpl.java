@@ -187,7 +187,7 @@ public class DashboardServiceImpl implements DashboardService {
         DashboardCalcDto calcDto = new DashboardCalcDto();
         double daySalesTotal = 0;
         double revenue = 0;
-        double swoosContribution = 0;
+        int quantityLoss = 0;
         double valueLoss = 0;
         Map<String,Long>reasonLevelCount = new HashMap<>();
         Map<String,Double> locationLossMap = new HashMap<>();
@@ -195,6 +195,8 @@ public class DashboardServiceImpl implements DashboardService {
             String daySales = model.getDaySales();
             String valueLossString =  model.getValueLoss();
             String rev = model.getRevenue();
+            int unit =Integer.parseInt(model.getMonthlySales());
+            int monthUnit = unit * 30;
             String reason= "No Reasons";
             if (model.getReason()!=null) {
                 reason =  model.getReason();
@@ -204,31 +206,27 @@ public class DashboardServiceImpl implements DashboardService {
                 reasonLevelCount.put(reason,count+1);
                 daySalesTotal += Double.parseDouble(daySales.replace("%", ""));
                 revenue +=(long) Double.parseDouble(rev) ;
-                swoosContribution += Double.parseDouble(daySales.replace("%", ""));
+                quantityLoss += unit/monthUnit;
                 valueLoss += Double.parseDouble(valueLossString.replace("%", ""));
             } catch (NumberFormatException e) {
                 System.err.println("Invalid number format for model ");
             }
             locationLossCalculations(model,locationLossMap);
         }
-
         double swoosLoss = 0;
         if (revenue > 0) {
             swoosLoss = (valueLoss / daySalesTotal);
         }
-
-        double swoowCont = 0;
+        int quantityLos = 0;
         if (!mergedModels.isEmpty()) {
-            swoowCont = (swoosContribution / mergedModels.size());
+            quantityLos = (quantityLoss / mergedModels.size());
         }
-
         double totalLoss = 0;
         if (!mergedModels.isEmpty()) {
             totalLoss = (valueLoss / revenue);
         }
-
         calcDto.setValueLoss(String.format("%.2f%%", totalLoss));
-        calcDto.setQuantityLoss(String.format("%.2f%%", swoowCont));
+        calcDto.setQuantityLoss(String.valueOf(quantityLos));
         calcDto.setSwoosLoss(String.format("%.2f%%", swoosLoss));
         calcDto.setReasonLevelCount(reasonLevelCount);
         calcDto.setLocationLevelCount(locationLossMap);
@@ -251,11 +249,10 @@ public class DashboardServiceImpl implements DashboardService {
     }
     public String getPlatform(String channel) {
         return switch (channel.toLowerCase()) {
-            case "amazon", "flipkart" -> "National"; // Flipkart is listed under "National" in getChannels
             case "swiggy", "zepto", "blinkit" -> "QuickCom";
             case "flipkart grocery", "bigbasket" -> "Grocery";
             case "myntra", "nykaa", "purplle" -> "Beauty";
-            default -> "National"; // or some default platform if needed
+            default -> "National";
         };
     }
 

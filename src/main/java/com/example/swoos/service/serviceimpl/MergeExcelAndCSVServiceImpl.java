@@ -266,6 +266,8 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         double daySales = revenue / 30;
         String formattedDaySales = String.format("%.2f", daySales);
         mergedModel.setDaySales(formattedDaySales);
+        int unit = csvModel.getUnits()/30;
+        mergedModel.setMonthlySales(String.valueOf(unit));
 
         // Collecting city status information
         Map<String, String> cityStatusMap = new LinkedHashMap<>();
