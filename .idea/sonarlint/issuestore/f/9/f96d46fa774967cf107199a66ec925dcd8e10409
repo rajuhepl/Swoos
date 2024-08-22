@@ -1,8 +1,14 @@
 
-^
-java:S1192Æ"GDefine a constant instead of duplicating this literal "%.2f%%" 3 times.(§‰‚À
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-@	java:S106²"+Replace this use of System.err by a logger.(‰Î¥f
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8íÙ†Ñ—2J$0c206e47-795f-47b2-896f-40cba2ef5c06
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8îÙ†Ñ—2J$f6f1e37d-f838-47c3-b805-22ec38950065
+£
+java:S22340"`Parameters to datesPresented have the same names but not the same order as the method arguments.(·¤ê˜8ôÙ†Ñ—2J$cd66b800-ae55-4d2b-bf5b-cbb1f3d19bfb
+•
+java:S3776X"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ú‹£Š8öÙ†Ñ—2J$a8c52c2c-f611-4733-9bd7-da0244206f90
+š
+java:S3776q"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ãÌÚ»ùÿÿÿÿ8÷Ù†Ñ—2J$d4245b7e-1b35-4625-b157-73851da9c089
+m	java:S106Î"+Replace this use of System.err by a logger.(‰Î¥f8üÙ†Ñ—2J$7c0a7ee6-0707-4f57-a8d4-69150e7797c6
+„	java:S125ž"<This block of commented-out lines of code should be removed.(üÚãŽøÿÿÿÿ8ŒÚ†Ñ—2J$8b60356e-2e18-41ff-ad34-6a6a9e1d0b65
+	java:S125Ù"<This block of commented-out lines of code should be removed.(ÖÑ†8ŒÚ†Ñ—2J$23b639fa-0d9c-4fa8-a942-658f0708c597

@@ -1,5 +1,5 @@
 
-g
-java:S2095%"JUse try-with-resources or close this "XSSFWorkbook" in a "finally" clause.(¸™á…8‰»¶¬Œ2
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëÁÁ¤Œ2
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(îŠŠ‹J$767c5bd3-8d1c-4e2d-b3c9-fcb02f5d78d8
+€	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(Ô®ÒEJ$7cc06ed9-ae06-46d1-9ee3-a52453faf510
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$ef650dbf-d409-4053-b8ad-711ceaea5625

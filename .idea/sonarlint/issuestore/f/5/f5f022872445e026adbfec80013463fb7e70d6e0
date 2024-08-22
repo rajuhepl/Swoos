@@ -1,3 +1,7 @@
 
 …
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨‡Ü‹2J$770d84bb-7a4e-4161-bfb7-f4e1829c9fae
+d
+java:S1128"BRemove this unused import 'com.example.swoos.exception.ErrorCode'.(Í¶Ê°ûÿÿÿÿ8àş­ô2
+_
+java:S1128"BRemove this unused import 'com.example.swoos.model.DropDownModel'.(É÷»Ÿ8àş­ô2

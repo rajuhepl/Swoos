@@ -1,9 +1,6 @@
 package com.example.swoos.service.serviceimpl;
 
-import com.example.swoos.dto.DashboardCalcDto;
-import com.example.swoos.dto.MergedModelProjection;
-import com.example.swoos.dto.ProductDto;
-import com.example.swoos.dto.ReasonLevelDto;
+import com.example.swoos.dto.*;
 import com.example.swoos.repository.MergedRepository;
 import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.service.DashboardService;
@@ -348,6 +345,126 @@ public class DashboardServiceImpl implements DashboardService {
         });
         return reasonLevels;
     }
+
+
+
+
+@Override
+public List<LocationLevelDTO> getLocationLevel(String platform,
+                                             String channel,
+                                             String productId,
+                                             LocalDate fromDate,
+                                             LocalDate toDate) {
+    List<MergedModelProjection> mergedModel = getMergedModelProjections(platform, channel, productId, fromDate, toDate);
+    Map<String, List<MergedModelProjection>> locationMap = new HashMap<>();
+
+    mergedModel.forEach(merged -> {
+        List<MergedModelProjection> patna = locationMap.getOrDefault(merged.getPatna(), new ArrayList<>());
+        patna.add(merged);
+        locationMap.put("Patna", patna);
+        List<MergedModelProjection> mumbai = locationMap.getOrDefault(merged.getMumbai(), new ArrayList<>());
+        mumbai.add(merged);
+        locationMap.put("Mumbai", mumbai);
+        List<MergedModelProjection>  pune= locationMap.getOrDefault(merged.getPune(), new ArrayList<>());
+        pune.add(merged);
+        locationMap.put("Pune", pune);
+        List<MergedModelProjection> chennai = locationMap.getOrDefault(merged.getChennai(), new ArrayList<>());
+        chennai.add(merged);
+        locationMap.put("Chennai", chennai);
+        List<MergedModelProjection> delhi = locationMap.getOrDefault(merged.getDelhi(), new ArrayList<>());
+        delhi.add(merged);
+        locationMap.put("Delhi", delhi);
+        List<MergedModelProjection> indore = locationMap.getOrDefault(merged.getIndore(), new ArrayList<>());
+        indore.add(merged);
+        locationMap.put("Indore", indore);
+        List<MergedModelProjection>  hyderabad= locationMap.getOrDefault(merged.getHyderabad(), new ArrayList<>());
+        hyderabad.add(merged);
+        locationMap.put("Hyderabad", hyderabad);
+        List<MergedModelProjection> calcutta = locationMap.getOrDefault(merged.getCalcutta(), new ArrayList<>());
+        calcutta.add(merged);
+        locationMap.put("Calcutta", calcutta);
+        List<MergedModelProjection>  bangalore= locationMap.getOrDefault(merged.getBangalore(), new ArrayList<>());
+        bangalore.add(merged);
+        locationMap.put("Bangalore", bangalore);
+        List<MergedModelProjection> ahmedabad = locationMap.getOrDefault(merged.getAhmedabad(), new ArrayList<>());
+        ahmedabad.add(merged);
+        locationMap.put("Ahmedabad", ahmedabad);
+    });
+
+    List<LocationLevelDTO> locationLevels = new ArrayList<>();
+    locationMap.forEach((location, projections) -> {
+        LocationLevelDTO locationLevelDTO = new LocationLevelDTO();
+        locationLevelDTO.setName(location);
+        locationLevelDTO.setCount(projections.size());
+        locationLevelDTO.setTable(swoosLoss(projections));
+        locationLevels.add(locationLevelDTO);
+    });
+
+    return locationLevels;
+}
+
+
+
+
+//    @Override
+//    public List<LocationLevelDTO> getLoactionLevel(String platform,
+//                                                 String channel,
+//                                                 String productId,
+//                                                 LocalDate fromDate,
+//                                                 LocalDate toDate) {
+//        List<MergedModelProjection> mergedModel = getMergedModelProjections(platform, channel, productId, fromDate, toDate);
+//        Map<String, List<MergedModelProjection>> locationMap = new HashMap<>();
+//
+//        mergedModel.forEach(merged -> {
+//            if (merged.getPune() != null) {
+//                locationMap.computeIfAbsent("Pune", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getAhmedabad() != null) {
+//                locationMap.computeIfAbsent("Ahmedabad", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getBangalore() != null) {
+//                locationMap.computeIfAbsent("Bangalore", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getCalcutta() != null) {
+//                locationMap.computeIfAbsent("Calcutta", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getChennai() != null) {
+//                locationMap.computeIfAbsent("Chennai", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getDelhi() != null) {
+//                locationMap.computeIfAbsent("Delhi", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getHyderabad() != null) {
+//                locationMap.computeIfAbsent("Hyderabad", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getIndore() != null) {
+//                locationMap.computeIfAbsent("Indore", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getMumbai() != null) {
+//                locationMap.computeIfAbsent("Mumbai", k -> new ArrayList<>()).add(merged);
+//            }
+//            if (merged.getPatna() != null) {
+//                locationMap.computeIfAbsent("Patna", k -> new ArrayList<>()).add(merged);
+//            }
+//        });
+//
+//        List<LocationLevelDTO> reasonLevels = new ArrayList<>();
+//        locationMap.forEach((location, projections) -> {
+//            LocationLevelDTO reasonLevelDto = new LocationLevelDTO();
+//            reasonLevelDto.setName(location);
+//            reasonLevelDto.setCount(projections.size());
+//            reasonLevelDto.setTable(swoosLoss(projections));
+//            reasonLevels.add(reasonLevelDto);
+//        });
+//
+//        return reasonLevels;
+//    }
+
+
+
+
+
+
 
 /*    public SuccessResponse<Object> getDashboardCalculationReason(String platform,
                                                            String channel,

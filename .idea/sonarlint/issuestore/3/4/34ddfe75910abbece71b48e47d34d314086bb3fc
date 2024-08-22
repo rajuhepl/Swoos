@@ -3,3 +3,5 @@
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8‰ÛîÜ‹2J$3030f032-d19a-413c-8c9b-0c80f4cb0562
 „
 java:S1854"ARemove this useless assignment to local variable "dropDownModel".(Ïœ‹œ8ŒÛîÜ‹2J$8f6554fe-bc24-4f4e-9163-48c32b081e59
+X
+java:S1128";Remove this unused import 'com.example.swoos.model.Reason'.(§‘×ë8àÿ­ô2

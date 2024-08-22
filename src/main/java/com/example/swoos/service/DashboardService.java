@@ -1,5 +1,6 @@
 package com.example.swoos.service;
 
+import com.example.swoos.dto.LocationLevelDTO;
 import com.example.swoos.dto.ReasonLevelDto;
 import com.example.swoos.response.SuccessResponse;
 
@@ -19,4 +20,6 @@ public interface DashboardService {
     List<ReasonLevelDto> getReasonLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
 
     List<ReasonLevelDto> getPlatformLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
+
+    List<LocationLevelDTO> getLocationLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
 }

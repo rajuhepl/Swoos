@@ -292,3 +292,9 @@ i
 9src/main/java/com/example/swoos/dto/PlatformOFSCount.java,6\e\6ea9fc4168ccf469aa4cd0330375a8998ab7e666
 f
 6src/main/java/com/example/swoos/dto/PlatformCount.java,4\b\4b850361481836fbd5cbea96fa17cf36a242ba5b
+y
+Isrc/main/java/com/example/swoos/service/serviceimpl/LocationLevelDTO.java,e\4\e4a50490dd901e4a6925f7b53a50065376b871ef
+i
+9src/main/java/com/example/swoos/dto/LocationLevelDTO.java,b\9\b94f1a97b70cbb731bb6d6639ce8815c7e7e0094
+g
+7src/main/java/com/example/swoos/dto/ReasonLevelDto.java,4\7\47d0e36c6b62ca2b55211453a04b7d749e4d40bd
