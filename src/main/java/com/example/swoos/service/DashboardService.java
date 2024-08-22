@@ -1,8 +1,10 @@
 package com.example.swoos.service;
 
+import com.example.swoos.dto.ReasonLevelDto;
 import com.example.swoos.response.SuccessResponse;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 public interface DashboardService {
@@ -14,4 +16,7 @@ public interface DashboardService {
     Map<String, Long> getPlatformSukCount();
 
 
+    List<ReasonLevelDto> getReasonLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
+
+    List<ReasonLevelDto> getPlatformLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
 }

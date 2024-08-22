@@ -241,15 +241,11 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         if (Constant.OUT_OF_STOCK.equals(model.getOther())) outOfStockCount++;
         return outOfStockCount;
     }
-
-
     private MergedModel createMergedModel(CSVModel csvModel,
                                           List<ExcelModel> excelModels,
                                           List<MergedModel> discontinued) {
         MergedModel mergedModel = new MergedModel();
         ExcelModel firstExcelModel = excelModels.get(0);
-
-        // Setting basic information
         mergedModel.setPlatform(firstExcelModel.getPlatform());
         mergedModel.setAsin(firstExcelModel.getAsin());
         mergedModel.setPname(firstExcelModel.getPname());
@@ -257,19 +253,14 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         mergedModel.setBrand(csvModel.getBrand());
         mergedModel.setCategory(csvModel.getCategory());
         mergedModel.setSubCategory(csvModel.getSubCategory());
-
-        // Setting revenue and day sales
         double revenue = Double.parseDouble(csvModel.getRevenue());
         String formattedRevenue = String.format("%.2f", revenue);
         mergedModel.setRevenue(formattedRevenue);
-
         double daySales = revenue / 30;
         String formattedDaySales = String.format("%.2f", daySales);
         mergedModel.setDaySales(formattedDaySales);
         int unit = csvModel.getUnits()/30;
         mergedModel.setMonthlySales(String.valueOf(unit));
-
-        // Collecting city status information
         Map<String, String> cityStatusMap = new LinkedHashMap<>();
         int countOfZeros = 0;
         int count = 0;
@@ -284,8 +275,6 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                 cityStatusMap.put(excelModel.getCity(), excelModel.getStatus());
             }
         }
-
-        // Setting city statuses
         mergedModel.setAhmedabad(findValuesForCity(cityStatusMap, "Ahmedabad"));
         mergedModel.setBangalore(findValuesForCity(cityStatusMap, "Bangalore"));
         mergedModel.setChennai(findValuesForCity(cityStatusMap, "Chennai"));
@@ -298,13 +287,10 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         mergedModel.setPatna(findValuesForCity(cityStatusMap, "Patna"));
         mergedModel.setPune(findValuesForCity(cityStatusMap, "Pune"));
         mergedModel.setOther(getOthersCityMap(cityStatusMap));
-        // Setting percentage of each city
         setCityPercentage(mergedModel, cityStatusMap, count);
-        // Calculating SWOOS percentage
         if (countOfZeros > 0) {
             setSwoosPercentage(mergedModel, countOfZeros);
         }
-        // Calculating value loss
         calculateValueLoss(mergedModel, count, countOfZeros);
         Map<String, MergedModel> latestDiscontinuedMap = discontinued.stream()
                 .collect(Collectors.toMap(
@@ -312,7 +298,6 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                         Function.identity(),
                         (existing, replacement) -> existing.getUpdatedAt().after(replacement.getUpdatedAt()) ? existing : replacement
                 ));
-
         latestDiscontinuedMap.values().stream()
                 .filter(disCont -> mergedModel.getAsin().equalsIgnoreCase(disCont.getAsin()))
                 .findFirst()
@@ -338,25 +323,17 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
     }
 
     private boolean locationNotAlign(MergedModel oldAsin, MergedModel newAsin) {
-        // Define an array of cities to check
         String[] citiesToCheck = {"Bangalore", "Ahmedabad", "Chennai", "Delhi", "Pune", "Nagpur", "Mumbai", "Calcutta", "Indore", "Hyderabad"};
-
-        // Iterate through the cities and check the condition
         for (String city : citiesToCheck) {
-            // Get the getter method name dynamically
             String getterMethodName = "get" + city;
             try {
-                // Use reflection to invoke the getter method
                 Method getterMethod = MergedModel.class.getMethod(getterMethodName);
                 String oldValue = (String) getterMethod.invoke(oldAsin);
                 String newValue = (String) getterMethod.invoke(newAsin);
-
-                // Check if the city is "Out-of-Stock" in both old and new Asin
                 if (oldValue.equalsIgnoreCase(Constant.OUT_OF_STOCK) && oldValue.equalsIgnoreCase(newValue)) {
-                    return true; // If condition matches, return true
+                    return true;
                 }
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                // Handle exceptions if necessary
                 e.printStackTrace();
             }
         }

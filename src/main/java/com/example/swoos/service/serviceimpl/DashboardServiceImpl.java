@@ -3,6 +3,7 @@ package com.example.swoos.service.serviceimpl;
 import com.example.swoos.dto.DashboardCalcDto;
 import com.example.swoos.dto.MergedModelProjection;
 import com.example.swoos.dto.ProductDto;
+import com.example.swoos.dto.ReasonLevelDto;
 import com.example.swoos.repository.MergedRepository;
 import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.service.DashboardService;
@@ -35,17 +36,21 @@ public class DashboardServiceImpl implements DashboardService {
                                                            LocalDate from,
                                                            LocalDate to) {
         SuccessResponse<Object> response = new SuccessResponse<>();
-        DashboardCalcDto calcDto;
         List<MergedModelProjection> mergedModels ;
-
-        if (from == null && to == null) {
-            mergedModels = datesNotPresented(platform,productId, channel);
-        }else{
-            mergedModels = datesPresented(platform,productId, channel, from, to);
-        }
+        mergedModels = getMergedModelProjections(platform, channel, productId, from, to);
         assert mergedModels != null;
         response.setData(swoosLoss(mergedModels));
         return response;
+    }
+
+    private List<MergedModelProjection> getMergedModelProjections(String platform, String channel, String productId, LocalDate from, LocalDate to) {
+        List<MergedModelProjection> mergedModels;
+        if (from == null && to == null) {
+            mergedModels = datesNotPresented(platform, productId, channel);
+        }else{
+            mergedModels = datesPresented(platform, productId, channel, from, to);
+        }
+        return mergedModels;
     }
 
 
@@ -73,7 +78,6 @@ public class DashboardServiceImpl implements DashboardService {
                     productDto.setPlatform(getPlatform(productDto.getChannel()));
                     return productDto;
                 })
-                // Collect into a LinkedHashMap to keep the order and ensure uniqueness based on ID
                 .collect(Collectors.toMap(
                         ProductDto::getId,
                         Function.identity(),
@@ -81,7 +85,6 @@ public class DashboardServiceImpl implements DashboardService {
                         LinkedHashMap::new
                 ));
         response.setData(productDtoMap.values().toArray());
-
         return response;
     }
 
@@ -110,8 +113,6 @@ public class DashboardServiceImpl implements DashboardService {
         }
         return mergedModels;
     }
-
-
     private List<Object[]> datesPresentedGetProducts(String platform, String channel, LocalDate from, LocalDate to,String search) {
         LocalDateTime fromDateTime = LocalDateTime.of(from, LocalTime.MIN);
         LocalDateTime toDateTime = LocalDateTime.of(to, LocalTime.MAX);
@@ -144,7 +145,6 @@ public class DashboardServiceImpl implements DashboardService {
 
     }
 
-
     private List<MergedModelProjection> datesNotPresented(String platform,String productId, String channel) {
         List<MergedModelProjection> mergedModels;
 
@@ -167,7 +167,6 @@ public class DashboardServiceImpl implements DashboardService {
         LocalDateTime toDateTime = LocalDateTime.of(to, LocalTime.MAX);
         Timestamp fromDate = Timestamp.valueOf(fromDateTime);
         Timestamp toDate = Timestamp.valueOf(toDateTime);
-
         List<MergedModelProjection> mergedModels;
         if (platform !=null) {
             if(channel !=null){
@@ -189,7 +188,6 @@ public class DashboardServiceImpl implements DashboardService {
         double revenue = 0;
         int quantityLoss = 0;
         double valueLoss = 0;
-        Map<String,Long>reasonLevelCount = new HashMap<>();
         Map<String,Double> locationLossMap = new HashMap<>();
         for (MergedModelProjection model : mergedModels) {
             String daySales = model.getDaySales();
@@ -197,13 +195,7 @@ public class DashboardServiceImpl implements DashboardService {
             String rev = model.getRevenue();
             int unit =Integer.parseInt(model.getMonthlySales());
             int monthUnit = unit * 30;
-            String reason= "No Reasons";
-            if (model.getReason()!=null) {
-                reason =  model.getReason();
-            }
             try {
-                long count = reasonLevelCount.getOrDefault(reason,0L);
-                reasonLevelCount.put(reason,count+1);
                 daySalesTotal += Double.parseDouble(daySales.replace("%", ""));
                 revenue +=(long) Double.parseDouble(rev) ;
                 quantityLoss += unit/monthUnit;
@@ -228,12 +220,8 @@ public class DashboardServiceImpl implements DashboardService {
         calcDto.setValueLoss(String.format("%.2f%%", totalLoss));
         calcDto.setQuantityLoss(String.valueOf(quantityLos));
         calcDto.setSwoosLoss(String.format("%.2f%%", swoosLoss));
-        calcDto.setReasonLevelCount(reasonLevelCount);
-        calcDto.setLocationLevelCount(locationLossMap);
         return calcDto;
     }
-
-
     private List<String> getChannels(String platform){
         if(platform.equalsIgnoreCase("National")){
             return List.of("Amazon", "Flipkart");
@@ -263,8 +251,6 @@ public class DashboardServiceImpl implements DashboardService {
                     "Hyderabad", "Delhi", "Chennai", "Calcutta",
                     "Bangalore", "Ahmedabad"
             };
-
-            // Array of city values from the location object
             String[] cities = {
                     location.getPune(),
                     location.getOther(),
@@ -279,8 +265,6 @@ public class DashboardServiceImpl implements DashboardService {
                     location.getAhmedabad()
             };
             List<String> availableCities = new ArrayList<>();
-
-            // Iterate over the array and check if each city is presented
             for (int i = 0; i < cities.length; i++) {
                 if (isPresented(cities[i])) {
                     availableCities.add(cityNames[i]);
@@ -311,7 +295,56 @@ public class DashboardServiceImpl implements DashboardService {
         }
         return sukCountMap;
     }
-    public SuccessResponse<Object> getDashboardCalculationReason(String platform,
+
+    @Override
+    public List<ReasonLevelDto> getReasonLevel(String platform,
+                                         String channel,
+                                         String productId,
+                                         LocalDate fromDate,
+                                         LocalDate toDate) {
+        List<MergedModelProjection> mergedModel = getMergedModelProjections(platform, channel, productId, fromDate,toDate);
+        Map<String,List<MergedModelProjection>> reasonMap = new HashMap<>();
+        mergedModel.forEach(merged ->{
+            List<MergedModelProjection> result = reasonMap.getOrDefault(merged.getReason(), new ArrayList<>());
+            result.add(merged);
+            reasonMap.put(merged.getReason(), result);
+        });
+        List<ReasonLevelDto> reasonLevels = new ArrayList<>();
+        reasonMap.keySet().forEach(key -> {
+            ReasonLevelDto reasonLevelDto = new ReasonLevelDto();
+            reasonLevelDto.setName(key);
+            reasonLevelDto.setCount(reasonMap.get(key).size());
+            reasonLevelDto.setTable(swoosLoss(reasonMap.get(key)));
+            reasonLevels.add(reasonLevelDto);
+        });
+        return reasonLevels;
+    }
+
+    @Override
+    public List<ReasonLevelDto> getPlatformLevel(String platform,
+                                                 String channel,
+                                                 String productId,
+                                                 LocalDate fromDate,
+                                                 LocalDate toDate) {
+        List<MergedModelProjection> mergedModel = getMergedModelProjections(platform, channel, productId, fromDate, toDate);
+        Map<String,List<MergedModelProjection>> platformMap = new HashMap<>();
+        mergedModel.forEach(merged ->{
+            List<MergedModelProjection> result = platformMap.getOrDefault(merged.getPlatform(), new ArrayList<>());
+            result.add(merged);
+            platformMap.put(merged.getReason(), result);
+        });
+        List<ReasonLevelDto> reasonLevels = new ArrayList<>();
+        platformMap.keySet().forEach(key -> {
+            ReasonLevelDto reasonLevelDto = new ReasonLevelDto();
+            reasonLevelDto.setName(key);
+            reasonLevelDto.setCount(platformMap.get(key).size());
+            reasonLevelDto.setTable(swoosLoss(platformMap.get(key)));
+            reasonLevels.add(reasonLevelDto);
+        });
+        return reasonLevels;
+    }
+
+/*    public SuccessResponse<Object> getDashboardCalculationReason(String platform,
                                                            String channel,
                                                            String productId,
                                                            LocalDate from,
@@ -335,7 +368,5 @@ public class DashboardServiceImpl implements DashboardService {
 
         response.setData(reasonDashboardMap);
         return response;
-    }
-
-
+    }*/
 }

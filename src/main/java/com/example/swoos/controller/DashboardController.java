@@ -1,5 +1,7 @@
 package com.example.swoos.controller;
 
+import com.example.swoos.dto.DashboardCalcDto;
+import com.example.swoos.dto.ReasonLevelDto;
 import com.example.swoos.response.SuccessResponse;
 import com.example.swoos.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -21,7 +24,22 @@ public class DashboardController {
                                                            @RequestParam(required = false) LocalDate fromDate,
                                                            @RequestParam(required = false) LocalDate toDate){
         return dashboardService.getDashboardCalculation(platform,channel,productId,fromDate,toDate);
-
+    }
+    @GetMapping("/reasonlevel")
+    public List<ReasonLevelDto> getReasonLevel(@RequestParam(required = false) String platform,
+                                               @RequestParam(required = false) String channel,
+                                               @RequestParam(required = false) String productId,
+                                               @RequestParam(required = false) LocalDate fromDate,
+                                               @RequestParam(required = false) LocalDate toDate){
+        return dashboardService.getReasonLevel(platform,channel,productId,fromDate,toDate);
+    }
+    @GetMapping("/platformlevel")
+    public List<ReasonLevelDto> getPlatformLevel(@RequestParam(required = false) String platform,
+                                                 @RequestParam(required = false) String channel,
+                                                 @RequestParam(required = false) String productId,
+                                                 @RequestParam(required = false) LocalDate fromDate,
+                                                 @RequestParam(required = false) LocalDate toDate){
+        return dashboardService.getPlatformLevel(platform,channel,productId,fromDate,toDate);
     }
     @GetMapping("/productList")
     public SuccessResponse<Object> getProductList(@RequestParam(required = false) String platform,
