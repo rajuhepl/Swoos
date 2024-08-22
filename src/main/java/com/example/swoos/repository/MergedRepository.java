@@ -11,7 +11,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.sql.Timestamp;
 import java.util.List;
-//@Repository
 public interface MergedRepository extends JpaRepository<MergedModel,Long> {
 
     @Query(value = "SELECT * FROM merged_model m WHERE CAST(REPLACE(m.swooscontribution, ' %', '') AS DECIMAL(10, 2)) > :value " +
@@ -36,14 +35,10 @@ public interface MergedRepository extends JpaRepository<MergedModel,Long> {
     @Query("SELECT m FROM MergedModel m WHERE m.updatedAt BETWEEN :fromDate AND :toDate AND m.historyFlag = true AND m.reason NOT IN ('DisContinued') ORDER BY CAST(m.ValueLoss AS double) DESC")
     List<MergedModel> getAllHistoryTrue(@Param("fromDate") Timestamp fromDate, @Param("toDate") Timestamp toDate);
 
-    //    @Query(value = "SELECT location, SUM(loss) FROM SalesLossData GROUP BY location", nativeQuery = true)
-//    List<Object[]> findLocationWiseSalesLoss();
-@Query(value = "SELECT location, SUM(value_loss) FROM merged_model GROUP BY location", nativeQuery = true)
-List<Object[]> findLocationWiseSalesLoss();
+    @Query(value = "SELECT location, SUM(value_loss) FROM merged_model GROUP BY location", nativeQuery = true)
+    List<Object[]> findLocationWiseSalesLoss();
 
 
-
-    // If Date is not present
     @Query("SELECT m.SWOOSContribution as SWOOSContribution," +
             "   m.ValueLoss as valueLoss ,m.Pname as platform, m.Revenue as revenue, m.reason as reason,m.daySales as daySales," +
             " m.monthlySales as monthlySales,m.Pune as pune, m.other as other, m.Patna as patna, m.Mumbai as mumbai, m.Indore as indore, m.Hyderabad as hyderabad, m.Delhi as delhi, m.Chennai as chennai, m.Calcutta as calcutta, m.Bangalore as bangalore, m.Ahmedabad as ahmedabad " +

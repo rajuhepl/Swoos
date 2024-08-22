@@ -81,7 +81,6 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
             List<MergedModel> filteredMergedList = mergedList.stream()
                     .filter(mergedModel -> mergedModel.getPlatform().equals(platform))
                     .toList();
-
             for (MergedModel mergedModel : filteredMergedList) {
                 double totalValueLoss = filteredMergedList.stream()
                         .filter(merged -> merged.getPlatform().equals(mergedModel.getPlatform()))
@@ -146,7 +145,6 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                 platform = new Platform();
                 platform.setName(platformName);
             }
-
             platform.setValueLoss(totalValueLoss);
             platform.setOutOfStockCount(outOfStockCounts.getOrDefault(platformName, 0));
 
@@ -259,7 +257,10 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         double daySales = revenue / 30;
         String formattedDaySales = String.format("%.2f", daySales);
         mergedModel.setDaySales(formattedDaySales);
-        int unit = csvModel.getUnits()/30;
+        int unit = 0;
+        if (csvModel.getUnits()!=null) {
+            unit = csvModel.getUnits().intValue()/30;
+        }
         mergedModel.setMonthlySales(String.valueOf(unit));
         Map<String, String> cityStatusMap = new LinkedHashMap<>();
         int countOfZeros = 0;

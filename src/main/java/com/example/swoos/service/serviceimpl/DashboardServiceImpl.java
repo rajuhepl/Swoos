@@ -193,12 +193,17 @@ public class DashboardServiceImpl implements DashboardService {
             String daySales = model.getDaySales();
             String valueLossString =  model.getValueLoss();
             String rev = model.getRevenue();
-            int unit =Integer.parseInt(model.getMonthlySales());
+            int unit = 0;
+            if (model.getMonthlySales()!=null) {
+                unit = Integer.parseInt(model.getMonthlySales());
+            }
             int monthUnit = unit * 30;
             try {
                 daySalesTotal += Double.parseDouble(daySales.replace("%", ""));
                 revenue +=(long) Double.parseDouble(rev) ;
-                quantityLoss += unit/monthUnit;
+                if (monthUnit>0) {
+                    quantityLoss += unit/monthUnit;
+                }
                 valueLoss += Double.parseDouble(valueLossString.replace("%", ""));
             } catch (NumberFormatException e) {
                 System.err.println("Invalid number format for model ");
@@ -331,7 +336,7 @@ public class DashboardServiceImpl implements DashboardService {
         mergedModel.forEach(merged ->{
             List<MergedModelProjection> result = platformMap.getOrDefault(merged.getPlatform(), new ArrayList<>());
             result.add(merged);
-            platformMap.put(merged.getReason(), result);
+            platformMap.put(merged.getPlatform(), result);
         });
         List<ReasonLevelDto> reasonLevels = new ArrayList<>();
         platformMap.keySet().forEach(key -> {

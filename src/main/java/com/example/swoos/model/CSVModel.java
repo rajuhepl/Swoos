@@ -39,7 +39,7 @@ public class CSVModel {
     @Column(name = "revenue")
     private String Revenue;
     @Column(name = "units")
-    private int units;
+    private Float units;
 
     @Column(name = "triggeredon")
     private LocalDateTime triggeredOn;
