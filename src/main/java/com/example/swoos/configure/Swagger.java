@@ -7,6 +7,7 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.servers.Server;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +22,8 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+import java.util.List;
+
 @Configuration
 @EnableWebMvc
 public class Swagger {
@@ -31,6 +34,15 @@ public class Swagger {
         License license = new License();
         license.setName(Constant.SWOOS_USER);
         license.setUrl("SWOOS");
+
+        Server localServer = new Server();
+        localServer.setUrl("http://localhost:8080/api");
+        localServer.setDescription("Server URL in Local environment");
+
+        Server uatServer = new Server();
+        uatServer.setUrl("https://swoosuat.ckdigital.in/api");
+        uatServer.setDescription("Server URL in UAT environment");
+
 
         final String apiTitle = String.format("%s API", StringUtils.capitalize(Constant.SWOOS_USER));
         return new OpenAPI()
@@ -48,7 +60,8 @@ public class Swagger {
 
                                 )
                 )
-                .info(new Info().title(apiTitle).version("1.0").description("SWOOS-user").termsOfService("SWOOS_tool").license(license));
+                .info(new Info().title(apiTitle).version("1.0").description("SWOOS-user").termsOfService("SWOOS_tool").license(license))
+                .servers(List.of(localServer,uatServer));
     }
     @Bean
     Docket api() {
