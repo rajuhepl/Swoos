@@ -45,7 +45,7 @@ public class DashboardServiceImpl implements DashboardService {
         if (from == null && to == null) {
             mergedModels = datesNotPresented(platform, productId, channel);
         }else{
-            mergedModels = datesPresented(platform, productId, channel, from, to);
+            mergedModels = datesPresented(platform, channel, productId, from, to);
         }
         return mergedModels;
     }
@@ -403,7 +403,77 @@ public List<LocationLevelDTO> getLocationLevel(String platform,
     return locationLevels;
 }
 
+    @Override
+    public List<ReasonLevelDto> getCategoryLevel(String platform,
+                                                 String channel,
+                                                 String productId,
+                                                 LocalDate fromDate,
+                                                 LocalDate toDate) {
+        List<MergedModelProjection> mergedModel = getMergedModelProjections(platform, channel, productId, fromDate, toDate);
+        Map<String,List<MergedModelProjection>> categoryMap = new HashMap<>();
+        mergedModel.forEach(merged ->{
+            List<MergedModelProjection> result = categoryMap.getOrDefault(merged.getCategory(), new ArrayList<>());
+            result.add(merged);
+            categoryMap.put(merged.getCategory(), result);
+        });
+        List<ReasonLevelDto> reasonLevelDtos = new ArrayList<>();
+        categoryMap.keySet().forEach(key -> {
+            ReasonLevelDto reasonLevelDto = new ReasonLevelDto();
+            reasonLevelDto.setName(key);
+            reasonLevelDto.setCount(categoryMap.get(key).size());
+            reasonLevelDto.setTable(swoosLoss(categoryMap.get(key)));
+            reasonLevelDtos.add(reasonLevelDto);
+        });
+        return reasonLevelDtos;
+    }
 
+    @Override
+    public List<ReasonLevelDto> getBrandLevel(String platform,
+                                              String channel,
+                                              String productId,
+                                              LocalDate fromDate,
+                                              LocalDate toDate) {
+        List<MergedModelProjection> mergedModel = getMergedModelProjections(platform, channel, productId, fromDate, toDate);
+        Map<String,List<MergedModelProjection>> brandMap = new HashMap<>();
+        mergedModel.forEach(merged ->{
+            List<MergedModelProjection> result = brandMap.getOrDefault(merged.getBrand(), new ArrayList<>());
+            result.add(merged);
+            brandMap.put(merged.getBrand(), result);
+        });
+        List<ReasonLevelDto> reasonLevelDtos = new ArrayList<>();
+        brandMap.keySet().forEach(key -> {
+            ReasonLevelDto reasonLevelDto = new ReasonLevelDto();
+            reasonLevelDto.setName(key);
+            reasonLevelDto.setCount(brandMap.get(key).size());
+            reasonLevelDto.setTable(swoosLoss(brandMap.get(key)));
+            reasonLevelDtos.add(reasonLevelDto);
+        });
+        return reasonLevelDtos;
+    }
+
+    @Override
+    public List<ReasonLevelDto> getProductLevel(String platform,
+                                                String channel,
+                                                String productId,
+                                                LocalDate fromDate,
+                                                LocalDate toDate) {
+        List<MergedModelProjection> mergedModel = getMergedModelProjections(platform, channel, productId, fromDate, toDate);
+        Map<String,List<MergedModelProjection>> productMap = new HashMap<>();
+        mergedModel.forEach(merged ->{
+            List<MergedModelProjection> result = productMap.getOrDefault(merged.getProduct(), new ArrayList<>());
+            result.add(merged);
+            productMap.put(merged.getProduct(), result);
+        });
+        List<ReasonLevelDto> reasonLevelDtos = new ArrayList<>();
+        productMap.keySet().forEach(key -> {
+            ReasonLevelDto reasonLevelDto = new ReasonLevelDto();
+            reasonLevelDto.setName(key);
+            reasonLevelDto.setCount(productMap.get(key).size());
+            reasonLevelDto.setTable(swoosLoss(productMap.get(key)));
+            reasonLevelDtos.add(reasonLevelDto);
+        });
+        return reasonLevelDtos;
+    }
 
 
 //    @Override

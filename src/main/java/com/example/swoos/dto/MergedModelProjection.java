@@ -19,5 +19,8 @@ public interface MergedModelProjection {
     String getBangalore();
     String getAhmedabad();
     String getMonthlySales();
+    String getBrand();
+    String getCategory();
+    String getProduct();
 
 }

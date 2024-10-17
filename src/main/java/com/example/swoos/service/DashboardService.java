@@ -22,4 +22,11 @@ public interface DashboardService {
     List<ReasonLevelDto> getPlatformLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
 
     List<LocationLevelDTO> getLocationLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
+
+    List<ReasonLevelDto> getCategoryLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
+
+    List<ReasonLevelDto> getBrandLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
+
+    List<ReasonLevelDto> getProductLevel(String platform, String channel, String productId, LocalDate fromDate, LocalDate toDate);
+
 }

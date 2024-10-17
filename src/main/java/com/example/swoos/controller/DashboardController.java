@@ -55,6 +55,30 @@ public class DashboardController {
         return dashboardService.getProductList(platform,channel,fromDate,toDate,search);
 
     }
+    @GetMapping("/categorylevel")
+    public List<ReasonLevelDto> getCategoryLevel(@RequestParam(required = false) String platform,
+                                                 @RequestParam(required = false) String channel,
+                                                 @RequestParam(required = false) String productId,
+                                                 @RequestParam(required = false) LocalDate fromDate,
+                                                 @RequestParam(required = false) LocalDate toDate){
+        return dashboardService.getCategoryLevel(platform,channel,productId,fromDate,toDate);
+    }
+    @GetMapping("/brandlevel")
+    public List<ReasonLevelDto> getBrandLevel(@RequestParam(required = false) String platform,
+                                              @RequestParam(required = false) String channel,
+                                              @RequestParam(required = false) String productId,
+                                              @RequestParam(required = false) LocalDate fromDate,
+                                              @RequestParam(required = false) LocalDate toDate){
+        return dashboardService.getBrandLevel(platform,channel,productId,fromDate,toDate);
+    }
+    @GetMapping("/productLevel")
+    public List<ReasonLevelDto> getProductLevel(@RequestParam(required = false) String platform,
+                                                @RequestParam(required = false) String channel,
+                                                @RequestParam(required = false) String productId,
+                                                @RequestParam(required = false) LocalDate fromDate,
+                                                @RequestParam(required = false) LocalDate toDate){
+        return dashboardService.getProductLevel(platform,channel,productId,fromDate,toDate);
+    }
     @GetMapping("/sukCount")
     public Map<String,Long> getSukCountPlatforms() {
     return dashboardService.getPlatformSukCount();
