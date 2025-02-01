@@ -251,6 +251,14 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         mergedModel.setBrand(csvModel.getBrand());
         mergedModel.setCategory(csvModel.getCategory());
         mergedModel.setSubCategory(csvModel.getSubCategory());
+        mergedModel.setDate(firstExcelModel.getDate());
+        mergedModel.setProductUrl(firstExcelModel.getProductUrl());
+        mergedModel.setPinCode(firstExcelModel.getPinCode());
+        mergedModel.setRegion(firstExcelModel.getRegion());
+        mergedModel.setSp(firstExcelModel.getSp());
+        mergedModel.setSeller(firstExcelModel.getSeller());
+        mergedModel.setMrp(firstExcelModel.getMrp());
+        mergedModel.setDiscount(firstExcelModel.getDiscount());
         double revenue = Double.parseDouble(csvModel.getRevenue());
         String formattedRevenue = String.format("%.2f", revenue);
         mergedModel.setRevenue(formattedRevenue);
@@ -266,8 +274,8 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
         int countOfZeros = 0;
         int count = 0;
         for (ExcelModel excelModel : excelModels) {
-            if (excelModel.getStatus().equals("1") || excelModel.getStatus().equals("0")) {
-                if (excelModel.getStatus().equals("0")) {
+            if (excelModel.getStatusNum()==1 || excelModel.getStatusNum()==0) {
+                if (excelModel.getStatusNum()==0) {
                     countOfZeros++;
                 }
                 count++;
@@ -311,11 +319,11 @@ public class MergeExcelAndCSVServiceImpl implements MergeExcelAndCSVService {
                         mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                     } else {
                         if(locationNotAlign(disCont,mergedModel)){
-                          mergedModel.setHistoryFlag(true);
-                          mergedModel.setReason(disCont.getReason());
-                          mergedModel.setLastDayReason(disCont.getReason());
-                          mergedModel.setRemarks(disCont.getRemarks());
-                          mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                            mergedModel.setHistoryFlag(true);
+                            mergedModel.setReason(disCont.getReason());
+                            mergedModel.setLastDayReason(disCont.getReason());
+                            mergedModel.setRemarks(disCont.getRemarks());
+                            mergedModel.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                         }
                     }
                 });

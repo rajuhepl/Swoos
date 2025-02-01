@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -70,8 +71,16 @@ public class MergedModel {
     @UpdateTimestamp
     private Timestamp updatedAt;
     private String location;
-    private LocalDateTime date;
+//    private LocalDateTime date;
 //    @UserProfile(name = "history_flag")
     private boolean historyFlag;
+    private LocalDate date;
+    private String productUrl;
+    private Long pinCode;
+    private String region;
+    private Long sp;
+    private String seller;
+    private Long mrp;
+    private Float discount;
 }
 
