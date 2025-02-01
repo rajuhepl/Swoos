@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.Column;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -42,5 +43,32 @@ public class ExcelModel {
 
     @Column(name = "triggeredon")
     private LocalDateTime triggeredOn;
+
+    @Column(name = "date")
+    private LocalDate date;
+
+    @Column(name = "product_url")
+    private String productUrl;
+
+    @Column(name = "pin_code")
+    private Long pinCode;
+
+    @Column(name = "region")
+    private String region;
+
+    @Column(name = "status_num")
+    private Long statusNum;
+
+    @Column(name = "sp")
+    private Long sp;
+
+    @Column(name = "seller")
+    private String seller;
+
+    @Column(name = "mrp")
+    private Long mrp;
+
+    @Column(name = "discount")
+    private Float discount;
 
 }
